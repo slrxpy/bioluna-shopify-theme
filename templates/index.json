@@ -1,0 +1,725 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "bf_best": {
+      "type": "bio-bf-products",
+      "settings": {
+        "kicker": "Black Friday",
+        "title": "<em>Bestsellers</em> la reducere",
+        "sub": "",
+        "products": [
+          "ceai-slabit-ozlex-detox-60-plicuri-original-turcia",
+          "miere-afrodisiaca-themra-plante-240g-borcan-original-turcia",
+          "pachet-5-plicuri-magiun-afrodisiac-themra-15g",
+          "pachet-promo-redist-usturoi-sampon-1000ml-masca-475ml",
+          "pachet-promo-ozlex-clasic-ceai-60-cafea-30-plicuri",
+          "miere-afrodisiaca-themra-12-plicuri-15g-original-turcia",
+          "pachet-promo-ozlex-ceai-detox-2x-60-plicuri-cura-2-luni",
+          "cafea-slabit-detox-ozlex-30-plicuri-original-turcia"
+        ],
+        "collection": "toate-pachetele-promo",
+        "limit": 8,
+        "hide_sold": true,
+        "tag": "Bestseller",
+        "tag_n": 3,
+        "more": "Vezi toate",
+        "paginate": false
+      }
+    },
+    "bf_ozlex": {
+      "type": "bio-bf-products",
+      "settings": {
+        "kicker": "Ozlex",
+        "title": "Ceai & cafea <em>Ozlex</em>",
+        "sub": "",
+        "products": [
+          "ceai-slabit-ozlex-detox-60-plicuri-original-turcia",
+          "pachet-promo-ozlex-clasic-ceai-60-cafea-30-plicuri",
+          "pachet-promo-ozlex-ceai-detox-2x-60-plicuri-cura-2-luni",
+          "cafea-slabit-detox-ozlex-30-plicuri-original-turcia",
+          "pachet-promo-ozlex-ceai-detox-3x-60-plicuri-cura-3-luni",
+          "pachet-promo-ozlex-cafea-detox-3x-30-plicuri-holograma",
+          "pachet-promo-ozlex-cafea-detox-2x-30-plicuri-holograma",
+          "pachet-3-ceaiuri-ozlex-cadou-parfumat-alya"
+        ],
+        "collection": "ozlex-detox-slabit-complet",
+        "limit": 8,
+        "hide_sold": true,
+        "tag": "Top",
+        "tag_n": 2,
+        "more": "Vezi toate",
+        "paginate": false
+      }
+    },
+    "bf_magiun": {
+      "type": "bio-bf-products",
+      "settings": {
+        "kicker": "Magiun tradițional",
+        "title": "Magiun <em>Themra</em>",
+        "sub": "",
+        "products": [
+          "miere-afrodisiaca-themra-plante-240g-borcan-original-turcia",
+          "pachet-5-plicuri-magiun-afrodisiac-themra-15g",
+          "plic-themra-magiun-afrodisiac-1-bucata-15g",
+          "miere-afrodisiaca-themra-12-plicuri-15g-original-turcia",
+          "pachet-themra-borcan-43g-3-plicuri-cadou",
+          "magiun-afrodisiac-themra-43g-borcan-original-turcia",
+          "pachet-afrodisiac-magiun-themra-q7-gold-putere-placere",
+          "set-promo-magiun-afrodisiac-themra-43g-5-plicuri"
+        ],
+        "collection": "magiun-afrodisiac-toate-produsele",
+        "limit": 8,
+        "hide_sold": true,
+        "tag": "Top",
+        "tag_n": 2,
+        "more": "Vezi toate",
+        "paginate": false
+      }
+    },
+    "bf_redist": {
+      "type": "bio-bf-products",
+      "settings": {
+        "kicker": "Redist Professional",
+        "title": "Îngrijire păr <em>Redist</em>",
+        "sub": "",
+        "products": [
+          "pachet-promo-redist-usturoi-sampon-1000ml-masca-475ml",
+          "pachet-promo-redist-usturoi-3-sampoane-1000ml-masca-500ml",
+          "set-redist-par-si-corp-sampon-usturoi-1000ml-masca-475ml-lotiune-cadou",
+          "balsam-bifazic-redist-miracle-oil-40-overdose-400ml-leave-in",
+          "pachet-complet-redist-usturoi-sampon-masca-balsam-ser-argan",
+          "pachet-redist-regenerare-par-sampon-masca-balsam-argan",
+          "set-promo-redist-ulei-argan-sampon-1000ml-masca-500ml",
+          "balsam-bifazic-redist-argan-400ml-leave-in-ulei-argan-keratina"
+        ],
+        "collection": "redist-professional",
+        "limit": 8,
+        "hide_sold": true,
+        "tag": "Top",
+        "tag_n": 2,
+        "more": "Vezi toate",
+        "paginate": false
+      }
+    },
+    "bf_sadoer": {
+      "type": "bio-bf-products",
+      "settings": {
+        "kicker": "SADOER",
+        "title": "Rozmarin & <em>Batana Oil</em>",
+        "sub": "",
+        "products": [
+          "pachet-sadoer-rozmarin-sampon-balsam-masca",
+          "pachet-sadoer-rozmarin-sampon-balsam-ulei-cu",
+          "ulei-par-sadoer-rozmarin-50ml-stimulare-crestere-anticadere",
+          "sampon-sadoer-rozmarin-500ml-anticadere-crestere-capilara",
+          "pachet-sadoer-rozmarin-masca-ulei-pentru-reparare",
+          "spray-par-sadoer-batana-oil-30ml-leave-in-reparator-protecti",
+          "pachet-sadoer-rozmarin-sampon-balsam-masca-pentru",
+          "pachet-sadoer-rozmarin-ulei-50ml-balsam-500ml-pentru"
+        ],
+        "collection": "sadoer-professional",
+        "limit": 8,
+        "hide_sold": true,
+        "tag": "Top",
+        "tag_n": 2,
+        "more": "Vezi toate",
+        "paginate": false
+      }
+    },
+    "bf_arome": {
+      "type": "bio-bf-products",
+      "settings": {
+        "kicker": "Parfumuri de cameră",
+        "title": "Odorizante <em>Alya</em> & Air Energie",
+        "sub": "",
+        "products": [
+          "odorizant-camera-alya-lavanda-100ml",
+          "odorizant-camera-air-energie-lamaie-100ml",
+          "pachet-trio-1001-de-nopti-3-odorizante-200ml",
+          "odorizant-camera-alya-ananas-si-cocos-100ml",
+          "odorizant-camera-air-energie-lavanda-100ml",
+          "odorizant-camera-alya-mango-100ml",
+          "pachet-6-odorizante-camera-air-energie-100ml",
+          "odorizant-camera-alya-ocean-100ml"
+        ],
+        "collection": "odorizante-camera-alya",
+        "limit": 8,
+        "hide_sold": true,
+        "tag": "Nou",
+        "tag_n": 0,
+        "more": "Vezi toate",
+        "paginate": false
+      }
+    },
+    "bf_hero2": {
+      "type": "bio-bf-hero2",
+      "blocks": {
+        "s1": {
+          "type": "slide",
+          "settings": {
+            "tab": "Redist",
+            "chip": "Cel mai vândut la păr",
+            "title": "Pachet <em>Redist</em> Usturoi",
+            "sub": "Șampon 1000 ml + mască 475 ml, pentru părul slăbit",
+            "word": "Redist",
+            "product": "pachet-promo-redist-usturoi-sampon-1000ml-masca-475ml",
+            "product2": "balsam-bifazic-redist-miracle-oil-40-overdose-400ml-leave-in",
+            "cta": "Vezi pachetul",
+            "tint": "#E6EEFF",
+            "acc": "#2563eb"
+          }
+        },
+        "s2": {
+          "type": "slide",
+          "settings": {
+            "tab": "Magiun Themra",
+            "chip": "Magiun tradițional",
+            "title": "Magiun <em>Themra</em>",
+            "sub": "Borcan 240 g, original din Turcia",
+            "word": "Themra",
+            "product": "miere-afrodisiaca-themra-plante-240g-borcan-original-turcia",
+            "product2": "pachet-5-plicuri-magiun-afrodisiac-themra-15g",
+            "cta": "Vezi magiunul",
+            "tint": "#FDE7E9",
+            "acc": "#c40016"
+          }
+        },
+        "s3": {
+          "type": "slide",
+          "settings": {
+            "tab": "Ceai Ozlex",
+            "chip": "Bestseller BioLuna",
+            "title": "Ceaiul <em>Ozlex</em>",
+            "sub": "60 de plicuri, original din Turcia",
+            "word": "Ozlex",
+            "product": "ceai-slabit-ozlex-detox-60-plicuri-original-turcia",
+            "product2": "cafea-slabit-detox-ozlex-30-plicuri-original-turcia",
+            "cta": "Vezi ceaiul",
+            "tint": "#DDF5F0",
+            "acc": "#0e9f8e"
+          }
+        },
+        "s4": {
+          "type": "slide",
+          "settings": {
+            "tab": "Q7",
+            "chip": "Magiun premium",
+            "title": "Magiun <em>Q7</em> Premium",
+            "sub": "Borcan 240 g, cu miere și plante",
+            "word": "Q7",
+            "product": "magiun-q7-premium-240g-mix-natural-miere-plante-afrodiziace",
+            "product2": "ciocolata-q7-premium-afrodisiaca-12-bucati-original-turcia",
+            "cta": "Vezi magiunul",
+            "tint": "#FFF0C9",
+            "acc": "#d08a00"
+          }
+        },
+        "s5": {
+          "type": "slide",
+          "settings": {
+            "tab": "Şahımerdan",
+            "chip": "Magiun cu ginseng",
+            "title": "Magiun <em>Şahımerdan</em>",
+            "sub": "Borcan 240 g, cu miere și ginseng",
+            "word": "Şahımerdan",
+            "product": "magiun-afrodisiac-sahimerdan-240g",
+            "product2": "pachet-2x-magiun-sahimerdan-240g",
+            "cta": "Vezi magiunul",
+            "tint": "#EDE6FF",
+            "acc": "#6d3fd1"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ],
+      "settings": {
+        "autoplay": 6,
+        "note": "Plata la livrare",
+        "show_cd": true,
+        "start": "2026-11-06 00:00",
+        "deadline": "2026-12-01 00:00",
+        "lbl_start": "Black Friday începe în",
+        "lbl_end": "Black Friday se termină în",
+        "cd_note": "Reduceri de până la −44%"
+      },
+      "disabled": true
+    },
+    "bf_bento": {
+      "type": "bio-bf-bento",
+      "blocks": {
+        "b1": {
+          "type": "tile",
+          "settings": {
+            "label": "Redist",
+            "desc": "Șampon, mască, balsam, pachete",
+            "size": "big",
+            "tint": "#E3ECFF",
+            "pct": "",
+            "collection": "redist-professional",
+            "p1": "pachet-complet-redist-usturoi-sampon-masca-balsam-ser-argan"
+          }
+        },
+        "b2": {
+          "type": "tile",
+          "settings": {
+            "label": "Magiun Themra",
+            "desc": "Borcan, plicuri și pachete",
+            "size": "big",
+            "tint": "#FDE3E6",
+            "pct": "",
+            "collection": "themra-miere-magiun-afrodisiac-original-turcia",
+            "p1": "miere-afrodisiaca-themra-plante-240g-borcan-original-turcia"
+          }
+        },
+        "b3": {
+          "type": "tile",
+          "settings": {
+            "label": "Ceai Ozlex",
+            "desc": "Ceai, cafea și pachete",
+            "size": "big",
+            "tint": "#D9F4EE",
+            "pct": "",
+            "collection": "ozlex-detox-slabit-complet",
+            "p1": "pachet-promo-ozlex-clasic-ceai-60-cafea-30-plicuri"
+          }
+        },
+        "b4": {
+          "type": "tile",
+          "settings": {
+            "label": "Q7",
+            "desc": "Magiun și ciocolată",
+            "size": "mid",
+            "tint": "#FFEEC2",
+            "pct": "",
+            "collection": "q7-premium-magiun-ciocolata-afrodisiaca-turcia",
+            "p1": "magiun-q7-premium-240g-mix-natural-miere-plante-afrodiziace",
+            "p2": "ciocolata-q7-premium-afrodisiaca-12-bucati-original-turcia"
+          }
+        },
+        "b5": {
+          "type": "tile",
+          "settings": {
+            "label": "Şahımerdan",
+            "desc": "Magiun 240 g și pachete",
+            "size": "mid",
+            "tint": "#EAE2FF",
+            "pct": "",
+            "collection": "magiun-sahimerdan",
+            "p1": "magiun-afrodisiac-sahimerdan-240g"
+          }
+        },
+        "b6": {
+          "type": "tile",
+          "settings": {
+            "label": "Sadoer",
+            "desc": "Rozmarin și Batana Oil",
+            "size": "mid",
+            "tint": "#E2F3DC",
+            "pct": "",
+            "collection": "sadoer-professional",
+            "p1": "sampon-sadoer-rozmarin-500ml-anticadere-crestere-capilara",
+            "p2": "sampon-sadoer-batana-oil-400ml-anticadere-reparare-crestere"
+          }
+        },
+        "b7": {
+          "type": "tile",
+          "settings": {
+            "label": "Odorizante",
+            "desc": "Alya, Air Energie, Yumoş, 1001 de Nopți",
+            "size": "half",
+            "tint": "#F1E8FA",
+            "pct": "24",
+            "collection": "odorizante-de-camera",
+            "p1": "odorizant-camera-alya-lavanda-100ml"
+          }
+        },
+        "b8": {
+          "type": "tile",
+          "settings": {
+            "label": "Pachete promo",
+            "desc": "Seturi gata făcute",
+            "size": "halfw",
+            "tint": "#FFE9DB",
+            "pct": "44",
+            "collection": "toate-pachetele-promo",
+            "p1": "pachet-promo-ozlex-clasic-ceai-60-cafea-30-plicuri",
+            "p2": "pachet-promo-redist-usturoi-sampon-1000ml-masca-475ml"
+          }
+        },
+        "b9": {
+          "type": "tile",
+          "settings": {
+            "label": "Toate produsele",
+            "desc": "Toată gama BioLuna la reducere",
+            "size": "wide",
+            "tint": "#EEF1F6",
+            "pct": "44",
+            "url": "/collections/all",
+            "p1": "miere-afrodisiaca-themra-plante-240g-borcan-original-turcia",
+            "p2": "ceai-slabit-ozlex-detox-60-plicuri-original-turcia",
+            "p3": "pachet-promo-redist-usturoi-sampon-1000ml-masca-475ml"
+          }
+        }
+      },
+      "block_order": [
+        "b3",
+        "b1",
+        "b2",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9"
+      ],
+      "settings": {
+        "kicker": "Alege categoria",
+        "title": "Reduceri pe <em>categorii</em>"
+      }
+    },
+    "bf_game": {
+      "type": "bio-bf-game",
+      "blocks": {
+        "g3": {
+          "type": "g",
+          "settings": {
+            "collection": "ozlex-detox-slabit-complet",
+            "label": "Ozlex",
+            "sub": "Ceai și cafea din Turcia",
+            "color": "#0c6b62"
+          }
+        },
+        "g1": {
+          "type": "g",
+          "settings": {
+            "collection": "pachete-promo-redist-professional",
+            "label": "Redist Usturoi",
+            "sub": "Păr slăbit, care se rupe",
+            "color": "#14306e"
+          }
+        },
+        "g2": {
+          "type": "g",
+          "settings": {
+            "collection": "themra-miere-magiun-afrodisiac-original-turcia",
+            "label": "Themra",
+            "sub": "Magiun tradițional",
+            "color": "#7d0a17"
+          }
+        },
+        "g4": {
+          "type": "g",
+          "settings": {
+            "collection": "q7-premium-magiun-ciocolata-afrodisiaca-turcia",
+            "label": "Q7",
+            "sub": "Magiun și ciocolată",
+            "color": "#5b3d05"
+          }
+        },
+        "g9": {
+          "type": "g",
+          "settings": {
+            "collection": "magiun-sahimerdan",
+            "label": "Şahımerdan",
+            "sub": "Magiun cu ginseng",
+            "color": "#8a1a0c"
+          }
+        },
+        "g5": {
+          "type": "g",
+          "settings": {
+            "collection": "sadoer-rozmarin",
+            "label": "Sadoer Rozmarin",
+            "sub": "Volum și fortifiere",
+            "color": "#1b5130"
+          }
+        },
+        "g6": {
+          "type": "g",
+          "settings": {
+            "collection": "sadoer-batana",
+            "label": "Sadoer Batana",
+            "sub": "Hrănire intensă",
+            "color": "#6a2e0c"
+          }
+        },
+        "g7": {
+          "type": "g",
+          "settings": {
+            "collection": "balsame-bifazice-redist-leave-in",
+            "label": "Balsamuri leave-in",
+            "sub": "Descâlcire în 10 secunde",
+            "color": "#9a4a08"
+          }
+        },
+        "g8": {
+          "type": "g",
+          "settings": {
+            "collection": "odorizante-camera-alya",
+            "label": "Alya",
+            "sub": "Parfum de cameră",
+            "color": "#4b2c73"
+          }
+        }
+      },
+      "block_order": [
+        "g3",
+        "g1",
+        "g2",
+        "g4",
+        "g9",
+        "g5",
+        "g6",
+        "g7",
+        "g8"
+      ],
+      "settings": {
+        "kicker": "Fiecare gamă rezolvă o nevoie",
+        "title": "Cumpără pe <em>game</em>",
+        "sub": "",
+        "link_text": "Vezi ofertele"
+      },
+      "disabled": true
+    },
+    "bf_q7": {
+      "type": "bio-bf-products",
+      "settings": {
+        "kicker": "Magiun premium",
+        "title": "Magiun <em>Q7</em> & Şahımerdan",
+        "sub": "",
+        "products": [
+          "magiun-q7-premium-240g-mix-natural-miere-plante-afrodiziace",
+          "magiun-afrodisiac-sahimerdan-240g",
+          "pachet-duo-magiun-q7-premium-2x-240g",
+          "pachet-2x-magiun-sahimerdan-240g",
+          "ciocolata-q7-premium-afrodisiaca-12-bucati-original-turcia",
+          "pachet-q7-complet-magiun-240g-ciocolata-strawberry",
+          "q7-gold-afrodisiac-set-intensiv-3-borcane-240g",
+          "pachet-3x-magiun-sahimerdan-240g"
+        ],
+        "collection": "q7-premium-magiun-ciocolata-afrodisiaca-turcia",
+        "limit": 8,
+        "hide_sold": true,
+        "tag": "Top",
+        "tag_n": 2,
+        "more": "Vezi toate",
+        "paginate": false
+      }
+    },
+    "bio_seo": {
+      "type": "bio-home-seo",
+      "settings": {
+        "content": "<h2>Cosmetice profesionale și produse originale din Turcia, livrate rapid în toată România</h2>\n<p>BioLuna.ro aduce în România produse pe care le găseai până acum doar în saloane sau în bazarurile din Istanbul: <a href=\"/collections/redist-professional\">cosmetice profesionale Redist</a> pentru păr, <a href=\"/collections/sadoer-rozmarin\">gama Sadoer cu rozmarin</a>, <a href=\"/collections/dr-okay\">skincare Dr. Okay</a>, <a href=\"/collections/ozlex-detox-slabit-complet\">ceaiul și cafeaua Ozlex</a>, <a href=\"/collections/magiun-afrodisiac-toate-produsele\">magiunul tradițional Themra și Q7</a> și <a href=\"/collections/odorizante-camera-alya\">parfumurile de cameră Alya</a>. Toate sigilate, cu factură, plătite la curier când primești coletul.</p>\n<h3>Îngrijire păr la nivel de salon, acasă</h3>\n<p>Dacă părul cade, se rupe sau nu mai are volum, începe cu <a href=\"/collections/pachete-promo-redist-professional\">pachetele Redist cu usturoi</a> — șampon și mască folosite de coafori, fără miros după clătire. Pentru păr vopsit ai <a href=\"/collections/balsame-bifazice-redist-leave-in\">balsamurile bifazice leave-in</a> și gama cu keratină; pentru volum și scalp revigorat, <a href=\"/collections/sadoer-rozmarin\">Sadoer Rozmarin</a>, trendul momentului în îngrijirea părului; pentru păr uscat și deteriorat, <a href=\"/collections/sadoer-batana\">uleiul de batana</a>. Fiecare produs are pe pagină ingredientele, modul de utilizare și cui i se potrivește — ca să alegi în cunoștință de cauză.</p>\n<h3>Ritualuri zilnice din Turcia</h3>\n<p><a href=\"/collections/ozlex-detox-slabit-complet\">Ceaiul Ozlex</a> cu fructe de pădure și cafeaua instant Ozlex au devenit un ritual pentru mii de clienți: un plic pe zi, o cutie pentru două luni, gust care se ține. Alături, <a href=\"/collections/themra-miere-magiun-afrodisiac-original-turcia\">magiunul Themra</a> — miere, ginseng și plante după rețeta tradițională — și <a href=\"/collections/odorizante-camera-alya\">odorizantele Alya și Yumos</a> care umplu camera în câteva minute și țin săptămâni.</p>\n<h3>Pachete promo — mai ieftin decât produsele luate separat</h3>\n<p>Am construit <a href=\"/collections/toate-pachetele-promo\">peste 100 de pachete promo</a> în care produsele se completează: șampon + mască, ceai + cafea, rutina completă de ten. Prețul de referință afișat este suma reală a componentelor, iar reducerea o vezi exact, în lei. Livrăm în 1–2 zile lucrătoare, gratuit peste 250 lei, iar la orice întrebare răspundem pe WhatsApp — de la oameni, nu de la roboți.</p>"
+      }
+    },
+    "bf_hero3": {
+      "type": "bio-bf-hero3",
+      "blocks": {
+        "s1": {
+          "type": "slide",
+          "settings": {
+            "tab": "Redist",
+            "chip": "Cel mai vândut la păr",
+            "title": "Gama <em>Redist</em>",
+            "sub": "Pachete cu usturoi, balsam și seturi",
+            "word": "Redist",
+            "products": [
+              "pachet-promo-redist-usturoi-sampon-1000ml-masca-475ml",
+              "pachet-promo-redist-usturoi-3-sampoane-1000ml-masca-500ml",
+              "set-redist-par-si-corp-sampon-usturoi-1000ml-masca-475ml-lotiune-cadou",
+              "balsam-bifazic-redist-miracle-oil-40-overdose-400ml-leave-in",
+              "pachet-complet-redist-usturoi-sampon-masca-balsam-ser-argan"
+            ],
+            "collection": "redist-professional",
+            "cta": "Vezi toate ofertele",
+            "tint": "#E6EEFF",
+            "acc": "#2563eb",
+            "full": false,
+            "strip": "Promo "
+          }
+        },
+        "s2": {
+          "type": "slide",
+          "settings": {
+            "tab": "Magiun Themra",
+            "chip": "Magiun tradițional",
+            "title": "Magiun <em>Themra</em>",
+            "sub": "Borcan, plicuri și pachete din Turcia",
+            "word": "Themra",
+            "products": [
+              "miere-afrodisiaca-themra-plante-240g-borcan-original-turcia",
+              "miere-afrodisiaca-themra-12-plicuri-15g-original-turcia",
+              "pachet-5-plicuri-magiun-afrodisiac-themra-15g",
+              "pachet-themra-borcan-43g-3-plicuri-cadou",
+              "magiun-afrodisiac-themra-43g-borcan-original-turcia"
+            ],
+            "collection": "themra-miere-magiun-afrodisiac-original-turcia",
+            "cta": "Vezi toate ofertele",
+            "tint": "#FDE7E9",
+            "acc": "#c40016",
+            "full": true,
+            "strip": "Afrodisiacă |Afrodisiac |Original Turcia| cu Plante"
+          }
+        },
+        "s3": {
+          "type": "slide",
+          "settings": {
+            "tab": "Ceai Ozlex",
+            "chip": "Bestseller BioLuna",
+            "title": "Ceai <em>Ozlex</em>",
+            "sub": "Ceai, cafea și pachete din Turcia",
+            "word": "Ozlex",
+            "products": [
+              "ceai-slabit-ozlex-detox-60-plicuri-original-turcia",
+              "pachet-promo-ozlex-clasic-ceai-60-cafea-30-plicuri",
+              "cafea-slabit-detox-ozlex-30-plicuri-original-turcia",
+              "pachet-promo-ozlex-ceai-detox-2x-60-plicuri-cura-2-luni",
+              "pachet-promo-ozlex-ceai-detox-3x-60-plicuri-cura-3-luni"
+            ],
+            "collection": "ozlex-detox-slabit-complet",
+            "cta": "Vezi toate ofertele",
+            "tint": "#DDF5F0",
+            "acc": "#0e9f8e",
+            "full": true,
+            "strip": "Pachet Promo |Pachet |Originale din Turcia| Instant"
+          }
+        },
+        "s4": {
+          "type": "slide",
+          "settings": {
+            "tab": "Q7",
+            "chip": "Magiun premium",
+            "title": "Magiun <em>Q7</em>",
+            "sub": "Borcan 240 g, ciocolată și pachete",
+            "word": "Q7",
+            "products": [
+              "magiun-q7-premium-240g-mix-natural-miere-plante-afrodiziace",
+              "ciocolata-q7-premium-afrodisiaca-12-bucati-original-turcia",
+              "pachet-duo-magiun-q7-premium-2x-240g",
+              "pachet-6-ciocolata-q7-gold-pentru-el",
+              "pachet-12-ciocolata-q7-gold-mixt-ea-el"
+            ],
+            "collection": "q7-premium-magiun-ciocolata-afrodisiaca-turcia",
+            "cta": "Vezi toate ofertele",
+            "tint": "#FFF0C9",
+            "acc": "#d08a00",
+            "full": true,
+            "strip": "Afrodisiacă |Afrodisiac |Premium "
+          }
+        },
+        "s5": {
+          "type": "slide",
+          "settings": {
+            "tab": "Şahımerdan",
+            "chip": "Magiun cu ginseng",
+            "title": "<em>Şahımerdan</em>",
+            "sub": "Magiun 240 g, la bucată sau la pachet",
+            "word": "Şahımerdan",
+            "products": [
+              "magiun-afrodisiac-sahimerdan-240g",
+              "pachet-2x-magiun-sahimerdan-240g",
+              "pachet-3x-magiun-sahimerdan-240g"
+            ],
+            "collection": "magiun-sahimerdan",
+            "cta": "Vezi toate ofertele",
+            "tint": "#EDE6FF",
+            "acc": "#6d3fd1",
+            "full": false,
+            "strip": "Afrodisiac |Promo "
+          }
+        },
+        "s6": {
+          "type": "slide",
+          "settings": {
+            "tab": "Sadoer",
+            "chip": "Rozmarin și Batana Oil",
+            "title": "Gama <em>Sadoer</em>",
+            "sub": "Șampon, balsam, mască și pachete",
+            "word": "Sadoer",
+            "products": [
+              "pachet-sadoer-rozmarin-sampon-balsam-pentru-volum",
+              "pachet-sadoer-rozmarin-sampon-balsam-masca",
+              "pachet-sadoer-rozmarin-sampon-balsam-ulei-cu",
+              "sampon-sadoer-rozmarin-500ml-anticadere-crestere-capilara",
+              "masca-par-sadoer-batana-oil-500g-reparare-intensiva-hidratar"
+            ],
+            "collection": "sadoer-professional",
+            "cta": "Vezi toate ofertele",
+            "tint": "#E4F3DE",
+            "acc": "#2f7d32",
+            "full": true,
+            "strip": "Pachet SADOER Rozmarin |SADOER "
+          }
+        },
+        "s7": {
+          "type": "slide",
+          "settings": {
+            "tab": "Odorizante",
+            "chip": "Nou la BioLuna",
+            "title": "Alya <em>Gourmand</em>",
+            "sub": "Odorizante de cameră cu arome de desert",
+            "word": "Gourmand",
+            "products": [
+              "odorizant-camera-alya-gourmand-french-vanilla-100ml",
+              "odorizant-camera-alya-gourmand-salted-caramel-100ml",
+              "odorizant-camera-alya-gourmand-chocolate-milkshake-100ml",
+              "odorizant-camera-alya-gourmand-lemon-cheesecake-100ml",
+              "odorizant-camera-alya-gourmand-bitter-cherry-100ml"
+            ],
+            "collection": "alya-gourmand-scents",
+            "cta": "Vezi toate aromele",
+            "tint": "#FCEBD9",
+            "acc": "#b45309",
+            "full": false,
+            "strip": "Odorizant de Cameră Alya Gourmand "
+          }
+        }
+      },
+      "block_order": [
+        "s3",
+        "s1",
+        "s6",
+        "s2",
+        "s4",
+        "s5",
+        "s7"
+      ],
+      "settings": {
+        "autoplay": 7,
+        "show_cd": true,
+        "start": "2026-11-06 00:00",
+        "deadline": "2026-12-01 00:00",
+        "lbl_start": "Black Friday începe în",
+        "lbl_end": "Black Friday se termină în",
+        "cd_note": "Reduceri de până la −44%"
+      }
+    }
+  },
+  "order": [
+    "bf_hero3",
+    "bf_hero2",
+    "bf_bento",
+    "bf_best",
+    "bf_game",
+    "bf_redist",
+    "bf_magiun",
+    "bf_ozlex",
+    "bf_q7",
+    "bf_sadoer",
+    "bf_arome",
+    "bio_seo"
+  ]
+}

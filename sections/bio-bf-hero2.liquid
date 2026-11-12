@@ -1,0 +1,140 @@
+{%- comment -%} BioLuna BF – hero nou (v6): slide-uri pe brand, cu tab-uri de brand în loc de puncte + bară de timp. Prețurile vin din produs. {%- endcomment -%}
+{%- unless template.suffix == 'bf' or shop.metafields.custom.bf_live.value == true -%}{%- render 'bio-bf-base' -%}{%- render 'bio-bf-cart' -%}{%- endunless -%}
+{%- assign st = section.settings -%}
+<style>
+.blf .bh{position:relative;max-width:1500px;margin:0 auto}
+.blf .bh__track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.blf .bh__track::-webkit-scrollbar{display:none}
+.blf .bh-s{flex:0 0 100%;scroll-snap-align:start;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:clamp(430px,40vw,600px);background:linear-gradient(115deg,#fff 0%,#fff 34%,var(--tint) 100%)}
+.blf .bh-s__word{position:absolute;right:-1%;bottom:-.12em;font-family:var(--bf-hf);font-weight:800;font-size:clamp(130px,21vw,330px);line-height:.8;color:transparent;-webkit-text-stroke:2px var(--acc);opacity:.16;text-transform:uppercase;white-space:nowrap;pointer-events:none;z-index:0;letter-spacing:-.01em}
+.blf .bh-s__txt{position:relative;z-index:2;padding:40px 16px 44px clamp(24px,7.5vw,120px)}
+.blf .bh-chip{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:999px;padding:7px 14px 7px 11px;font-size:12.5px;font-weight:700;color:#111;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.blf .bh-chip:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.blf .bh-s .bf-h{font-size:clamp(46px,6.2vw,98px);line-height:.9;margin:16px 0 0}
+.blf .bh-s .bf-h em{color:var(--acc)}
+.blf .bh-sub{font-size:clamp(14px,1.25vw,18px);color:#555;margin:12px 0 0;line-height:1.4}
+.blf .bh-price{display:inline-flex;align-items:center;gap:14px;margin:22px 0 0;background:#fff;border-radius:18px;padding:11px 20px 11px 11px;box-shadow:0 10px 30px rgba(0,0,0,.09)}
+.blf .bh-price__off{background:var(--bf-sale);color:#fff;font-family:var(--bf-hf);font-weight:800;font-size:24px;line-height:1;border-radius:12px;padding:12px 12px;transform:rotate(-4deg);box-shadow:0 6px 14px rgba(196,0,22,.3)}
+.blf .bh-price__n b{display:block;font-family:var(--bf-hf);font-weight:800;font-size:clamp(34px,3.5vw,52px);line-height:.95;color:#111}
+.blf .bh-price__n s{color:#8d8d8d;font-size:14px;margin-right:8px}
+.blf .bh-price__n small{color:#0d8756;font-weight:700;font-size:12.5px}
+.blf .bh-cta{display:flex;gap:14px;align-items:center;margin-top:20px;flex-wrap:wrap}
+.blf .bh-cta .bf-btn{padding:16px 30px !important;font-size:13.5px;white-space:nowrap}
+.blf .bh-cta span{font-size:12.5px;color:#666;font-weight:600}
+.blf .bh-s__art{position:relative;z-index:1;display:block;height:100%;min-height:inherit}
+.blf .bh-s__art:before{content:"";position:absolute;left:50%;top:50%;width:min(76%,500px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:var(--acc);opacity:.15}
+.blf .bh-s__art:after{content:"";position:absolute;left:50%;top:50%;width:min(92%,610px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);border:2px dashed var(--acc);opacity:.28}
+.blf .bh-s__art img{position:absolute;width:auto;height:auto;object-fit:contain}
+.blf .bh-s__art img.m{left:50%;top:50%;transform:translate(-50%,-50%);max-width:64%;max-height:78%;filter:drop-shadow(0 30px 34px rgba(0,0,0,.26));z-index:2}
+.blf .bh-s__art img.x{right:7%;bottom:9%;max-width:27%;max-height:38%;transform:rotate(10deg);filter:drop-shadow(0 16px 18px rgba(0,0,0,.22));z-index:3}
+.blf .bh .bf-arrow{position:absolute;top:calc(50% - 30px);z-index:4;width:50px;height:50px;font-size:22px}
+.blf .bh .bf-arrow.l{left:14px}.blf .bh .bf-arrow.r{right:14px}
+.blf .bh-tabs{position:relative;display:flex;gap:8px;overflow-x:auto;padding:14px 16px 16px;scrollbar-width:none;justify-content:center}
+.blf .bh-tabs::-webkit-scrollbar{display:none}
+.blf .bh-tab{position:relative;flex:0 0 auto;border:1px solid #dedede;background:#fff;border-radius:999px;padding:11px 20px;font-weight:800;font-size:13px;line-height:1;color:#111;cursor:pointer;overflow:hidden;font-family:inherit;transition:background .2s,color .2s}
+.blf .bh-tab i{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--bf-blue);transform:scaleX(0);transform-origin:left}
+.blf .bh-tab.on{background:#111;color:#fff;border-color:#111}
+.blf .bh-tab.on i{transform:scaleX(1);transition:transform linear var(--dur,6s)}
+.blf .bh-cd{display:flex;align-items:center;justify-content:center;gap:10px 18px;flex-wrap:wrap;background:#111;color:#fff;padding:12px 16px}
+.blf .bh-cd .bf-cdl{color:#fff;margin:0;font-size:12px;letter-spacing:.2em}
+.blf .bh-cd .bf-cd{gap:6px}
+.blf .bh-cd .bf-cd div{min-width:0;display:flex;align-items:baseline;gap:5px;background:rgba(255,255,255,.12);border:0;border-radius:9px;padding:7px 10px;box-shadow:none}
+.blf .bh-cd .bf-cd b{display:inline;font-size:21px;color:#fff}
+.blf .bh-cd .bf-cd span{display:inline;margin:0;font-size:9.5px;color:#c9c9c9;letter-spacing:.08em}
+.blf .bh-cd__n{font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#ffd84a}
+@media(max-width:767px){
+  .blf .bh-s{grid-template-columns:1fr;min-height:0;align-items:start;background:linear-gradient(180deg,var(--tint) 0%,#fff 70%)}
+  .blf .bh-s__art{order:-1;height:240px;min-height:0}
+  .blf .bh-s__art:before{width:210px}.blf .bh-s__art:after{width:250px}
+  .blf .bh-s__art img.m{max-width:62%;max-height:86%}.blf .bh-s__art img.x{max-width:25%;max-height:44%;right:5%;bottom:6%}
+  .blf .bh-s__txt{padding:4px 16px 24px}
+  .blf .bh-s .bf-h{font-size:46px;margin-top:12px}
+  .blf .bh-sub{margin-top:8px}
+  .blf .bh-s__word{font-size:150px;top:14px;bottom:auto;right:-8px;opacity:.13}
+  .blf .bh-price{margin-top:16px;gap:12px;padding:9px 16px 9px 9px}.blf .bh-price__off{font-size:21px;padding:10px}
+  .blf .bh-cta{margin-top:16px}.blf .bh-cta .bf-btn{padding:15px 26px !important;flex:1 1 auto}
+  .blf .bh .bf-arrow{display:none}
+  .blf .bh-tabs{justify-content:flex-start;padding:4px 16px 14px}
+  .blf .bh-cd .bf-cdl{width:100%;text-align:center;font-size:11px}
+}
+</style>
+<div class="blf">
+  <div class="bh" data-autoplay="{{ st.autoplay | default: 6 }}" style="--dur:{{ st.autoplay | default: 6 }}s">
+    <div class="bh__track">
+      {%- for b in section.blocks -%}
+        {%- assign bs = b.settings -%}{%- assign p = bs.product -%}
+        {%- assign v = p.selected_or_first_available_variant | default: p.variants.first -%}
+        {%- assign price = v.price -%}{%- assign cmp = v.compare_at_price | default: 0 -%}{%- assign pct = 0 -%}
+        {%- if cmp > price -%}{%- assign pct = cmp | minus: price | times: 100.0 | divided_by: cmp | round -%}{%- endif -%}
+        {%- assign href = bs.url -%}{%- if href == blank and p != blank -%}{%- assign href = p.url -%}{%- endif -%}
+        <article class="bh-s" style="--tint:{{ bs.tint | default: '#EAF1FF' }};--acc:{{ bs.acc | default: '#2563eb' }}" {{ b.shopify_attributes }}>
+          {%- if bs.word != blank -%}<div class="bh-s__word" aria-hidden="true">{{ bs.word }}</div>{%- endif -%}
+          <div class="bh-s__txt">
+            {%- if bs.chip != blank -%}<span class="bh-chip">{{ bs.chip }}</span>{%- endif -%}
+            <h2 class="bf-h">{{ bs.title }}</h2>
+            {%- if bs.sub != blank -%}<p class="bh-sub">{{ bs.sub }}</p>{%- endif -%}
+            {%- if p != blank -%}
+            <div class="bh-price">
+              {%- if pct > 0 -%}<span class="bh-price__off">−{{ pct }}%</span>{%- endif -%}
+              <span class="bh-price__n"><b>{{ price | money }}</b>{%- if pct > 0 -%}<s>{{ cmp | money }}</s><small>Economisești {{ cmp | minus: price | money }}</small>{%- endif -%}</span>
+            </div>
+            {%- endif -%}
+            <div class="bh-cta"><a class="bf-btn" href="{{ href }}">{{ bs.cta | default: 'Vezi produsul' }}</a>{%- if st.note != blank -%}<span>{{ st.note }}</span>{%- endif -%}</div>
+          </div>
+          <a class="bh-s__art" href="{{ href }}" aria-label="{{ bs.title | strip_html | escape }}">
+            {%- if p != blank -%}{%- render 'bio-bfx-img', p: p, w: 900, cls: 'm' -%}{%- endif -%}
+            {%- if bs.product2 != blank -%}{%- render 'bio-bfx-img', p: bs.product2, w: 500, cls: 'x' -%}{%- endif -%}
+          </a>
+        </article>
+      {%- endfor -%}
+    </div>
+    <button class="bf-arrow l" aria-label="Anterior">‹</button>
+    <button class="bf-arrow r" aria-label="Următor">›</button>
+    <div class="bh-tabs">
+      {%- for b in section.blocks -%}<button class="bh-tab" type="button"><span>{{ b.settings.tab | default: b.settings.word }}</span><i></i></button>{%- endfor -%}
+    </div>
+  </div>
+  {%- if st.show_cd -%}
+  <div class="bh-cd" data-bf-cd data-start="{{ st.start }}" data-deadline="{{ st.deadline }}" data-lbl-start="{{ st.lbl_start | escape }}" data-lbl-end="{{ st.lbl_end | escape }}">
+    <p class="bf-cdl">{{ st.lbl_end }}</p><div class="bf-cd"></div>{%- if st.cd_note != blank -%}<span class="bh-cd__n">{{ st.cd_note }}</span>{%- endif -%}
+  </div>
+  {%- endif -%}
+</div>
+<script>
+(function(){function init(){document.querySelectorAll('.bh').forEach(function(s){if(s._bh)return;s._bh=1;
+var tr=s.querySelector('.bh__track'),sl=tr.children,n=sl.length,tabs=s.querySelectorAll('.bh-tab'),box=s.querySelector('.bh-tabs'),auto=parseInt(s.dataset.autoplay||'6',10)*1000,i=-1,t;
+function mark(){var k=Math.max(0,Math.min(n-1,Math.round(tr.scrollLeft/tr.clientWidth)));if(k===i)return;i=k;tabs.forEach(function(b,j){b.classList.toggle('on',j===i)});var a=tabs[i];if(a&&box.scrollWidth>box.clientWidth)box.scrollTo({left:a.offsetLeft-60,behavior:'smooth'})}
+function go(k){var j=(k+n)%n;tr.scrollTo({left:sl[j].offsetLeft-tr.offsetLeft,behavior:'smooth'})}
+function arm(){clearInterval(t);if(auto>0&&n>1)t=setInterval(function(){go(i+1)},auto)}
+tabs.forEach(function(b,j){b.addEventListener('click',function(){go(j);arm()})});
+s.querySelector('.bf-arrow.l').addEventListener('click',function(){go(i-1);arm()});s.querySelector('.bf-arrow.r').addEventListener('click',function(){go(i+1);arm()});
+tr.addEventListener('scroll',function(){clearTimeout(tr._m);tr._m=setTimeout(mark,70)});
+tr.addEventListener('touchstart',function(){clearInterval(t)},{passive:true});tr.addEventListener('touchend',arm,{passive:true});
+if(n<2){s.querySelectorAll('.bf-arrow,.bh-tabs').forEach(function(x){x.style.display='none'})}
+requestAnimationFrame(function(){mark();arm()});});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();
+</script>
+{% schema %}
+{"name":"BF – Hero pe branduri","settings":[
+{"type":"range","id":"autoplay","label":"Autoplay (secunde, 0 = oprit)","min":0,"max":12,"step":1,"default":6},
+{"type":"text","id":"note","label":"Text lângă buton","default":"Plata la livrare"},
+{"type":"checkbox","id":"show_cd","label":"Arată bara cu timpul","default":true},
+{"type":"text","id":"start","label":"Start (YYYY-MM-DD HH:MM)","default":"2026-11-06 00:00"},
+{"type":"text","id":"deadline","label":"Final (YYYY-MM-DD HH:MM)","default":"2026-11-16 00:00"},
+{"type":"text","id":"lbl_start","label":"Text înainte de start","default":"Black Friday începe în"},
+{"type":"text","id":"lbl_end","label":"Text în campanie","default":"Black Friday se termină în"},
+{"type":"text","id":"cd_note","label":"Text galben din bară","default":"Reduceri de până la −44%"}],
+"blocks":[{"type":"slide","name":"Slide","settings":[
+{"type":"text","id":"tab","label":"Nume tab","default":"Redist"},
+{"type":"text","id":"chip","label":"Etichetă mică","default":"Cel mai vândut"},
+{"type":"text","id":"title","label":"Titlu (<em> = colorat)","default":"Pachet <em>Redist</em>"},
+{"type":"text","id":"sub","label":"Subtitlu"},
+{"type":"text","id":"word","label":"Cuvânt mare din fundal","default":"Redist"},
+{"type":"product","id":"product","label":"Produs (preț + poză decupată)"},
+{"type":"product","id":"product2","label":"Al doilea produs (doar poză mică)"},
+{"type":"text","id":"cta","label":"Buton","default":"Vezi produsul"},
+{"type":"url","id":"url","label":"Link (gol = produsul)"},
+{"type":"color","id":"tint","label":"Culoare fundal","default":"#EAF1FF"},
+{"type":"color","id":"acc","label":"Culoare accent","default":"#2563eb"}]}],
+"max_blocks":8,"presets":[{"name":"BF – Hero pe branduri"}]}
+{% endschema %}

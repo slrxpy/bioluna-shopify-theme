@@ -1,0 +1,179 @@
+{%- comment -%} BioLuna — extras pagina de produs (beneficii, livrare, cumpara impreuna, carduri, cui i se potriveste, randuri) {%- endcomment -%}
+{%- if template.name == 'product' -%}
+{%- assign bio_on = false -%}
+{%- for v in bio_vendors -%}{%- if product.vendor == v -%}{%- assign bio_on = true -%}{%- endif -%}{%- endfor -%}
+{%- if bio_on -%}
+{%- assign ben = product.metafields.custom.beneficii.value -%}
+{%- assign pc = product.metafields.custom.pentru_cine.value -%}
+{%- assign cards = product.metafields.custom.carduri.value -%}
+{%- assign fbt = product.metafields.custom.cumpara_impreuna.value -%}
+{%- assign is_best = false -%}{%- if product.tags contains 'bestseller' -%}{%- assign is_best = true -%}{%- endif -%}
+{%- assign gama = nil -%}
+{%- for c in product.collections -%}
+  {%- unless c.handle contains 'pachete' or c.handle == 'all' or c.handle contains 'reduceri' or c.handle contains 'toate' -%}
+    {%- if gama == nil and c.products_count > 3 -%}{%- assign gama = c -%}{%- endif -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- assign promo = collections['toate-pachetele-promo'] -%}
+<style>
+.bx{--a:#b76e79;--a2:#d48a9b;--bg:#fdf4f6;--bd:#f2dde2;--tx:#1f1f1f;--mu:#7a6a6e;font-family:inherit}
+.product__block--badges{display:none !important}
+.product__block--shipping{display:none !important}
+.product-form__buttons{display:flex !important;flex-wrap:wrap;align-items:stretch;gap:10px}
+.product-form__buttons #es-popup-button{order:-1;flex:0 0 100%;width:100%;margin:0 !important}
+.product-form__buttons #es-popup-button>div{width:100%}
+.product-form__buttons .product-form__quantity{order:1;flex:0 0 auto;margin:0 !important}
+.product-form__buttons .product-form__submit{order:2;flex:1 1 auto;margin:0 !important;background:#fff !important;color:#1f1f1f !important;border:1.5px solid #d9d9d9 !important}
+.product-form__buttons .shopify-payment-button{order:3;flex:0 0 100%}
+.bx-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 10px}
+.bx-meta>*{margin:0 !important}
+.bx-meta .product__block--badges,.bx-meta .product__block{margin:0 !important}
+.bx-meta .bx{display:inline-flex}
+.bx-meta .bx-best{margin:0}
+.product__block--title{margin-top:0 !important}
+.bx-pills{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 12px}
+.bx-pill{display:flex;align-items:center;gap:9px;background:var(--bg);border:1px solid var(--bd);border-radius:12px;padding:10px 12px;font-size:13px;font-weight:600;color:var(--tx);line-height:1.3}
+.bx-pill i{width:22px;height:22px;border-radius:50%;background:linear-gradient(120deg,var(--a),var(--a2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-style:normal;flex:0 0 auto}
+.bx-pill b{display:block;font-size:13px}.bx-pill small{display:block;font-size:11.5px;color:var(--mu);font-weight:500}
+@media(max-width:400px){.bx-pills{grid-template-columns:1fr}}
+.bx-ship{background:var(--bg);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;margin:8px 0 14px;font-size:13.5px;color:var(--tx);line-height:1.7}
+.bx-ship b{color:var(--a)}
+.bx-fbt{background:#fff;border:1px solid var(--bd);border-radius:18px;padding:16px;margin:6px 0 18px;box-shadow:0 6px 24px rgba(183,110,121,.08)}
+.bx-fbt h4{margin:0 0 2px;font-size:16px;font-weight:800}
+.bx-fbt .sub{font-size:12.5px;color:var(--mu);margin:0 0 12px}
+.bx-fbt-row{display:flex;gap:8px;align-items:stretch}
+.bx-fbt-it{flex:1 1 0;min-width:0;position:relative;border:1.5px solid var(--bd);border-radius:14px;padding:8px;text-align:center;font-size:12px;color:var(--tx);background:#fff;transition:.15s}
+.bx-fbt-it.cur,.bx-fbt-it.on{border-color:var(--a);background:var(--bg)}
+.bx-fbt-it img{width:100%;aspect-ratio:1;object-fit:contain;border-radius:10px;background:#fff;display:block;margin-bottom:6px}
+.bx-fbt-it .t{font-weight:700;line-height:1.25;min-height:30px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bx-fbt-it .p{color:var(--a);font-weight:800;margin:4px 0 6px;font-size:13.5px}
+.bx-fbt-it .chk{position:absolute;top:8px;left:8px;width:22px;height:22px;border-radius:50%;border:2px solid var(--bd);background:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
+.bx-fbt-it.cur .chk,.bx-fbt-it.on .chk{background:var(--a);border-color:var(--a)}
+.bx-fbt-it.cur .lbl{display:inline-block;background:#1f1f1f;color:#fff;border-radius:999px;padding:3px 8px;font-size:10.5px;font-weight:700}
+.bx-fbt-plus{align-self:center;color:var(--a2);font-size:22px;font-weight:300;flex:0 0 auto}
+.bx-btn{width:100%;border:1.5px solid var(--a);color:var(--a);background:#fff;border-radius:999px;padding:7px 8px;font-size:12px;font-weight:700;cursor:pointer}
+.bx-btn.on{background:var(--a);color:#fff}
+.bx-fbt-tot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;flex-wrap:wrap;font-size:13.5px}
+.bx-fbt-tot b{color:var(--tx);font-size:18px;font-weight:800}
+.bx-fbt-tot .sv{display:block;font-size:12px;color:#1d9d55;font-weight:700}
+.bx-all{background:#1f1f1f;color:#fff;border:0;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;font-size:13.5px}
+.bx-ingr{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:14px;margin:12px 0}
+.bx-ingr b{display:block;font-size:14px;margin-bottom:6px}.bx-ingr p{margin:0;font-size:13.5px;color:var(--tx);line-height:1.6}
+.bx-ingr .note{display:block;margin-top:8px;font-size:12px;color:var(--mu)}
+.bx-bottom{margin:10px 0 0}
+.bx-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0 16px}
+.bx-card{background:linear-gradient(160deg,#fff,var(--bg));border:1px solid var(--bd);border-radius:14px;padding:14px}
+.bx-card b{display:block;font-size:14px;margin-bottom:5px}.bx-card b:before{content:"✦ ";color:var(--a)}
+.bx-card span{font-size:12.5px;color:var(--mu);line-height:1.5}
+.bx-h{font-size:16px;font-weight:800;margin:14px 0 8px}
+.bx-pc div{display:flex;gap:9px;padding:5px 0;font-size:14px}
+.bx-pc div b{flex:0 0 auto}.bx-pc .y b{color:#1d9d55}.bx-pc .n b{color:#c0392b}
+.bx-acc details{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:0 14px;margin:6px 0}
+.bx-acc summary{cursor:pointer;font-weight:700;font-size:14px;padding:11px 0;list-style:none}
+.bx-acc summary::-webkit-details-marker{display:none}.bx-acc summary:after{content:"+";float:right;color:var(--a);font-size:18px}
+.bx-acc details[open] summary:after{content:"–"}
+.bx-acc p{margin:0 0 12px;font-size:13.5px;color:var(--mu);line-height:1.6}
+.bx-rows{margin:26px 0 8px}
+.bx-row-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 10px}
+.bx-row-h h3{margin:0;font-size:19px}.bx-row-h a{color:var(--a);font-weight:700;font-size:13.5px;text-decoration:none}
+.bx-row{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x mandatory}
+.bx-pcard{flex:0 0 200px;scroll-snap-align:start;background:#fff;border:1px solid var(--bd);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--tx);position:relative;transition:transform .2s}
+.bx-pcard:hover{transform:translateY(-3px)}
+.bx-pcard img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.bx-pcard .b{padding:10px 12px 12px}.bx-pcard .t{font-size:13.5px;font-weight:700;line-height:1.3;margin:0 0 4px}
+.bx-pcard .s{font-size:11.5px;color:var(--mu);margin:0 0 6px}
+.bx-pcard .m{font-size:11.5px;color:var(--tx);margin:0 0 8px;line-height:1.45}.bx-pcard .m span:before{content:"• ";color:var(--a)}
+.bx-pcard .pr{font-weight:800;color:var(--a);font-size:15px}.bx-pcard .pr s{color:var(--mu);font-weight:400;font-size:12px;margin-left:5px}
+.bx-stk{position:absolute;top:8px;right:8px;background:linear-gradient(120deg,var(--a),var(--a2));color:#fff;border-radius:50%;width:48px;height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:800;transform:rotate(6deg);line-height:1.1}
+.bx-best{display:inline-block;background:linear-gradient(120deg,#f5d0a9,#e8b878);color:#5a3a00;border-radius:999px;padding:4px 11px;font-size:11px;font-weight:800;margin-bottom:8px;width:max-content}
+@media(max-width:640px){.bx-cards{grid-template-columns:1fr}.bx-pcard{flex-basis:160px}}
+</style>
+<template id="bx-top">
+<div class="bx">
+  {%- if ben -%}<div class="bx-pills">{%- for b in ben -%}{%- assign bp = b | split: '|' -%}<span class="bx-pill"><i>✓</i><span><b>{{ bp[0] }}</b>{%- if bp[1] != blank -%}<small>{{ bp[1] }}</small>{%- endif -%}</span></span>{%- endfor -%}</div>{%- endif -%}
+  <div class="bx-ship"><div>⏱ <span id="bx-timer">Comandă acum</span></div><div>🟢 Ajunge <b id="bx-eta"></b> prin curier rapid</div></div>
+  {%- if fbt and fbt.size > 0 -%}
+  <div class="bx-fbt"><h4>Se cumpără împreună</h4><p class="sub">Bifează ce vrei și adaugă totul în coș dintr-o apăsare.</p><div class="bx-fbt-row">
+    <div class="bx-fbt-it cur"><span class="chk">✓</span><img src="{{ product.featured_image | image_url: width: 300 }}" alt=""><div class="t">{{ product.title | split: '–' | first | split: '|' | first | truncate: 40 }}</div><div class="p">{{ product.selected_or_first_available_variant.price | money }}</div><span class="lbl">Acest produs</span></div>
+    {%- for f in fbt -%}{%- if f.available -%}
+    <div class="bx-fbt-plus">+</div>
+    <div class="bx-fbt-it on" data-vid="{{ f.selected_or_first_available_variant.id }}" data-price="{{ f.selected_or_first_available_variant.price }}"><span class="chk">✓</span><a href="{{ f.url }}"><img src="{{ f.featured_image | image_url: width: 300 }}" alt=""></a><div class="t">{{ f.title | split: '–' | first | split: '|' | first | truncate: 40 }}</div><div class="p">{{ f.selected_or_first_available_variant.price | money }}</div><button class="bx-btn on" data-tog="{{ f.selected_or_first_available_variant.id }}">✓ Inclus</button></div>
+    {%- endif -%}{%- endfor -%}
+  </div><div class="bx-fbt-tot"><span>Total <span id="bx-n"></span> produse:<br><b id="bx-tot"></b><span class="sv" id="bx-sv"></span></span><button class="bx-all" data-cur="{{ product.selected_or_first_available_variant.id }}" data-curp="{{ product.selected_or_first_available_variant.price }}">Adaugă în coș</button></div></div>
+  {%- endif -%}
+</div></template>
+<template id="bx-bottom">
+<div class="bx bx-bottom">
+  {%- assign ingr = product.metafields.custom.ingrediente -%}{%- if ingr != blank -%}<div class="bx-ingr"><b>🌿 Ce conține</b><p>{{ ingr | newline_to_br }}</p>{%- if product.metafields.custom.mod_folosire != blank -%}<span class="note">{{ product.metafields.custom.mod_folosire }}</span>{%- endif -%}</div>{%- endif -%}
+  {%- if cards -%}<div class="bx-cards">{%- for c in cards -%}{%- assign parts = c | split: '|' -%}<div class="bx-card"><b>{{ parts[0] }}</b><span>{{ parts[1] }}</span></div>{%- endfor -%}</div>{%- endif -%}
+  {%- if pc -%}<div class="bx-h">Cui i se potrivește</div><div class="bx-pc">{%- for x in pc -%}{%- if x contains '✗' -%}<div class="n"><b>✗</b><span>{{ x | remove: '✗' | strip }}</span></div>{%- else -%}<div class="y"><b>✓</b><span>{{ x | remove: '✓' | strip }}</span></div>{%- endif -%}{%- endfor -%}</div>{%- endif -%}
+  <div class="bx-h">Livrare, plată și cadou</div><div class="bx-acc">
+   <details><summary>În cât timp ajunge?</summary><p>Comenzile plasate în zilele lucrătoare până la ora 17:00 pleacă în aceeași zi. Livrarea prin curier rapid durează 1–2 zile lucrătoare, în toată România.</p></details>
+   <details><summary>Pot să-l ofer cadou?</summary><p>Da. Scrie „cadou" la comentarii și nu punem factura în colet — o trimitem pe e-mail. Ambalăm îngrijit, coletul e discret.</p></details>
+   <details><summary>Cum plătesc?</summary><p>Ramburs, la curier, când primești coletul — sau online cu cardul. Fără plată în avans dacă nu vrei.</p></details>
+   <details><summary>Dacă nu mi se potrivește?</summary><p>Ai 14 zile drept de retur pentru produsele sigilate, conform legii. Ne scrii pe WhatsApp și rezolvăm rapid.</p></details>
+  </div>
+</div></template>
+<template id="bx-rows">
+<div class="bx bx-rows">
+  {%- if gama -%}<div class="bx-row-h"><h3>Din aceeași gamă: {{ gama.title | split: '–' | first | truncate: 40 }}</h3><a href="{{ gama.url }}">Vezi toată gama →</a></div>
+  <div class="bx-row">{%- for p in gama.products limit: 10 -%}{%- if p.available and p.id != product.id -%}{%- render 'bio-card', p: p -%}{%- endif -%}{%- endfor -%}</div>{%- endif -%}
+  {%- assign same_promo = '' -%}{%- assign n_promo = 0 -%}
+  {%- for p in promo.products -%}{%- if p.available and p.id != product.id and p.vendor == product.vendor -%}{%- assign n_promo = n_promo | plus: 1 -%}{%- endif -%}{%- endfor -%}
+  {%- if n_promo >= 3 -%}<div class="bx-row-h"><h3>🎁 Alte pachete {{ product.vendor | split: ' ' | first }}</h3><a href="{{ promo.url }}">Toate pachetele →</a></div>
+  <div class="bx-row">{%- assign shown = 0 -%}{%- for p in promo.products -%}{%- if p.available and p.id != product.id and p.vendor == product.vendor and shown < 10 -%}{%- assign shown = shown | plus: 1 -%}{%- render 'bio-card', p: p -%}{%- endif -%}{%- endfor -%}</div>{%- endif -%}
+</div></template>
+{%- if is_best -%}<template id="bx-best"><div class="bx"><span class="bx-best">⭐ Bestseller</span></div></template>{%- endif -%}
+{%- assign gv = product.selected_or_first_available_variant -%}{%- if gv.compare_at_price > gv.price -%}{%- assign gpct = gv.compare_at_price | minus: gv.price | times: 100 | divided_by: gv.compare_at_price -%}{%- assign gsv = gv.compare_at_price | minus: gv.price -%}<template id="bx-gstk"><span class="bio-stk lg"><b>−{{ gpct }}%</b><small>economisești</small><small>{{ gsv | money_without_currency }} lei</small></span></template>{%- endif -%}
+<script>
+(function(){
+  function main(sel){var els=document.querySelectorAll(sel);for(var i=0;i<els.length;i++){if(!els[i].closest('[id*="quick-view"],[class*="quick-view"]'))return els[i];}return null;}
+  function ins(id,ref,where){var t=document.getElementById(id);if(!t||!ref||document.getElementById(id+'-x'))return;var n=t.content.firstElementChild.cloneNode(true);n.id=id+'-x';ref.insertAdjacentElement(where,n);return n;}
+  function money(c){return (c/100).toFixed(2).replace('.',',')+' lei';}
+  function timer(){
+    var now=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Bucharest'}));
+    var d=now.getDay(),h=now.getHours(),m=now.getMinutes();
+    var t=document.getElementById('bx-timer'),e=document.getElementById('bx-eta'); if(!t||!e)return;
+    var ship=new Date(now);
+    if(d>=1&&d<=5&&(h<17)){var left=(17-h)*60-m;t.innerHTML='Comandă în următoarele <b>'+Math.floor(left/60)+'h '+(left%60)+' min</b> și <b>expediem azi</b>';}
+    else{ship.setDate(ship.getDate()+1);while(ship.getDay()==0||ship.getDay()==6)ship.setDate(ship.getDate()+1);t.innerHTML='Expediem <b>'+(ship.getDay()==1?'luni':'în prima zi lucrătoare')+'</b>';}
+    var a=new Date(ship);a.setDate(a.getDate()+1);while(a.getDay()==0||a.getDay()==6)a.setDate(a.getDate()+1);
+    var b=new Date(a);b.setDate(b.getDate()+1);while(b.getDay()==0||b.getDay()==6)b.setDate(b.getDate()+1);
+    var f=function(x){return x.toLocaleDateString('ro-RO',{weekday:'short',day:'numeric',month:'short'});};
+    e.textContent=f(a)+' – '+f(b);
+  }
+  function fbt(){
+    var box=document.querySelector('.bx-fbt'); if(!box)return;
+    var its=box.querySelectorAll('.bx-fbt-it[data-vid]');var all=box.querySelector('.bx-all');
+    var n=document.getElementById('bx-n'),tot=document.getElementById('bx-tot'),sv=document.getElementById('bx-sv');
+    function calc(){var sum=parseInt(all.dataset.curp,10),k=1;its.forEach(function(i){if(i.classList.contains('on')){sum+=parseInt(i.dataset.price,10);k++;}});n.textContent=k;tot.textContent=money(sum);all.textContent=k>1?'Adaugă toate '+k+' în coș':'Adaugă în coș';sv.textContent=k>1?'Livrare gratuită peste 300 lei · un singur colet':'';}
+    its.forEach(function(i){var b=i.querySelector('[data-tog]');b.addEventListener('click',function(e){e.preventDefault();i.classList.toggle('on');b.classList.toggle('on');b.textContent=i.classList.contains('on')?'✓ Inclus':'+ Adaugă';calc();});});
+    calc();
+    all.addEventListener('click',function(){var items=[{id:all.dataset.cur,quantity:1}];its.forEach(function(i){if(i.classList.contains('on'))items.push({id:i.dataset.vid,quantity:1});});all.textContent='Se adaugă…';fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:items})}).then(function(){window.location.href='/cart';});});
+  }
+  function meta(){
+    var title=main('.product__block--title'); if(!title||document.getElementById('bx-meta'))return;
+    var row=document.createElement('div');row.className='bx bx-meta';row.id='bx-meta';
+    var badges=main('.product__block--badges'),best=document.getElementById('bx-best-x'),app=null;
+    var blocks=title.parentElement.querySelectorAll('.product__block--\\@app');
+    for(var i=0;i<blocks.length;i++){if(/recenzi|review|jdgm/i.test(blocks[i].innerHTML)&&blocks[i].getBoundingClientRect().top<title.getBoundingClientRect().top){app=blocks[i];break;}}
+    if(!badges&&!best&&!app)return;
+    title.insertAdjacentElement('beforebegin',row);
+    if(badges)row.appendChild(badges); if(best)row.appendChild(best); if(app)row.appendChild(app);
+  }
+  function gstk(){var t=document.getElementById('bx-gstk');if(!t||document.getElementById('bx-gstk-x'))return;var g=main('[class*="product__media-gallery"],[class*="product__media-wrapper"],[class*="product-media"],[class*="product__media"]');if(!g)return;g.style.position='relative';var n=t.content.firstElementChild.cloneNode(true);n.id='bx-gstk-x';g.appendChild(n);}
+  function place(){gstk();
+    var buy=main('.product__block--buy_buttons'),desc=main('.product__block--description'),title=main('.product__block--title');
+    if(title)ins('bx-best',title,'beforebegin');
+    meta();
+    if(buy){ins('bx-top',buy,'afterend');}
+    if(desc){ins('bx-bottom',desc,'afterend');}
+    var sec=(buy||desc)&&(buy||desc).closest('.shopify-section');
+    if(sec)ins('bx-rows',sec,'afterend');
+    timer();setInterval(timer,60000);fbt();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',place);else place();
+})();
+</script>
+{%- endif -%}
+{%- endif -%}

@@ -1,0 +1,167 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "bfoz": {
+      "type": "bio-black-friday-ozlex",
+      "blocks": {
+        "oz_01": {
+          "type": "deal",
+          "settings": {
+            "product": "ceai-slabit-ozlex-detox-60-plicuri-original-turcia",
+            "cat": "ceai",
+            "short": "Ceai Ozlex – 60 plicuri",
+            "sub": "2 luni de ritual · 60 zile",
+            "days": 60,
+            "asset": "bf-oz-01.webp",
+            "hour": true
+          }
+        },
+        "oz_02": {
+          "type": "deal",
+          "settings": {
+            "product": "pachet-promo-ozlex-ceai-detox-2x-60-plicuri-cura-2-luni",
+            "cat": "ceai",
+            "short": "Ceai Ozlex – 2 × 60 plicuri",
+            "sub": "4 luni de ritual · 120 zile",
+            "days": 120,
+            "asset": "bf-oz-02.webp",
+            "hour": true
+          }
+        },
+        "oz_03": {
+          "type": "deal",
+          "settings": {
+            "product": "pachet-promo-ozlex-ceai-detox-3x-60-plicuri-cura-3-luni",
+            "cat": "ceai",
+            "short": "Ceai Ozlex – 3 × 60 plicuri",
+            "sub": "6 luni de ritual · 180 zile",
+            "days": 180,
+            "asset": "bf-oz-03.webp",
+            "hour": true
+          }
+        },
+        "oz_04": {
+          "type": "deal",
+          "settings": {
+            "product": "cafea-slabit-detox-ozlex-30-plicuri-original-turcia",
+            "cat": "cafea",
+            "short": "Cafea Ozlex – 30 plicuri",
+            "sub": "1 lună · un plic pe zi",
+            "days": 30,
+            "asset": "bf-oz-04.webp",
+            "hour": true
+          }
+        },
+        "oz_05": {
+          "type": "deal",
+          "settings": {
+            "product": "pachet-promo-ozlex-cafea-detox-2x-30-plicuri-holograma",
+            "cat": "cafea",
+            "short": "Cafea Ozlex – 2 × 30 plicuri",
+            "sub": "2 luni de cafea · 60 zile",
+            "days": 60,
+            "asset": "bf-oz-05.webp",
+            "hour": true
+          }
+        },
+        "oz_06": {
+          "type": "deal",
+          "settings": {
+            "product": "pachet-promo-ozlex-cafea-detox-3x-30-plicuri-holograma",
+            "cat": "cafea",
+            "short": "Cafea Ozlex – 3 × 30 plicuri",
+            "sub": "3 luni de cafea · 90 zile",
+            "days": 90,
+            "asset": "bf-oz-06.webp",
+            "hour": true
+          }
+        },
+        "oz_07": {
+          "type": "deal",
+          "settings": {
+            "product": "pachet-promo-ozlex-clasic-ceai-60-cafea-30-plicuri",
+            "cat": "combo",
+            "short": "Ceai 60 + Cafea 30",
+            "sub": "Ceai seara, cafea dimineața",
+            "days": 60,
+            "asset": "bf-oz-07.webp",
+            "hour": true
+          }
+        },
+        "oz_08": {
+          "type": "deal",
+          "settings": {
+            "product": "pachet-ceai-ozlex-odorizant-1001-de-nopti",
+            "cat": "cadou",
+            "short": "Ceai Ozlex + Odorizant 1001 de Nopți",
+            "sub": "Ritual & ambianță",
+            "days": 60,
+            "asset": "bf-oz-08.webp",
+            "hour": false
+          }
+        },
+        "oz_09": {
+          "type": "deal",
+          "settings": {
+            "product": "set-cadou-doua-ceaiuri-ozlex-parfum-camera-alya",
+            "cat": "cadou",
+            "short": "2 Ceaiuri Ozlex + Parfum de cameră Alya",
+            "sub": "Set cadou",
+            "days": 120,
+            "asset": "bf-oz-09.webp",
+            "hour": true
+          }
+        },
+        "oz_10": {
+          "type": "deal",
+          "settings": {
+            "product": "pachet-ceai-ozlex-detox-8-odorizante-alya",
+            "cat": "cadou",
+            "short": "Ceai Ozlex + 8 Odorizante Alya",
+            "sub": "Ritual & ambianță premium",
+            "days": 60,
+            "asset": "bf-oz-10.webp",
+            "hour": false
+          }
+        },
+        "oz_11": {
+          "type": "deal",
+          "settings": {
+            "product": "pachet-3-ceaiuri-ozlex-cadou-parfumat-alya",
+            "cat": "cadou",
+            "short": "3 Ceaiuri Ozlex + Cadou parfumat Alya",
+            "sub": "Cura de 3 luni, cu cadou",
+            "days": 180,
+            "asset": "bf-oz-11.webp",
+            "hour": true
+          }
+        }
+      },
+      "block_order": [
+        "oz_01",
+        "oz_02",
+        "oz_03",
+        "oz_04",
+        "oz_05",
+        "oz_06",
+        "oz_07",
+        "oz_08",
+        "oz_09",
+        "oz_10",
+        "oz_11"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "bfoz"
+  ]
+}

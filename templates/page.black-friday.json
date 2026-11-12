@@ -1,0 +1,110 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "bf": {
+      "type": "bio-black-friday",
+      "blocks": {
+        "bf_sampon": {
+          "type": "drawer",
+          "settings": {
+            "product": "sampon-sadoer-rozmarin-500ml-anticadere-crestere-capilara",
+            "asset": "bf-sad-sampon.webp",
+            "eyebrow": "Șamponul",
+            "h_line1": "Începe",
+            "h_line2": "cu spuma.",
+            "text": "Șampon cu extract de rozmarin, 500 ml. Spumă densă, păr curat și cu volum de la rădăcină. Pasul unu din ritual — și cel pe care nu-l sari niciodată.",
+            "short": "Șampon Rozmarin 500 ml",
+            "sub": "Curăță și dă volum de la rădăcină"
+          }
+        },
+        "bf_balsam": {
+          "type": "drawer",
+          "settings": {
+            "product": "balsam-par-sadoer-rozmarin-500ml-hidratare-fortifiere-anticadere",
+            "asset": "bf-sad-balsam.webp",
+            "eyebrow": "Balsamul",
+            "h_line1": "Apoi",
+            "h_line2": "descâlcirea.",
+            "text": "Balsam cu rozmarin, 500 ml. Se lasă două minute, se clătește, iar pieptănul trece fără să tragă. Pentru lungimi moi, cu strălucire.",
+            "short": "Balsam Rozmarin 500 ml",
+            "sub": "Hidratare și pieptănat ușor"
+          }
+        },
+        "bf_masca": {
+          "type": "drawer",
+          "settings": {
+            "product": "masca-par-sadoer-rozmarin-500g-reparare-fortifiere-crestere",
+            "asset": "bf-sad-masca.webp",
+            "eyebrow": "Masca",
+            "h_line1": "O dată",
+            "h_line2": "pe săptămână.",
+            "text": "Mască de păr cu rozmarin, 500 g. Se aplică pe lungimi și vârfuri, se lasă 10 minute. Tratamentul de duminică seara, în borcanul mare.",
+            "short": "Mască Rozmarin 500 g",
+            "sub": "Tratament intensiv pentru lungimi"
+          }
+        },
+        "bf_ulei": {
+          "type": "drawer",
+          "settings": {
+            "product": "ulei-par-sadoer-rozmarin-50ml-stimulare-crestere-anticadere",
+            "asset": "bf-sad-ulei.webp",
+            "eyebrow": "Uleiul",
+            "h_line1": "Câteva",
+            "h_line2": "picături.",
+            "text": "Ulei de rozmarin, 50 ml, cu pipetă. Câteva picături pe scalp, masaj de un minut, seara. Micul ritual care ține tot setul împreună.",
+            "short": "Ulei Rozmarin 50 ml",
+            "sub": "Pentru scalp și vârfuri, seara"
+          }
+        },
+        "bf_duo": {
+          "type": "drawer",
+          "settings": {
+            "product": "pachet-sadoer-rozmarin-sampon-balsam-pentru-volum",
+            "asset": "bf-sad-duo.webp",
+            "eyebrow": "Duo-ul",
+            "h_line1": "Cel mai",
+            "h_line2": "cumpărat.",
+            "text": "Șampon + balsam cu rozmarin, 500 ml fiecare. Perechea pe care o iau cele mai multe cliente — de aceea are sertarul ei.",
+            "short": "Duo Șampon + Balsam",
+            "sub": "Combinația preferată a clientelor"
+          }
+        },
+        "bf_set4": {
+          "type": "drawer",
+          "settings": {
+            "product": "pachet-sadoer-rozmarin-sampon-balsam-masca",
+            "asset": "bf-sad-set4.webp",
+            "eyebrow": "Setul complet",
+            "h_line1": "Tot",
+            "h_line2": "ritualul.",
+            "text": "Șampon, balsam, mască și ulei, toate cu rozmarin, într-un singur set. Cutia întreagă, la un preț mai bun decât bucată cu bucată.",
+            "short": "Set complet 4 piese",
+            "sub": "Șampon, balsam, mască și ulei"
+          }
+        }
+      },
+      "block_order": [
+        "bf_sampon",
+        "bf_balsam",
+        "bf_masca",
+        "bf_ulei",
+        "bf_duo",
+        "bf_set4"
+      ],
+      "settings": {
+        "all_url": "shopify://collections/sadoer-rozmarin-ingrijire-par"
+      }
+    }
+  },
+  "order": [
+    "bf"
+  ]
+}

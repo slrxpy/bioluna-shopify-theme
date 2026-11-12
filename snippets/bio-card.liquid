@@ -1,0 +1,12 @@
+{%- comment -%} BioLuna card de produs (p = product) {%- endcomment -%}
+{%- assign v = p.selected_or_first_available_variant -%}
+{%- assign bb = p.metafields.custom.beneficii.value -%}
+{%- assign tt = p.title | split: '–' | first | strip -%}
+{%- assign st = p.title | split: '–' | last | split: '|' | first | strip -%}
+<a class="bx-pcard" href="{{ p.url }}">
+  <img src="{{ p.featured_image | image_url: width: 400 }}" alt="{{ p.title | escape }}" loading="lazy">
+  {%- if v.compare_at_price > v.price -%}{%- assign pct = v.compare_at_price | minus: v.price | times: 100 | divided_by: v.compare_at_price -%}<span class="bx-stk">−{{ pct }}%</span>{%- endif -%}
+  <div class="b"><div class="t">{{ tt | truncate: 48 }}</div>{%- if st != tt -%}<div class="s">{{ st | truncate: 50 }}</div>{%- endif -%}
+  {%- if bb -%}<div class="m">{%- for b in bb limit: 2 -%}<span>{{ b }}</span>{%- unless forloop.last -%}<br>{%- endunless -%}{%- endfor -%}</div>{%- endif -%}
+  <div class="pr">{{ v.price | money }}{%- if v.compare_at_price > v.price -%}<s>{{ v.compare_at_price | money }}</s>{%- endif -%}</div></div>
+</a>

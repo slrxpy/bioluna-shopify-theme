@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+ "sections": {
+  "hero": {
+   "type": "bio-bfx-hero",
+   "settings": {
+    "link": "shopify://collections/toate-pachetele-promo",
+    "pct": "44",
+    "p1": "pachet-promo-ozlex-clasic-ceai-60-cafea-30-plicuri",
+    "p2": "set-redist-usturoi-sampon-1000ml-masca-475ml-balsam-bifazic-40-miracle-oils",
+    "p3": "odorizant-camera-air-energie-trandafir-100ml"
+   }
+  },
+  "needs": {
+   "type": "bio-bfx-needs",
+   "blocks": {
+    "t1": {
+     "type": "tile",
+     "settings": {
+      "label": "Părul cade sau se rupe",
+      "desc": "Redist cu usturoi",
+      "collection": "redist-professional",
+      "product": "pachet-promo-redist-usturoi-sampon-1000ml-masca-475ml",
+      "bg": "#FFE3D4",
+      "badge": "",
+      "wide": false
+     }
+    },
+    "t2": {
+     "type": "tile",
+     "settings": {
+      "label": "Ceai și cafea",
+      "desc": "Ozlex, original din Turcia",
+      "collection": "ozlex-detox-slabit-complet",
+      "product": "ceai-slabit-ozlex-detox-60-plicuri-original-turcia",
+      "bg": "#D9F3E6",
+      "badge": "",
+      "wide": false
+     }
+    },
+    "t3": {
+     "type": "tile",
+     "settings": {
+      "label": "Păr uscat, fără luciu",
+      "desc": "Sadoer Batana și Rozmarin",
+      "collection": "sadoer-professional",
+      "product": "pachet-sadoer-batana-premium-sampon-400ml-si-balsam-400ml",
+      "bg": "#FFF0B8",
+      "badge": "",
+      "wide": false
+     }
+    },
+    "t4": {
+     "type": "tile",
+     "settings": {
+      "label": "Casă parfumată",
+      "desc": "Alya, Air Energie, 1001 de Nopți",
+      "collection": "odorizante-camera-alya",
+      "product": "odorizant-camera-air-energie-lavanda-100ml",
+      "bg": "#E6DDFB",
+      "badge": "",
+      "wide": false
+     }
+    },
+    "t5": {
+     "type": "tile",
+     "settings": {
+      "label": "Magiun",
+      "desc": "Themra, Q7 și Lotus",
+      "collection": "magiun-afrodisiac-toate-produsele",
+      "product": "miere-afrodisiaca-themra-plante-240g-borcan-original-turcia",
+      "bg": "#FFD9E4",
+      "badge": "",
+      "wide": false
+     }
+    },
+    "t6": {
+     "type": "tile",
+     "settings": {
+      "label": "Ten și corp",
+      "desc": "Sadoer Avocado",
+      "collection": "sadoer-avocado",
+      "product": "set-sadoer-avocado-5-produse-curatare-toner-ser-crema-lotiune",
+      "bg": "#DDF0C8",
+      "badge": "",
+      "wide": false
+     }
+    },
+    "t7": {
+     "type": "tile",
+     "settings": {
+      "label": "Pachete gata făcute",
+      "desc": "Seturi mai ieftine decât produsele luate separat",
+      "collection": "toate-pachetele-promo",
+      "badge": "până la −44%",
+      "wide": true
+     }
+    }
+   },
+   "block_order": [
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5",
+    "t6",
+    "t7"
+   ],
+   "settings": {}
+  },
+  "r1": {
+   "type": "bio-bfx-row",
+   "settings": {
+    "title": "Pachetele cele mai luate",
+    "collection": "toate-pachetele-promo",
+    "limit": 8,
+    "more": "Vezi toate"
+   }
+  },
+  "r2": {
+   "type": "bio-bfx-row",
+   "settings": {
+    "title": "Pentru părul care cade și se rupe",
+    "collection": "pachete-promo-redist-professional",
+    "limit": 8,
+    "more": "Vezi toate"
+   }
+  },
+  "r3": {
+   "type": "bio-bfx-row",
+   "settings": {
+    "title": "Ceai și cafea Ozlex",
+    "collection": "ozlex-detox-slabit-complet",
+    "limit": 8,
+    "more": "Vezi toate"
+   }
+  },
+  "r4": {
+   "type": "bio-bfx-row",
+   "settings": {
+    "title": "Casă care miroase frumos",
+    "collection": "odorizante-camera-alya",
+    "limit": 8,
+    "more": "Vezi toate"
+   }
+  },
+  "end": {
+   "type": "bio-bfx-end",
+   "settings": {
+    "link": "shopify://collections/all"
+   }
+  }
+ },
+ "order": [
+  "hero",
+  "needs",
+  "r1",
+  "r2",
+  "r3",
+  "r4",
+  "end"
+ ]
+}

@@ -1,0 +1,86 @@
+{%- comment -%} BioLuna BF – produse. Rând carusel (homepage) sau grilă paginată pe colecția curentă (pagina de brand). {%- endcomment -%}
+{%- unless template.suffix == 'bf' or shop.metafields.custom.bf_live.value == true -%}{%- render 'bio-bf-base' -%}{%- endunless -%}
+{%- assign st = section.settings -%}
+{%- assign limit = st.limit | default: 8 -%}
+{%- assign col = st.collection -%}
+{%- assign use_current = false -%}
+{%- if st.paginate and template.name == 'collection' and collection != blank -%}{%- assign use_current = true -%}{%- assign col = collection -%}{%- endif -%}
+<section class="blf">
+  <div class="bf-wrap bf-sec">
+    {%- if st.title != blank or st.kicker != blank -%}
+    <header class="bf-sec__h">
+      <div>
+        {%- if st.kicker != blank -%}<div class="bf-k">{{ st.kicker }}</div>{%- endif -%}
+        {%- if st.title != blank -%}<h2 class="bf-h">{{ st.title }}</h2>{%- endif -%}
+        {%- if st.sub != blank -%}<p>{{ st.sub }}</p>{%- endif -%}
+      </div>
+      {%- if st.more != blank and col != blank and use_current == false -%}<a class="bf-more" href="{{ col.url }}">{{ st.more }} →</a>{%- endif -%}
+    </header>
+    {%- endif -%}
+
+    {%- if use_current -%}
+      {%- paginate col.products by 24 -%}
+        <div class="bf-grid bf-grid--5">
+          {%- for p in col.products -%}
+            {%- assign tg = blank -%}
+            {%- if forloop.index <= st.tag_n and st.tag != blank and paginate.current_page == 1 -%}{%- assign tg = st.tag -%}{%- endif -%}
+            {%- render 'bio-bf-card', p: p, tag: tg -%}
+          {%- else -%}
+            <div class="bf-empty">Nu sunt produse în această colecție.</div>
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+        <nav class="bf-pag" aria-label="Paginare">
+          {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">‹</a>{%- endif -%}
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- elsif part.title == paginate.current_page -%}<span class="cur">{{ part.title }}</span>{%- else -%}<span>{{ part.title }}</span>{%- endif -%}
+          {%- endfor -%}
+          {%- if paginate.next -%}<a href="{{ paginate.next.url }}">›</a>{%- endif -%}
+        </nav>
+        {%- endif -%}
+      {%- endpaginate -%}
+    {%- else -%}
+      <div class="bf-row">
+        <button class="bf-arrow bf-row__nav bf-row__nav--l" aria-label="Înapoi">‹</button>
+        <button class="bf-arrow bf-row__nav bf-row__nav--r" aria-label="Înainte">›</button>
+        <div class="bf-row__track">
+          {%- assign n = 0 -%}
+          {%- if st.products.size > 0 -%}
+            {%- for p in st.products limit: limit -%}
+              {%- if p.available == false and st.hide_sold -%}{%- continue -%}{%- endif -%}
+              {%- assign n = n | plus: 1 -%}
+              {%- assign tg = blank -%}{%- if n <= st.tag_n and st.tag != blank -%}{%- assign tg = st.tag -%}{%- endif -%}
+              {%- render 'bio-bf-card', p: p, tag: tg -%}
+            {%- endfor -%}
+          {%- elsif col != blank -%}
+            {%- for p in col.products limit: limit -%}
+              {%- if p.available == false and st.hide_sold -%}{%- continue -%}{%- endif -%}
+              {%- assign n = n | plus: 1 -%}
+              {%- assign tg = blank -%}{%- if n <= st.tag_n and st.tag != blank -%}{%- assign tg = st.tag -%}{%- endif -%}
+              {%- render 'bio-bf-card', p: p, tag: tg -%}
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "BF – Produse BioLuna",
+  "settings": [
+    {"type":"text","id":"kicker","label":"Text mic deasupra","default":"Black Friday"},
+    {"type":"text","id":"title","label":"Titlu (em = roșu)","default":"<em>Bestsellers</em> la reducere"},
+    {"type":"text","id":"sub","label":"Subtitlu"},
+    {"type":"product_list","id":"products","label":"Produse (manual, prioritar)","limit":12},
+    {"type":"collection","id":"collection","label":"Colecție (dacă nu sunt produse manuale)"},
+    {"type":"range","id":"limit","label":"Număr produse","min":4,"max":12,"step":1,"default":8},
+    {"type":"checkbox","id":"hide_sold","label":"Ascunde produsele epuizate","default":true},
+    {"type":"text","id":"tag","label":"Tag galben pe primele produse","default":"Bestseller"},
+    {"type":"range","id":"tag_n","label":"Pe câte produse","min":0,"max":8,"step":1,"default":3},
+    {"type":"text","id":"more","label":"Text link „Vezi toate”","default":"Vezi toate"},
+    {"type":"checkbox","id":"paginate","label":"Pagina de brand: toată colecția curentă, paginată","default":false}
+  ],
+  "presets": [{"name":"BF – Produse BioLuna"}]
+}
+{% endschema %}

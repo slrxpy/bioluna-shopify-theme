@@ -1,0 +1,32 @@
+{%- comment -%} BioLuna: "≈ X lei/zi · ține ~N zile" sub preț, doar pe produsele cu custom.zile {%- endcomment -%}
+{%- if template.name == 'product' and product.metafields.custom.zile != blank -%}
+{%- assign bio_zile = product.metafields.custom.zile | plus: 0 -%}
+{%- if bio_zile > 0 -%}
+{%- assign bio_ppd = product.selected_or_first_available_variant.price | times: 1.0 | divided_by: bio_zile -%}
+{%- assign bio_ppd_lei = bio_ppd | divided_by: 100.0 | round: 2 -%}
+<template id="bio-ppd-tpl">
+  <div class="bio-ppd" style="display:flex;align-items:center;gap:8px;margin:6px 0 12px;font-size:14px;color:#3d3a35">
+    <span style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(120deg,#fdf6ec,#fbeed8);border:1px solid #f0dcb8;border-radius:999px;padding:5px 12px;font-weight:700;color:#8a5a00">
+      ☕ ≈ {{ bio_ppd_lei | replace: '.', ',' }} lei / zi
+    </span>
+    <span style="color:#7a6a52">ține ~{{ bio_zile }} de zile</span>
+  </div>
+</template>
+<script>
+(function(){
+  function place(){
+    var tpl=document.getElementById('bio-ppd-tpl'); if(!tpl) return;
+    var cands=document.querySelectorAll('.product__block--price');
+    for (var i=0;i<cands.length;i++){
+      var el=cands[i];
+      if (el.closest('[id*="quick-view"], .quick-view, [class*="quick-view"]')) continue;
+      if (el.parentNode.querySelector('.bio-ppd')) return;
+      el.insertAdjacentElement('afterend', tpl.content.firstElementChild.cloneNode(true));
+      return;
+    }
+  }
+  if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', place); else place();
+})();
+</script>
+{%- endif -%}
+{%- endif -%}

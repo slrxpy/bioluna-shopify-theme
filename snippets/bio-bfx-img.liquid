@@ -1,0 +1,4 @@
+{%- comment -%} Poza de produs: decupajul (custom.bf_cutout) daca exista, altfel poza principala. Param: p, w, cls {%- endcomment -%}
+{%- assign cut = p.metafields.custom.bf_cutout.value -%}
+{%- if cut != blank -%}<img class="cut {{ cls }}" src="{{ cut | image_url: width: w }}" alt="{{ p.title | escape }}" loading="lazy" width="{{ w }}" height="{{ w }}">
+{%- elsif p.featured_image -%}<img class="{{ cls }}" src="{{ p.featured_image | image_url: width: w }}" alt="{{ p.title | escape }}" loading="lazy" width="{{ w }}" height="{{ w }}">{%- endif -%}

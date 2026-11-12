@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "columns_desktop": 4,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      },
+      "disabled": true
+    },
+    "bio_search": {
+      "type": "bio-search",
+      "blocks": {
+        "t0": {
+          "type": "tile",
+          "settings": {
+            "collection": "toate-pachetele-promo",
+            "label": "🎁 Pachete Promo"
+          }
+        },
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "collection": "redist-professional",
+            "label": "Îngrijire Păr"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "collection": "ozlex-detox-slabit-complet",
+            "label": "Ceai & Cafea"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "collection": "magiun-afrodisiac-toate-produsele",
+            "label": "Magiun Tradițional"
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "collection": "sadoer-professional",
+            "label": "Sadoer Rozmarin"
+          }
+        },
+        "t5": {
+          "type": "tile",
+          "settings": {
+            "collection": "dr-okay",
+            "label": "Dr. Okay"
+          }
+        },
+        "t6": {
+          "type": "tile",
+          "settings": {
+            "collection": "odorizante-camera-alya",
+            "label": "Odorizante"
+          }
+        },
+        "t7": {
+          "type": "tile",
+          "settings": {
+            "collection": "servetele-umede-sleepy",
+            "label": "Șervețele"
+          }
+        }
+      },
+      "block_order": [
+        "t0",
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7"
+      ],
+      "settings": {
+        "chips_list": "șampon usturoi\nceai ozlex\nrozmarin\nmagiun themra\nmască de păr\nodorizant cameră\nspf 50"
+      },
+      "disabled": true
+    },
+    "bf_search": {
+      "type": "bio-bf-search",
+      "settings": {
+        "chips": "ceai ozlex\nșampon usturoi\nmagiun themra\nq7\nrozmarin\nodorizant"
+      }
+    }
+  },
+  "order": [
+    "bf_search",
+    "bio_search",
+    "main"
+  ]
+}

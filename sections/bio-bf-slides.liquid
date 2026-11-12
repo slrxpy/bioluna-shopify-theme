@@ -1,0 +1,81 @@
+{%- comment -%} BioLuna BF – hero slider + countdown + bandă. Prețurile vin din produs (reale). {%- endcomment -%}
+{%- render 'bio-bf-base' -%}
+{%- assign st = section.settings -%}
+<div class="blf">
+  <div class="bf-slides" data-autoplay="{{ st.autoplay | default: 6 }}">
+    <div class="bf-slides__track">
+      {%- for b in section.blocks -%}
+        {%- assign bs = b.settings -%}
+        {%- assign p = bs.product -%}
+        {%- assign v = p.selected_or_first_available_variant | default: p.variants.first -%}
+        {%- assign price = v.price -%}{%- assign cmp = v.compare_at_price | default: 0 -%}{%- assign pct = 0 -%}
+        {%- if cmp > price -%}{%- assign pct = cmp | minus: price | times: 100.0 | divided_by: cmp | round -%}{%- endif -%}
+        {%- assign href = bs.url -%}{%- if href == blank and p != blank -%}{%- assign href = p.url -%}{%- endif -%}
+        <article class="bf-slide" {{ b.shopify_attributes }}>
+          <div class="bf-slide__txt">
+            {%- if bs.kicker != blank -%}<div class="bf-k">{{ bs.kicker }}</div>{%- endif -%}
+            <h2 class="bf-h">{{ bs.title }}</h2>
+            {%- if bs.sub != blank -%}<p class="bf-slide__sub">{{ bs.sub }}</p>{%- endif -%}
+            {%- if p != blank -%}
+            <div class="bf-slide__price">{%- if pct > 0 -%}<s>{{ cmp | money }}</s>{%- endif -%}<b>{{ price | money }}</b></div>
+            {%- endif -%}
+            <div class="bf-slide__cta">
+              {%- if pct > 0 -%}<span class="bf-badge">-{{ pct }}%</span>{%- endif -%}
+              <a class="bf-btn" href="{{ href }}">{{ bs.cta | default: 'Vezi produsul' }}</a>
+            </div>
+          </div>
+          <a class="bf-slide__img" href="{{ href }}" aria-label="{{ bs.title | strip_html | escape }}">
+            {%- if bs.img1 != blank and bs.img2 != blank -%}
+              <img class="a" src="{{ bs.img1 | image_url: width: 900 }}" alt="" width="900" height="900" {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+              <img class="b" src="{{ bs.img2 | image_url: width: 600 }}" alt="" width="600" height="600" loading="lazy">
+            {%- elsif bs.img1 != blank -%}
+              <img class="solo" src="{{ bs.img1 | image_url: width: 1000 }}" alt="" width="1000" height="1000" {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+            {%- elsif p.featured_image -%}
+              <img class="solo" src="{{ p.featured_image | image_url: width: 900 }}" alt="" width="900" height="900" loading="lazy" style="border-radius:14px">
+            {%- endif -%}
+          </a>
+        </article>
+      {%- endfor -%}
+    </div>
+    <button class="bf-arrow bf-slides__nav bf-slides__nav--l" aria-label="Anterior">‹</button>
+    <button class="bf-arrow bf-slides__nav bf-slides__nav--r" aria-label="Următor">›</button>
+    <div class="bf-dots"></div>
+  </div>
+  {%- if st.show_cd -%}
+  <div class="bf-cdwrap" data-bf-cd data-start="{{ st.start }}" data-deadline="{{ st.deadline }}" data-lbl-start="{{ st.lbl_start | escape }}" data-lbl-end="{{ st.lbl_end | escape }}">
+    <p class="bf-cdl">{{ st.lbl_start }}</p>
+    <div class="bf-cd"></div>
+  </div>
+  {%- endif -%}
+  {%- if st.marquee != blank -%}
+  <div class="bf-marq"><div>{%- for i in (1..8) -%}<span>⚡ {{ st.marquee }}</span>{%- endfor -%}</div></div>
+  {%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "BF – Slider BioLuna",
+  "settings": [
+    {"type":"range","id":"autoplay","label":"Autoplay (secunde, 0 = oprit)","min":0,"max":12,"step":1,"default":6},
+    {"type":"checkbox","id":"show_cd","label":"Arată countdown","default":true},
+    {"type":"text","id":"start","label":"Start (YYYY-MM-DD HH:MM)","default":"2026-11-06 00:00"},
+    {"type":"text","id":"deadline","label":"Final (YYYY-MM-DD HH:MM)","default":"2026-11-16 00:00"},
+    {"type":"text","id":"lbl_start","label":"Etichetă înainte de start","default":"Black Friday începe în"},
+    {"type":"text","id":"lbl_end","label":"Etichetă când e live","default":"Black Friday se termină în"},
+    {"type":"text","id":"marquee","label":"Text bandă roșie","default":"Black Friday · 6 – 15 noiembrie · până la -44%"}
+  ],
+  "blocks": [
+    {"type":"slide","name":"Slide","settings":[
+      {"type":"text","id":"kicker","label":"Text mic","default":"Bestseller"},
+      {"type":"text","id":"title","label":"Titlu (<em> = roșu)","default":"Ceaiul <em>Ozlex</em>"},
+      {"type":"text","id":"sub","label":"Subtitlu"},
+      {"type":"product","id":"product","label":"Produs (preț + link)"},
+      {"type":"url","id":"url","label":"Link alternativ"},
+      {"type":"text","id":"cta","label":"Text buton","default":"Vezi produsul"},
+      {"type":"image_picker","id":"img1","label":"Imagine principală (PNG fără fundal)"},
+      {"type":"image_picker","id":"img2","label":"Imagine secundară (opțional)"}
+    ]}
+  ],
+  "max_blocks": 6,
+  "presets": [{"name":"BF – Slider BioLuna"}]
+}
+{% endschema %}

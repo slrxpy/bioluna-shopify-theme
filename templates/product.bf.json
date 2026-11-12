@@ -1,0 +1,338 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "custom_css": [
+        "@media (min-width: 1280px) {.breadcrumbs {padding-inline: 5rem; }}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h4"
+          }
+        },
+        "meta": {
+          "type": "meta",
+          "settings": {
+            "link_color": "#1d349a",
+            "show_vendor": true,
+            "show_product_type": true,
+            "show_sku": true,
+            "show_barcode": false
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "disabled": true,
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body-bolder",
+            "title_size": "text-base",
+            "icon_1": "check",
+            "heading_1": "Modern",
+            "icon_2": "check",
+            "heading_2": "Eco-certified",
+            "icon_3": "check",
+            "heading_3": "Warranty"
+          }
+        },
+        "inventory": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "shopify_swatch",
+            "swatch_style": "square",
+            "swatch_size": 32,
+            "button_style": "normal",
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Cumpărate frecvent împreună",
+            "heading_size": "h4",
+            "show_below_product_media": true,
+            "make_collapsible_row": true,
+            "icon": "tag",
+            "product_list_limit": 6,
+            "layout": "grid",
+            "columns": 3,
+            "image_ratio": "1/1",
+            "enable_quick_add": true
+          },
+          "disabled": true
+        },
+        "divider_pPz3Kw": {
+          "type": "divider",
+          "disabled": true,
+          "settings": {
+            "show_below_product_media": false
+          }
+        },
+        "sticky_atc_bar": {
+          "type": "sticky-atc-bar",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "meta",
+        "price",
+        "icon_with_text",
+        "inventory",
+        "variant_picker",
+        "buy_buttons",
+        "description",
+        "complementary",
+        "divider_pPz3Kw",
+        "sticky_atc_bar"
+      ],
+      "custom_css": [
+        "@media (min-width: 1280px) {.product {padding-inline: 5rem; }}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "use_color_scheme_in_container": false,
+        "enable_sticky_info": true,
+        "media_size": "medium",
+        "gallery_layout": "vertical-carousel",
+        "mobile_thumbnails": "hide",
+        "show_image_border": false,
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "bf_skin": {
+      "type": "bio-bf-product",
+      "settings": {
+        "label": "Preț de Black Friday",
+        "deadline": "2026-12-01 00:00",
+        "best": "Bestseller BioLuna",
+        "t1a": "Plata la curier",
+        "t1b": "ramburs sau card",
+        "t2a": "Livrare 1–2 zile",
+        "t2b": "curier rapid",
+        "t3a": "Retur 14 zile",
+        "t3b": "produse sigilate"
+      }
+    },
+    "bf_bento": {
+      "type": "bio-bf-bento",
+      "blocks": {
+        "b1": {
+          "type": "tile",
+          "settings": {
+            "label": "Redist",
+            "desc": "Șampon, mască, balsam, pachete",
+            "size": "big",
+            "tint": "#E3ECFF",
+            "pct": "",
+            "collection": "redist-professional",
+            "p1": "pachet-complet-redist-usturoi-sampon-masca-balsam-ser-argan"
+          }
+        },
+        "b2": {
+          "type": "tile",
+          "settings": {
+            "label": "Magiun Themra",
+            "desc": "Borcan, plicuri și pachete",
+            "size": "big",
+            "tint": "#FDE3E6",
+            "pct": "",
+            "collection": "themra-miere-magiun-afrodisiac-original-turcia",
+            "p1": "miere-afrodisiaca-themra-plante-240g-borcan-original-turcia"
+          }
+        },
+        "b3": {
+          "type": "tile",
+          "settings": {
+            "label": "Ceai Ozlex",
+            "desc": "Ceai, cafea și pachete",
+            "size": "big",
+            "tint": "#D9F4EE",
+            "pct": "",
+            "collection": "ozlex-detox-slabit-complet",
+            "p1": "pachet-promo-ozlex-clasic-ceai-60-cafea-30-plicuri"
+          }
+        },
+        "b4": {
+          "type": "tile",
+          "settings": {
+            "label": "Q7",
+            "desc": "Magiun și ciocolată",
+            "size": "mid",
+            "tint": "#FFEEC2",
+            "pct": "",
+            "collection": "q7-premium-magiun-ciocolata-afrodisiaca-turcia",
+            "p1": "magiun-q7-premium-240g-mix-natural-miere-plante-afrodiziace",
+            "p2": "ciocolata-q7-premium-afrodisiaca-12-bucati-original-turcia"
+          }
+        },
+        "b5": {
+          "type": "tile",
+          "settings": {
+            "label": "Şahımerdan",
+            "desc": "Magiun 240 g și pachete",
+            "size": "mid",
+            "tint": "#EAE2FF",
+            "pct": "",
+            "collection": "magiun-sahimerdan",
+            "p1": "magiun-afrodisiac-sahimerdan-240g"
+          }
+        },
+        "b6": {
+          "type": "tile",
+          "settings": {
+            "label": "Sadoer",
+            "desc": "Rozmarin și Batana Oil",
+            "size": "mid",
+            "tint": "#E2F3DC",
+            "pct": "",
+            "collection": "sadoer-professional",
+            "p1": "sampon-sadoer-rozmarin-500ml-anticadere-crestere-capilara",
+            "p2": "sampon-sadoer-batana-oil-400ml-anticadere-reparare-crestere"
+          }
+        },
+        "b7": {
+          "type": "tile",
+          "settings": {
+            "label": "Odorizante",
+            "desc": "Alya, Air Energie, Yumoş, 1001 de Nopți",
+            "size": "half",
+            "tint": "#F1E8FA",
+            "pct": "24",
+            "collection": "odorizante-de-camera",
+            "p1": "odorizant-camera-alya-lavanda-100ml"
+          }
+        },
+        "b8": {
+          "type": "tile",
+          "settings": {
+            "label": "Pachete promo",
+            "desc": "Seturi gata făcute",
+            "size": "halfw",
+            "tint": "#FFE9DB",
+            "pct": "44",
+            "collection": "toate-pachetele-promo",
+            "p1": "pachet-promo-ozlex-clasic-ceai-60-cafea-30-plicuri",
+            "p2": "pachet-promo-redist-usturoi-sampon-1000ml-masca-475ml"
+          }
+        },
+        "b9": {
+          "type": "tile",
+          "settings": {
+            "label": "Toate produsele",
+            "desc": "Toată gama BioLuna la reducere",
+            "size": "wide",
+            "tint": "#EEF1F6",
+            "pct": "44",
+            "url": "/collections/all",
+            "p1": "miere-afrodisiaca-themra-plante-240g-borcan-original-turcia",
+            "p2": "ceai-slabit-ozlex-detox-60-plicuri-original-turcia",
+            "p3": "pachet-promo-redist-usturoi-sampon-1000ml-masca-475ml"
+          }
+        }
+      },
+      "block_order": [
+        "b3",
+        "b1",
+        "b2",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9"
+      ],
+      "settings": {
+        "kicker": "Continuă cu",
+        "title": "Reduceri pe <em>categorii</em>"
+      }
+    },
+    "bf_reviews": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_n4yUC3": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_n4yUC3"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "bf_skin",
+    "bf_reviews",
+    "bf_bento"
+  ]
+}

@@ -1,0 +1,59 @@
+{%- comment -%} BioLuna BF – „Reduceri pe categorii”: carduri brand cu 3 produse în evantai. {%- endcomment -%}
+{%- render 'bio-bf-base' -%}
+{%- assign st = section.settings -%}
+<section class="blf">
+  <div class="bf-wrap bf-sec">
+    <header class="bf-sec__h">
+      <div>
+        {%- if st.kicker != blank -%}<div class="bf-k">{{ st.kicker }}</div>{%- endif -%}
+        <h2 class="bf-h">{{ st.title }}</h2>
+      </div>
+    </header>
+    <div class="bf-tiles">
+      {%- for b in section.blocks -%}
+        {%- assign bs = b.settings -%}
+        {%- assign href = bs.url -%}{%- if bs.collection != blank -%}{%- assign href = bs.collection.url -%}{%- endif -%}
+        {%- assign n = 0 -%}
+        {%- if bs.img1 != blank -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- if bs.img2 != blank -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- if bs.img3 != blank -%}{%- assign n = n | plus: 1 -%}{%- endif -%}
+        <a class="bf-tile{% if bs.wide %} bf-tile--wide{% endif %}" href="{{ href }}" {{ b.shopify_attributes }}>
+          <div class="bf-tile__t">
+            {%- if bs.badge != blank -%}<span class="bf-badge">{{ bs.badge }}</span>{%- endif -%}
+            <h3>{{ bs.label }}</h3>
+            {%- if bs.desc != blank -%}<p>{{ bs.desc }}</p>{%- endif -%}
+            <span class="bf-more">{{ st.link_text | default: 'Vezi ofertele' }} →</span>
+          </div>
+          <div class="bf-tile__imgs n{{ n }}">
+            {%- if bs.img1 != blank -%}<img src="{{ bs.img1 | image_url: width: 400 }}" alt="" loading="lazy" width="400" height="400">{%- endif -%}
+            {%- if bs.img2 != blank -%}<img src="{{ bs.img2 | image_url: width: 400 }}" alt="" loading="lazy" width="400" height="400">{%- endif -%}
+            {%- if bs.img3 != blank -%}<img src="{{ bs.img3 | image_url: width: 400 }}" alt="" loading="lazy" width="400" height="400">{%- endif -%}
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "BF – Categorii BioLuna",
+  "settings": [
+    {"type":"text","id":"kicker","label":"Text mic","default":"Alege categoria"},
+    {"type":"text","id":"title","label":"Titlu (<em> = roșu)","default":"Reduceri pe <em>categorii</em>"},
+    {"type":"text","id":"link_text","label":"Text link","default":"Vezi ofertele"}
+  ],
+  "blocks": [
+    {"type":"tile","name":"Card categorie","settings":[
+      {"type":"text","id":"label","label":"Nume","default":"Ozlex"},
+      {"type":"text","id":"desc","label":"Descriere scurtă"},
+      {"type":"text","id":"badge","label":"Badge","default":"până la -40%"},
+      {"type":"collection","id":"collection","label":"Colecție"},
+      {"type":"url","id":"url","label":"Sau link"},
+      {"type":"checkbox","id":"wide","label":"Pe tot rândul","default":false},
+      {"type":"image_picker","id":"img1","label":"Produs 1 (PNG)"},
+      {"type":"image_picker","id":"img2","label":"Produs 2 (PNG)"},
+      {"type":"image_picker","id":"img3","label":"Produs 3 (PNG)"}
+    ]}
+  ],
+  "max_blocks": 8,
+  "presets": [{"name":"BF – Categorii BioLuna"}]
+}
+{% endschema %}

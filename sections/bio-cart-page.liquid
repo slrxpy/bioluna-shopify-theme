@@ -1,0 +1,82 @@
+{%- comment -%} BioLuna: pagina /cart custom {%- endcomment -%}
+<style>
+.bcp{max-width:1140px;margin:0 auto;padding:22px 16px 40px;font-family:inherit}
+.bcp h1{font-size:26px;margin:0 0 16px}.bcp h1 span{color:#8a7a7e;font-weight:400;font-size:16px}
+.bcp-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:22px;align-items:start}
+.bcp-it{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:14px;background:#fff;border:1px solid #f0e6e9;border-radius:16px;padding:12px;margin:0 0 10px;align-items:center}
+.bcp-it .im{position:relative}.bcp-it img{width:96px;height:96px;object-fit:cover;border-radius:12px;background:#faf3f3}
+.bcp-it .t{font-weight:700;font-size:14.5px;line-height:1.3}.bcp-it .t a{color:#1f1f1f;text-decoration:none}
+.bcp-it .pr{margin:4px 0;font-weight:800;color:#d10a1e}.bcp-it .pr s{color:#8a7a7e;font-weight:400;font-size:12.5px;margin-left:6px}
+.bcp-q{display:inline-flex;align-items:center;border:1px solid #e8dde1;border-radius:999px;overflow:hidden}
+.bcp-q button{width:34px;height:34px;border:0;background:#fff;font-size:18px;cursor:pointer}.bcp-q span{min-width:28px;text-align:center;font-weight:700}
+.bcp-it .rm{font-size:12px;color:#8a7a7e;background:none;border:0;cursor:pointer;text-decoration:underline;margin-left:10px}
+.bcp-it .lt{text-align:right;font-weight:800;font-size:15px}.bcp-it .lt small{display:block;font-weight:400;color:#8a7a7e;font-size:11.5px}
+.bcp-sum{background:#fff;border:1px solid #f0e6e9;border-radius:18px;padding:18px;position:sticky;top:90px}
+.bcp-sum h3{margin:0 0 12px;font-size:17px}.bcp-row{display:flex;justify-content:space-between;padding:7px 0;font-size:14.5px;border-bottom:1px dashed #f0e6e9}
+.bcp-row.tot{font-size:18px;font-weight:800;border:0;padding-top:12px}.bcp-row .ok{color:#1d9d55;font-weight:700}
+.bcp-save{background:#e8f6ec;color:#1d7a3d;border-radius:10px;padding:8px 10px;font-size:13px;font-weight:700;margin:8px 0}
+.bcp-code{display:flex;gap:6px;margin:12px 0}.bcp-code input{flex:1;border:1px solid #e8dde1;border-radius:999px;padding:10px 14px;font-size:14px}.bcp-code button{border:1.5px solid #1f1f1f;background:#fff;border-radius:999px;padding:0 14px;font-weight:700;cursor:pointer}
+.bcp-go{width:100%;border:0;border-radius:999px;padding:15px;font-size:16px;font-weight:800;color:#fff;background:linear-gradient(90deg,#ff3b3b,#ff8c00,#3b6cff,#ff3b3b);background-size:300% 100%;animation:bcp-flow 4s linear infinite;cursor:pointer;margin-top:8px;box-shadow:0 8px 24px rgba(255,80,60,.3)}@keyframes bcp-flow{to{background-position:300% 0}}
+.bcp-ship{background:#fdf4f6;border:1px solid #f2dde2;border-radius:12px;padding:10px 12px;font-size:13px;margin:0 0 12px}.bcp-ship b{color:#d10a1e}.bcp-ship.ok b{color:#1d9d55}
+.bcp-bar{height:8px;background:#f0e6e9;border-radius:999px;margin-top:7px;overflow:hidden}.bcp-bar i{display:block;height:100%;background:linear-gradient(90deg,#b76e79,#d10a1e);border-radius:999px}
+.bcp-empty{text-align:center;padding:40px 16px}.bcp-empty h2{font-size:24px;margin:0 0 8px}.bcp-empty p{color:#8a7a7e;margin:0 0 16px}.bcp-empty a{display:inline-block;background:linear-gradient(120deg,#ff2a2a,#c40016);color:#fff;border-radius:999px;padding:12px 24px;font-weight:800;text-decoration:none;margin:4px}
+.bcp-empty a.alt{background:#fff;color:#1f1f1f;border:1.5px solid #1f1f1f}
+.bcp-more{margin:30px 0 0}.bcp-more h3{font-size:19px;margin:0 0 10px}.bcp-row-s{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 12px}
+@media(max-width:860px){.bcp-grid{grid-template-columns:1fr}.bcp-sum{position:static}.bcp-it{grid-template-columns:76px minmax(0,1fr)}.bcp-it img{width:76px;height:76px}.bcp-it .lt{grid-column:2;text-align:left;margin-top:4px}}
+.bcp-x{background:#fbf8f9;border:1px solid #f0e6e9;border-radius:12px;padding:0 12px;margin:12px 0 4px}.bcp-x summary{cursor:pointer;font-size:13.5px;font-weight:700;padding:11px 0;list-style:none;display:flex;justify-content:space-between}.bcp-x summary::-webkit-details-marker{display:none}.bcp-x summary:after{content:'+';color:#d10a1e;font-size:18px}.bcp-x details[open] summary:after,.bcp-x[open] summary:after{content:'–'}.bcp-x .bcp-code{margin:0 0 10px}.bcp-x textarea{flex:1;border:1px solid #e8dde1;border-radius:12px;padding:9px 12px;font-size:13px;font-family:inherit}
+@media(max-width:640px){.bcp{padding:14px 12px 30px}.bcp h1{font-size:21px}.bcp-it{padding:10px;gap:10px}.bcp-it .t{font-size:13.5px}.bcp-sum{padding:14px}.bcp-more h3{font-size:17px}}
+.bcp button.bcp-go,.bcp button.bcp-go:hover,.bcp button.bcp-go:focus,.bcp button.bcp-go:active{background:linear-gradient(90deg,#ff3b3b,#ff8c00,#3b6cff,#ff3b3b) !important;background-size:300% 100% !important;background-color:#ff3b3b !important;animation:bcp-flow 4s linear infinite !important;color:#fff !important;border:0 !important;box-shadow:0 8px 24px rgba(255,80,60,.35) !important;-webkit-appearance:none;appearance:none;transform:none !important;opacity:1 !important;text-decoration:none !important;outline:none}
+.bcp button.bcp-go:hover{filter:brightness(1.06)}
+</style>
+{%- assign th = 30000 -%}{%- assign full = 0 -%}
+{%- for it in cart.items -%}{%- assign cmp = it.variant.compare_at_price | default: 0 -%}{%- if cmp > it.final_price -%}{%- assign full = full | plus: cmp | times: 1 -%}{%- assign full = full | plus: 0 -%}{%- assign x = cmp | times: it.quantity -%}{%- assign full = full | minus: cmp | plus: x -%}{%- else -%}{%- assign x = it.final_line_price -%}{%- assign full = full | plus: x -%}{%- endif -%}{%- endfor -%}
+{%- assign save = full | minus: cart.items_subtotal_price -%}
+<div class="bcp">
+{%- if cart.item_count == 0 -%}
+  <div class="bcp-empty"><h2>Coșul tău e gol</h2><p>Începe cu bestsellerii noștri sau cu pachetele promo.</p>
+  <a href="/collections/toate-pachetele-promo">🎁 Vezi pachetele promo</a><a class="alt" href="/collections/all">Toate produsele</a></div>
+{%- else -%}
+  <h1>Coșul tău <span>({{ cart.item_count }} {% if cart.item_count == 1 %}produs{% else %}produse{% endif %})</span></h1>
+  <div class="bcp-grid">
+    <div>
+      {%- assign left = th | minus: cart.items_subtotal_price -%}{%- assign pct = cart.items_subtotal_price | times: 100 | divided_by: th -%}{%- if pct > 100 -%}{%- assign pct = 100 -%}{%- endif -%}
+      <div class="bcp-ship{% if left <= 0 %} ok{% endif %}">🚚 {% if left <= 0 %}<b>Transport gratuit deblocat 🎉</b>{% else %}Mai adaugă <b>{{ left | money }}</b> pentru transport gratuit{% endif %}<div class="bcp-bar"><i style="width:{{ pct }}%"></i></div></div>
+      <form action="/cart" method="post" id="bcp-form">
+      {%- for it in cart.items -%}
+      {%- assign cmp = it.variant.compare_at_price | default: 0 -%}
+      <div class="bcp-it" data-line="{{ forloop.index }}">
+        <div class="im"><a href="{{ it.url }}"><img src="{{ it.image | image_url: width: 200 }}" alt="{{ it.title | escape }}"></a>{%- if cmp > it.final_price -%}{%- assign pc = cmp | minus: it.final_price | times: 100 | divided_by: cmp -%}<span class="bc-stk">−{{ pc }}%</span>{%- endif -%}</div>
+        <div><div class="t"><a href="{{ it.url }}">{{ it.product.title | split: '–' | first | strip }}</a></div>
+          <div class="pr">{{ it.final_price | money }}{%- if cmp > it.final_price -%}<s>{{ cmp | money }}</s>{%- endif -%}</div>
+          <div><span class="bcp-q"><button type="button" data-d="-1">−</button><span>{{ it.quantity }}</span><button type="button" data-d="1">+</button></span><button type="button" class="rm" data-rm>Șterge</button></div></div>
+        <div class="lt">{{ it.final_line_price | money }}<small>{{ it.quantity }} × {{ it.final_price | money }}</small></div>
+      </div>
+      {%- endfor -%}
+      </form>
+    </div>
+    <div class="bcp-sum"><h3>Sumar comandă</h3>
+      <div class="bcp-row"><span>Subtotal</span><span>{{ cart.items_subtotal_price | money }}</span></div>
+      {%- if cart.cart_level_discount_applications.size > 0 -%}{%- for d in cart.cart_level_discount_applications -%}<div class="bcp-row"><span>Cod {{ d.title }}</span><span>−{{ d.total_allocated_amount | money }}</span></div>{%- endfor -%}{%- endif -%}
+      <div class="bcp-row"><span>Livrare</span><span>{% if left <= 0 %}<span class="ok">Gratuită</span>{% else %}19,99 lei{% endif %}</span></div>
+      <div class="bcp-row tot"><span>Total</span><span>{{ cart.total_price | money }}</span></div>
+      {%- if save > 100 -%}<div class="bcp-save">💗 Ai economisit {{ save | money }} față de produsele luate separat</div>{%- endif -%}
+      <details class="bcp-x"><summary>🎟️ Ai un cod de reducere sau un mesaj?</summary><div class="bcp-code"><input id="bcp-code" placeholder="Cod de reducere"><button type="button" id="bcp-apply">Aplică</button></div><div class="bcp-code"><textarea id="bcp-note" rows="2" placeholder="Mesaj pentru comandă (ex: „cadou” – nu punem factura în colet)">{{ cart.note }}</textarea><button type="button" id="bcp-noteok">Salvează</button></div></details>
+      <button class="bcp-go" type="submit" form="bcp-form" name="checkout">Finalizează comanda →</button>
+      <div style="font-size:12px;color:#8a7a7e;text-align:center;margin-top:10px">Plată ramburs la curier sau card · Livrare 1–2 zile lucrătoare · Retur 14 zile</div>
+    </div>
+  </div>
+{%- endif -%}
+  {%- assign promo = collections['toate-pachetele-promo'] -%}
+  <div class="bcp-more bx"><h3>🎁 Pachete promo — mai ieftin decât separat</h3><div class="bcp-row-s">{%- assign k = 0 -%}{%- for p in promo.products -%}{%- if p.available and k < 10 -%}{%- assign k = k | plus: 1 -%}{%- render 'bio-card', p: p -%}{%- endif -%}{%- endfor -%}</div></div>
+</div>
+<script>
+(function(){
+  function change(line,qty){fetch('/cart/change.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({line:line,quantity:qty})}).then(function(){location.reload();});}
+  document.querySelectorAll('.bcp-it').forEach(function(it){var line=parseInt(it.dataset.line,10);var q=parseInt(it.querySelector('.bcp-q span').textContent,10);
+    it.querySelectorAll('[data-d]').forEach(function(b){b.addEventListener('click',function(){change(line,Math.max(0,q+parseInt(b.dataset.d,10)));});});
+    var rm=it.querySelector('[data-rm]');if(rm)rm.addEventListener('click',function(){change(line,0);});});
+  var no=document.getElementById('bcp-noteok');if(no)no.addEventListener('click',function(){fetch('/cart/update.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({note:document.getElementById('bcp-note').value})}).then(function(){no.textContent='✓ Salvat';});});
+  var ap=document.getElementById('bcp-apply');if(ap)ap.addEventListener('click',function(){var c=document.getElementById('bcp-code').value.trim();if(c)location.href='/discount/'+encodeURIComponent(c)+'?redirect=/cart';});
+})();
+</script>
+{% schema %}{ "name":"BioLuna – Coș", "settings":[], "presets":[{"name":"BioLuna – Coș"}] }{% endschema %}

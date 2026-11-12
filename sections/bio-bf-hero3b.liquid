@@ -1,0 +1,164 @@
+{%- comment -%} BioLuna BF – hero v8 (carduri egale, fără filtre grele): un slide pe gamă, cu 4–5 produse aliniate (poză decupată, preț, reducere reală), „până la −X%” calculat din colecție, tab-uri de brand + bară de timp. {%- endcomment -%}
+{%- unless template.suffix == 'bf' or shop.metafields.custom.bf_live.value == true -%}{%- render 'bio-bf-base' -%}{%- render 'bio-bf-cart' -%}{%- endunless -%}
+{%- assign st = section.settings -%}
+<style>
+.blf .bh{position:relative;max-width:1500px;margin:0 auto}
+.blf .bh__track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.blf .bh__track::-webkit-scrollbar{display:none}
+.blf .b3{flex:0 0 100%;scroll-snap-align:start;position:relative;overflow:hidden;contain:layout paint;display:grid;grid-template-columns:minmax(0,9fr) minmax(0,15fr);grid-template-areas:"txt line" "foot line";grid-template-rows:1fr 1fr;column-gap:10px;min-height:clamp(450px,37vw,570px);background:linear-gradient(112deg,#fff 0%,#fff 30%,var(--tint) 100%)}
+.blf .b3__word{position:absolute;right:-1%;bottom:-.14em;font-family:var(--bf-hf);font-weight:800;font-size:clamp(130px,20vw,320px);line-height:.8;color:var(--acc);opacity:.07;text-transform:uppercase;white-space:nowrap;pointer-events:none;z-index:0}
+.blf .b3__txt{grid-area:txt;align-self:end;position:relative;z-index:2;padding:34px 0 0 clamp(24px,6.5vw,104px)}
+.blf .b3__foot{grid-area:foot;align-self:start;position:relative;z-index:2;display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding:22px 0 34px clamp(24px,6.5vw,104px)}
+.blf .b3-chip{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:999px;padding:7px 14px 7px 11px;font-size:12.5px;font-weight:700;color:#111;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.blf .b3-chip:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.blf .b3 .bf-h{font-size:clamp(48px,6vw,96px);line-height:.9;margin:16px 0 0}
+.blf .b3 .bf-h em{color:var(--acc);font-style:normal}
+.blf .b3-sub{font-size:clamp(14px,1.2vw,17.5px);color:#555;margin:12px 0 0;line-height:1.4;max-width:30em}
+.blf .b3-off{display:flex;flex-direction:column;line-height:1}
+.blf .b3-off small{font-size:12px;font-weight:700;color:#444;margin-bottom:3px}
+.blf .b3-off b{font-family:var(--bf-hf);font-weight:800;font-size:clamp(50px,5vw,74px);line-height:.86;color:var(--bf-red2)}
+.blf .b3__foot .bf-btn{padding:17px 30px !important;font-size:13.5px;white-space:nowrap}
+.blf .b3__line{grid-area:line;align-self:center;position:relative;z-index:1;display:flex;align-items:stretch;justify-content:center;gap:clamp(8px,1vw,14px);padding:30px clamp(16px,4vw,64px) 34px 0}
+.blf .b3__line:before{content:"";position:absolute;left:50%;top:50%;width:min(64%,440px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:var(--acc);opacity:.12;z-index:-1}
+.blf .b3-it{flex:1 1 0;min-width:0;max-width:196px;display:flex;flex-direction:column;background:#fff;border-radius:16px;overflow:hidden;color:#111;text-decoration:none;box-shadow:0 8px 22px rgba(17,24,39,.09);transition:transform .2s}
+.blf .b3-it:hover{transform:translateY(-5px)}
+.blf .b3-it__img{position:relative;display:block;width:100%;aspect-ratio:1/1;flex:0 0 auto;background:#f3f5f9}
+.blf .b3-it__img img{position:absolute;left:11%;top:11%;width:78%;height:78%;object-fit:contain;display:block}
+.blf .b3-tag{display:flex;flex-direction:column;flex:1;padding:11px 10px 12px;text-align:center}
+.blf .b3-tag__n{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:12px;font-weight:600;line-height:1.25;min-height:30px;color:#333}
+.blf .b3-tag__p{display:block;font-family:var(--bf-hf);font-weight:800;font-size:23px;line-height:1;color:var(--bf-red2);margin-top:7px;white-space:nowrap}
+.blf .b3-tag__o{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:5px;font-size:11px;color:#8b8f97;min-height:17px}
+.blf .b3-tag__o i{font-style:normal;font-weight:800;font-size:10.5px;color:#fff;background:var(--bf-red2);border-radius:5px;padding:2px 5px}
+.blf .bh .bf-arrow{position:absolute;top:calc(50% - 30px);z-index:4;width:50px;height:50px;font-size:22px}
+.blf .bh .bf-arrow.l{left:14px}.blf .bh .bf-arrow.r{right:14px}
+.blf .bh-tabs{position:relative;display:flex;gap:8px;overflow-x:auto;padding:14px 16px 16px;scrollbar-width:none;justify-content:center}
+.blf .bh-tabs::-webkit-scrollbar{display:none}
+.blf .bh-tab{position:relative;flex:0 0 auto;border:1px solid #dedede;background:#fff;border-radius:999px;padding:11px 20px;font-weight:800;font-size:13px;line-height:1;color:#111;cursor:pointer;overflow:hidden;font-family:inherit;transition:background .2s,color .2s}
+.blf .bh-tab i{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--bf-blue);transform:scaleX(0);transform-origin:left}
+.blf .bh-tab.on{background:#111;color:#fff;border-color:#111}
+.blf .bh-tab.on i{transform:scaleX(1);transition:transform linear var(--dur,6s)}
+.blf .bh-cd{display:flex;align-items:center;justify-content:center;gap:10px 18px;flex-wrap:wrap;background:#111;color:#fff;padding:12px 16px}
+.blf .bh-cd .bf-cdl{color:#fff;margin:0;font-size:12px;letter-spacing:.2em}
+.blf .bh-cd .bf-cd{gap:6px}
+.blf .bh-cd .bf-cd div{min-width:0;display:flex;align-items:baseline;gap:5px;background:rgba(255,255,255,.12);border:0;border-radius:9px;padding:7px 10px;box-shadow:none}
+.blf .bh-cd .bf-cd b{display:inline;font-size:21px;color:#fff}
+.blf .bh-cd .bf-cd span{display:inline;margin:0;font-size:9.5px;color:#c9c9c9;letter-spacing:.08em}
+.blf .bh-cd__n{font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#ffd84a}
+@media(max-width:767px){
+  .blf .b3{display:flex;flex-direction:column;min-height:0;background:linear-gradient(180deg,var(--tint) 0%,#fff 78%)}
+  .blf .b3__word{font-size:138px;top:6px;bottom:auto;right:-8px;opacity:.06}
+  .blf .b3__txt{padding:18px 16px 0;align-self:stretch}
+  .blf .b3 .bf-h{font-size:42px;margin-top:10px;white-space:nowrap}
+  .blf .b3-sub{margin-top:7px;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .blf .b3__line{padding:14px 12px 0;gap:6px;align-self:stretch}
+  .blf .b3__line:before{width:230px;top:40%}
+  .blf .b3-it:nth-child(n+5){display:none}
+  .blf .b3-it{border-radius:12px;box-shadow:0 5px 14px rgba(17,24,39,.09)}
+  .blf .b3-it__img img{left:8%;top:8%;width:84%;height:84%}
+  .blf .b3-tag{padding:7px 4px 8px}
+  .blf .b3-tag__n{font-size:10.5px;line-height:1.2;min-height:25px}
+  .blf .b3-tag__p{font-size:17px;margin-top:4px}
+  .blf .b3-tag__o{font-size:9.5px;gap:4px;margin-top:3px;min-height:14px}
+  .blf .b3-tag__o i{font-size:9.5px;padding:1px 4px}
+  .blf .b3__foot{padding:16px 16px 18px;gap:14px;flex-wrap:nowrap;align-self:stretch;margin-top:auto}
+  .blf .b3-off b{font-size:44px}
+  .blf .b3-off small{font-size:11px}
+  .blf .b3__foot .bf-btn{flex:1 1 auto;padding:16px 14px !important;text-align:center;justify-content:center}
+  .blf .bh .bf-arrow{display:none}
+  .blf .bh-tabs{justify-content:flex-start;padding:4px 16px 14px}
+  .blf .bh-cd .bf-cdl{width:100%;text-align:center;font-size:11px}
+}
+</style>
+<div class="blf">
+  <div class="bh" data-autoplay="{{ st.autoplay | default: 7 }}" style="--dur:{{ st.autoplay | default: 7 }}s">
+    <div class="bh__track">
+      {%- for b in section.blocks -%}
+        {%- assign bs = b.settings -%}{%- assign col = bs.collection -%}
+        {%- assign first_slide = forloop.first -%}
+        {%- assign href = bs.url -%}{%- if col != blank -%}{%- assign href = col.url -%}{%- endif -%}
+        {%- assign mx = 0 -%}
+        {%- if col != blank -%}{%- for p in col.products limit: 50 -%}{%- if p.compare_at_price > p.price -%}{%- assign d = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round -%}{%- if d > mx -%}{%- assign mx = d -%}{%- endif -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+        <article class="b3" style="--tint:{{ bs.tint | default: '#EAF1FF' }};--acc:{{ bs.acc | default: '#2563eb' }}" {{ b.shopify_attributes }}>
+          {%- if bs.word != blank -%}<div class="b3__word" aria-hidden="true">{{ bs.word }}</div>{%- endif -%}
+          <div class="b3__txt">
+            {%- if bs.chip != blank -%}<span class="b3-chip">{{ bs.chip }}</span>{%- endif -%}
+            <h2 class="bf-h">{{ bs.title }}</h2>
+            {%- if bs.sub != blank -%}<p class="b3-sub">{{ bs.sub }}</p>{%- endif -%}
+          </div>
+          <div class="b3__line">
+            {%- for p in bs.products -%}
+              {%- assign v = p.selected_or_first_available_variant | default: p.variants.first -%}
+              {%- assign price = v.price -%}{%- assign cmp = v.compare_at_price | default: 0 -%}{%- assign pct = 0 -%}
+              {%- if cmp > price -%}{%- assign pct = cmp | minus: price | times: 100.0 | divided_by: cmp | round -%}{%- endif -%}
+              {%- assign nm = p.title | split: ' | ' | first -%}{%- if bs.full -%}{%- assign nm = nm | replace: ' – ', ' ' -%}{%- else -%}{%- assign nm = nm | split: ' – ' | first -%}{%- endif -%}
+              {%- assign strips = bs.strip | split: '|' -%}{%- for x in strips -%}{%- assign nm = nm | remove: x -%}{%- endfor -%}
+              <a class="b3-it" href="{{ p.url }}">
+                <span class="b3-it__img">{%- assign im = p.metafields.custom.bf_cutout.value | default: p.featured_image -%}{%- if im != blank -%}<img src="{{ im | image_url: width: 360 }}" srcset="{{ im | image_url: width: 220 }} 220w, {{ im | image_url: width: 360 }} 360w" sizes="(max-width:767px) 22vw, 180px" alt="{{ p.title | escape }}" width="300" height="300" decoding="async"{% if first_slide %} loading="eager"{% else %} loading="lazy"{% endif %}>{%- endif -%}</span>
+                <span class="b3-tag">
+                  <span class="b3-tag__n">{{ nm | strip }}</span>
+                  <b class="b3-tag__p">{{ price | money }}</b>
+                  <span class="b3-tag__o">{%- if pct > 0 -%}<s>{{ cmp | money }}</s><i>−{{ pct }}%</i>{%- endif -%}</span>
+                </span>
+              </a>
+            {%- endfor -%}
+          </div>
+          <div class="b3__foot">
+            {%- if mx > 0 -%}<div class="b3-off"><small>până la</small><b>−{{ mx }}%</b></div>{%- endif -%}
+            <a class="bf-btn" href="{{ href }}">{{ bs.cta | default: 'Vezi toate ofertele' }}</a>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+    <button class="bf-arrow l" aria-label="Anterior">‹</button>
+    <button class="bf-arrow r" aria-label="Următor">›</button>
+    <div class="bh-tabs">
+      {%- for b in section.blocks -%}<button class="bh-tab" type="button"><span>{{ b.settings.tab | default: b.settings.word }}</span><i></i></button>{%- endfor -%}
+    </div>
+  </div>
+  {%- if st.show_cd -%}
+  <div class="bh-cd" data-bf-cd data-start="{{ st.start }}" data-deadline="{{ st.deadline }}" data-lbl-start="{{ st.lbl_start | escape }}" data-lbl-end="{{ st.lbl_end | escape }}">
+    <p class="bf-cdl">{{ st.lbl_end }}</p><div class="bf-cd"></div>{%- if st.cd_note != blank -%}<span class="bh-cd__n">{{ st.cd_note }}</span>{%- endif -%}
+  </div>
+  {%- endif -%}
+</div>
+<script>
+(function(){function init(){document.querySelectorAll('.bh').forEach(function(s){if(s._bh)return;s._bh=1;
+var tr=s.querySelector('.bh__track'),sl=tr.children,n=sl.length,tabs=s.querySelectorAll('.bh-tab'),box=s.querySelector('.bh-tabs'),auto=parseInt(s.dataset.autoplay||'6',10)*1000,i=-1,t;
+function mark(){var k=Math.max(0,Math.min(n-1,Math.round(tr.scrollLeft/tr.clientWidth)));if(k===i)return;i=k;tabs.forEach(function(b,j){b.classList.toggle('on',j===i)});var a=tabs[i];if(a&&box.scrollWidth>box.clientWidth)box.scrollTo({left:a.offsetLeft-60,behavior:'smooth'})}
+function go(k){var j=(k+n)%n;tr.scrollTo({left:sl[j].offsetLeft-tr.offsetLeft,behavior:'smooth'})}
+function arm(){clearInterval(t);if(auto>0&&n>1)t=setInterval(function(){go(i+1)},auto)}
+tabs.forEach(function(b,j){b.addEventListener('click',function(){go(j);arm()})});
+s.querySelector('.bf-arrow.l').addEventListener('click',function(){go(i-1);arm()});s.querySelector('.bf-arrow.r').addEventListener('click',function(){go(i+1);arm()});
+tr.addEventListener('scroll',function(){clearTimeout(tr._m);tr._m=setTimeout(mark,70)});
+tr.addEventListener('touchstart',function(){clearInterval(t)},{passive:true});tr.addEventListener('touchend',arm,{passive:true});
+if(n<2){s.querySelectorAll('.bf-arrow,.bh-tabs').forEach(function(x){x.style.display='none'})}
+requestAnimationFrame(function(){mark();arm()});
+function warm(){s.querySelectorAll('img[loading="lazy"]').forEach(function(im){im.loading='eager'})}
+if(document.readyState==='complete')setTimeout(warm,1200);else window.addEventListener('load',function(){setTimeout(warm,1200)});});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();
+</script>
+{% schema %}
+{"name":"BF – Hero test","settings":[
+{"type":"range","id":"autoplay","label":"Autoplay (secunde, 0 = oprit)","min":0,"max":12,"step":1,"default":7},
+{"type":"checkbox","id":"show_cd","label":"Arată bara cu timpul","default":true},
+{"type":"text","id":"start","label":"Start (YYYY-MM-DD HH:MM)","default":"2026-11-06 00:00"},
+{"type":"text","id":"deadline","label":"Final (YYYY-MM-DD HH:MM)","default":"2026-12-01 00:00"},
+{"type":"text","id":"lbl_start","label":"Text înainte de start","default":"Black Friday începe în"},
+{"type":"text","id":"lbl_end","label":"Text în campanie","default":"Black Friday se termină în"},
+{"type":"text","id":"cd_note","label":"Text galben din bară","default":"Reduceri de până la −44%"}],
+"blocks":[{"type":"slide","name":"Slide","settings":[
+{"type":"text","id":"tab","label":"Nume tab","default":"Redist"},
+{"type":"text","id":"chip","label":"Etichetă mică","default":"Cel mai vândut"},
+{"type":"text","id":"title","label":"Titlu (<em> = colorat)","default":"Gama <em>Redist</em>"},
+{"type":"text","id":"sub","label":"Subtitlu"},
+{"type":"text","id":"word","label":"Cuvânt mare din fundal","default":"Redist"},
+{"type":"product_list","id":"products","label":"Produse (4–5, cu poză decupată)","limit":5},
+{"type":"collection","id":"collection","label":"Colecția gamei (buton + „până la −X%”)"},
+{"type":"checkbox","id":"full","label":"Nume lung la produse (cu gramaj)","default":false},
+{"type":"text","id":"strip","label":"Cuvinte scoase din nume (separate cu |)"},
+{"type":"text","id":"cta","label":"Buton","default":"Vezi toate ofertele"},
+{"type":"url","id":"url","label":"Link (dacă nu e colecție)"},
+{"type":"color","id":"tint","label":"Culoare fundal","default":"#EAF1FF"},
+{"type":"color","id":"acc","label":"Culoare accent","default":"#2563eb"}]}],
+"max_blocks":8,"presets":[{"name":"BF – Hero test"}]}
+{% endschema %}

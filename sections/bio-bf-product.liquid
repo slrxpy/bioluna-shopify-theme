@@ -1,0 +1,226 @@
+{%- comment -%} BioLuna BF – pagina de produs v3 (curată): badge bestseller, stele, cutie preț cu timp rămas, 3 beneficii, încredere, „Completează comanda”.
+Stă în product.bf.json după "main" și aranjează blocurile temei; formularul, EasySell și coșul rămân ale temei. {%- endcomment -%}
+{%- unless template.suffix == 'bf' or shop.metafields.custom.bf_live.value == true -%}{%- render 'bio-bf-base' -%}{%- render 'bio-bf-cart' -%}{%- endunless -%}
+{%- assign st = section.settings -%}
+{%- assign v = product.selected_or_first_available_variant -%}
+{%- assign price = v.price -%}{%- assign cmp = v.compare_at_price | default: 0 -%}{%- assign pct = 0 -%}
+{%- if cmp > price -%}{%- assign pct = cmp | minus: price | times: 100.0 | divided_by: cmp | round -%}{%- endif -%}
+{%- assign ben = product.metafields.custom.beneficii.value -%}
+{%- assign rc = product.metafields.reviews.rating_count | plus: 0 -%}
+{%- assign rv = product.metafields.reviews.rating.value.rating | default: 0 | times: 1.0 -%}
+{%- assign cards = product.metafields.custom.carduri.value -%}
+{%- assign gama = nil -%}
+{%- for c in product.collections -%}{%- unless c.handle contains 'pachete' or c.handle == 'all' or c.handle contains 'reduceri' or c.handle contains 'toate' -%}{%- if gama == nil and c.products_count > 3 -%}{%- assign gama = c -%}{%- endif -%}{%- endunless -%}{%- endfor -%}
+{%- assign bn = 0 -%}
+{%- capture bul -%}
+{%- if ben -%}{%- for b in ben -%}{%- assign bp = b | split: '|' -%}{%- assign t0 = bp[0] -%}
+  {%- assign t1 = t0 | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9' -%}
+  {%- if t1.size < t0.size and bn < 2 -%}{%- assign bn = bn | plus: 1 -%}<li><i>✓</i><span><b>{{ t0 }}</b>{%- if bp[1] != blank -%} – {{ bp[1] }}{%- endif -%}</span></li>{%- endif -%}
+{%- endfor -%}{%- endif -%}
+{%- assign wk = false -%}
+{%- if cards -%}{%- for c in cards -%}{%- assign cp = c | split: '|' -%}{%- if wk == false and bn < 3 -%}{%- if cp[0] contains 'săptămâni' or cp[0] contains 'saptamani' -%}{%- assign wk = true -%}{%- assign bn = bn | plus: 1 -%}<li><i>✓</i><span><b>{{ cp[0] }}</b> – rezultatele diferă de la persoană la persoană</span></li>{%- endif -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+{%- if ben -%}{%- assign benr = ben -%}{%- if bn > 0 -%}{%- assign benr = ben | reverse -%}{%- endif -%}{%- for b in benr -%}{%- assign bp = b | split: '|' -%}{%- assign t0 = bp[0] -%}
+  {%- assign t1 = t0 | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9' -%}
+  {%- if t1.size == t0.size and bn < 3 -%}{%- assign bn = bn | plus: 1 -%}<li><i>✓</i><span><b>{{ t0 }}</b>{%- if bp[1] != blank -%} – {{ bp[1] }}{%- endif -%}</span></li>{%- endif -%}
+{%- endfor -%}{%- endif -%}
+{%- endcapture -%}
+<style>
+body.bf .product__block--price,body.bf .product__block--badges,body.bf .product__block--meta,body.bf .bio-stk,body.bf .bio-ppd,body.bf .bx-best,body.bf .bx-pills,body.bf .bx-fbt,body.bf .bx-cards,body.bf .bx-pc,body.bf .bx-h.bfp-off{display:none !important}
+body.bf .bx-rows .bx-row-h~.bx-row-h,body.bf .bx-rows .bx-row~.bx-row{display:none !important}
+body.bf .bx-ship{background:#f6f8fc !important;border:1px solid #e3e8f3 !important;border-radius:14px !important;color:#111 !important}
+body.bf #es-popup-button{background:var(--bf-cta) !important;box-shadow:0 10px 26px rgba(37,99,235,.34) !important;border-radius:999px !important}
+body.bf #es-popup-button>div{background:transparent !important}
+body.bf .product-form__submit,body.bf .product-form__submit:hover,body.bf .product-form__submit:focus{background:#fff !important;color:#111 !important;border:2px solid #111 !important;border-radius:999px !important;box-shadow:none !important}
+body.bf .product-form__submit .btn__text{color:inherit !important}
+body.bf .product-form__submit:active{background:#111 !important;color:#fff !important}
+.bfp-best{display:inline-flex;align-items:center;gap:7px;position:relative;overflow:hidden;background:linear-gradient(120deg,#14306e,#2563eb);color:#fff;font-family:var(--bf-hf);font-weight:800;font-size:15px;letter-spacing:.06em;text-transform:uppercase;line-height:1;border-radius:999px;padding:8px 14px 8px 10px;margin:0 0 10px;box-shadow:0 6px 16px rgba(37,99,235,.28)}
+.bfp-best i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#ffd84a;color:#14306e;font-size:12px}
+.bfp-best:after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:bfp-sh 3.2s ease-in-out infinite}
+@keyframes bfp-sh{0%,55%{left:-40%}100%{left:130%}}
+@media(prefers-reduced-motion:reduce){.bfp-best:after{animation:none;display:none}}
+.bfp-stars{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:#444;margin:6px 0 2px;text-decoration:none}
+.bfp-stars i{font-style:normal;color:#f5b301;letter-spacing:1.5px;font-size:15px}
+.bfp-stars u{text-underline-offset:3px}
+.bfp2{background:#fff;border:1px solid #e3e8f3;border-radius:18px;padding:14px 16px 13px;margin:10px 0 12px;box-shadow:0 8px 22px rgba(20,48,110,.07);color:#111;font-family:var(--bf-bf,inherit)}
+.bfp2__top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 8px}
+.bfp2__k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bf-red2);font-weight:800}
+.bfp2__cd{font-size:12px;color:#444;background:#f3f5fa;border-radius:999px;padding:5px 10px;font-variant-numeric:tabular-nums}
+.bfp2__cd b{color:#111}
+.bfp2__row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bfp2__new{font-family:var(--bf-hf);font-size:48px;font-weight:800;line-height:.95;color:var(--bf-red2)}
+.bfp2__old{font-size:16px;color:#8a8a8a;text-decoration:line-through}
+.bfp2__pct{background:var(--bf-sale);color:#fff;font-family:var(--bf-hf);font-weight:800;font-size:19px;line-height:1;border-radius:10px;padding:7px 10px;transform:rotate(-4deg);box-shadow:0 6px 14px rgba(196,0,22,.28)}
+.bfp2__sv{font-size:13px;color:#0d8756;font-weight:700;margin:8px 0 0}
+.bfp-ben{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:9px;font-family:var(--bf-bf,inherit)}
+.bfp-ben li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.35;color:#333;margin:0;padding:0}
+.bfp-ben li:before{display:none}
+.bfp-ben i{flex:0 0 22px;height:22px;border-radius:50%;background:#e8f6ee;color:#0d8756;font-style:normal;font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.bfp-ben b{color:#111}
+.bfp-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 4px;font-family:var(--bf-bf,inherit)}
+.bfp-trust div{background:#f6f8fc;border:1px solid #e3e8f3;border-radius:12px;padding:9px 6px;text-align:center;font-size:11.5px;line-height:1.25;color:#444}
+.bfp-trust b{display:block;color:#111;font-size:12.5px}
+.bfp-up.bfu{margin:12px 0 4px}
+@media(max-width:767px){.bfp2__new{font-size:42px}.bfp2{padding:12px 14px}}
+/* v3: spatii mai mici, badge mic, buton comanda */
+body.bf .product__block--title{margin-bottom:0 !important;padding-bottom:0 !important}
+body.bf .product__block--title h1,body.bf .product__block--title .product__title{margin:0 0 5px !important;padding:0 !important}
+.bfp-best{font-size:11.5px;letter-spacing:.08em;padding:5px 10px 5px 6px;margin:0 0 7px;gap:6px;box-shadow:none}
+.bfp-best i{width:15px;height:15px;font-size:9px}
+.bfp-stars{display:flex;margin:0;font-size:13px}
+#bfp-x{margin-top:14px !important}
+.bfp-stars{margin-top:3px}
+.bfp2{margin:0 0 10px;padding:12px 14px 11px}
+.bfp-ben{margin:12px 0 2px;gap:7px}
+.bfp-ben li{font-size:14px}
+body.bf #es-popup-button{display:flex !important;align-items:center !important;justify-content:center !important;gap:10px !important;min-height:58px !important;padding:0 20px !important;background:linear-gradient(135deg,#2f6bff 0%,#1d349a 100%) !important;box-shadow:0 10px 24px rgba(29,52,154,.38) !important;border:0 !important;text-align:center !important}
+body.bf #es-popup-button>div{display:flex !important;align-items:center !important;justify-content:center !important;gap:10px !important;width:auto !important;flex:0 1 auto !important;margin:0 !important;padding:0 !important}
+body.bf #es-popup-button,body.bf #es-popup-button *{font-family:var(--bf-hf) !important;font-weight:800 !important;font-size:21px !important;letter-spacing:.05em !important;text-transform:uppercase !important;color:#fff !important;line-height:1 !important}
+body.bf #es-popup-button svg,body.bf #es-popup-button img{width:22px !important;height:22px !important;flex:0 0 22px !important;margin:0 !important;position:static !important}
+body.bf #es-popup-button:active{filter:brightness(.9)}
+/* v4: mai puțin text */
+body.bf .bx-acc,body.bf .bfp-trust{display:none !important}
+body.bf .product__block--title h1,body.bf .product__block--title .product__title{font-family:var(--bf-hf) !important;font-weight:700 !important;font-size:19px !important;line-height:1.15 !important;text-transform:none;letter-spacing:0 !important}
+body.bf .bx-ship{margin:10px 0 0 !important;padding:10px 12px !important;font-size:13px !important;line-height:1.45 !important}
+.bfp-ingr{border:1px solid #e3e8f3;border-radius:14px;background:#fff;margin:10px 0;padding:0 14px}
+.bfp-ingr summary{cursor:pointer;list-style:none;font-weight:700;font-size:15px;padding:14px 0;display:flex;justify-content:space-between;align-items:center}
+.bfp-ingr summary::-webkit-details-marker{display:none}
+.bfp-ingr summary:after{content:"+";color:var(--bf-red2);font-size:20px;font-weight:400}
+.bfp-ingr[open] summary:after{content:"–"}
+.bfp-ingr .bx-ingr{border:0 !important;background:none !important;padding:0 0 14px !important;margin:0 !important;box-shadow:none !important}
+@media(min-width:990px){body.bf .product__block--title h1,body.bf .product__block--title .product__title{font-size:30px !important}}
+/* v5: fără bannerele cu emoji din descriere, descriere strânsă, poză mai mică, rând „din aceeași gamă” curat */
+body.bf .product__block--description div[style*="margin:0 0 14px"]:has(>div[style*="linear-gradient"]){display:none !important}
+body.bf .product__block--description .bfp-hide{display:none !important}
+body.bf .bx-rows{display:none !important}
+body.bf .product__block--description{position:relative;font-size:14.5px;line-height:1.6;color:#333}
+body.bf .product__block--description,body.bf .product__block--description [style*="font-family"]{font-family:var(--bf-bf,inherit) !important}
+body.bf .product__block--description h2{font-family:var(--bf-hf) !important;font-size:22px !important;line-height:1.1 !important;font-weight:700 !important;margin:0 0 8px !important;color:#111 !important}
+body.bf .product__block--description h3{font-size:15.5px !important;line-height:1.3 !important;font-weight:700 !important;margin:16px 0 6px !important;color:#111 !important}
+body.bf .product__block--description.bfp-clamp{max-height:210px;overflow:hidden}
+body.bf .product__block--description.bfp-clamp::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg,rgba(255,255,255,0),#fff 78%);pointer-events:none}
+.bfp-more{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin:4px 0 6px;padding:12px 16px;border:1px solid #d5dae3;border-radius:999px;background:#fff;color:#111;font:600 14px/1 var(--bf-bf,inherit);text-transform:none !important;letter-spacing:0 !important;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.bfp-more:hover{border-color:#111}
+.bfp-more i{width:7px;height:7px;border-right:2px solid #111;border-bottom:2px solid #111;transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+.bfp-more[aria-expanded="true"] i{transform:translateY(2px) rotate(-135deg)}
+@media(max-width:767px){
+  body.bf .product__media-gallery{max-width:300px;margin-left:auto !important;margin-right:auto !important}
+  body.bf .product__media-wrapper{margin-bottom:4px}
+}
+@media(max-width:767px){html body.bf #wa-btn{bottom:86px !important}}
+.bfp-gama .bf-sec{padding-top:34px}
+.bfp-gama .bf-sec__h .bf-h{font-size:clamp(28px,3.6vw,44px)}
+.bfp-gama .bf-more{border:0;padding:0;font-size:13px;letter-spacing:0;text-transform:none;font-weight:700;color:var(--bf-blue) !important;text-decoration:underline;text-underline-offset:4px}
+.bfp-gama .bf-row .bf-card{flex-basis:44%}
+@media(min-width:720px){.bfp-gama .bf-row .bf-card{flex-basis:calc(25% - 12px)}}
+@media(min-width:1024px){.bfp-gama .bf-row .bf-card{flex-basis:calc(20% - 13px)}}
+@media(max-width:767px){.bfp-gama .bf-sec{padding-top:24px}.bfp-gama .bf-row__track{margin:0 -16px;padding:6px 16px 10px;scroll-padding-left:16px}}
+/* v6: caseta de preț pe două rânduri – timpul în dreapta titlului, „Economisești” lângă preț */
+.bfp2{padding:11px 14px 11px !important}
+.bfp2__top{flex-wrap:nowrap !important;margin:0 0 6px !important}
+.bfp2__k{white-space:nowrap}
+.bfp2__cd{white-space:nowrap;flex:0 0 auto}
+.bfp2__cd i{font-style:normal}
+.bfp2__row{flex-wrap:nowrap !important;gap:12px !important;align-items:center}
+.bfp2__new{white-space:nowrap}
+.bfp2__side{min-width:0;display:flex;flex-direction:column;gap:5px}
+.bfp2__l1{display:flex;align-items:center;gap:8px}
+.bfp2__pct{font-size:15px !important;padding:5px 8px !important;border-radius:8px !important;transform:rotate(-3deg);box-shadow:none !important}
+.bfp2__sv{margin:0 !important;font-size:12.5px !important;line-height:1.2;white-space:nowrap}
+@media(max-width:767px){
+  .bfp2__k{font-size:10px !important;letter-spacing:.1em !important}
+  .bfp2__cd{font-size:11px !important;padding:4px 9px !important}
+  .bfp2__cd i{display:none}
+  .bfp2__cd:before{content:"încă ";}
+  .bfp2__new{font-size:40px !important}
+  .bfp2__old{font-size:14px !important}
+  .bfp2__row{gap:10px !important}
+}
+@media(max-width:359px){.bfp2__new{font-size:34px !important}.bfp2__sv{font-size:11.5px !important}.bfp2__k{font-size:9px !important;letter-spacing:.03em !important}.bfp2__cd{font-size:10.5px !important;padding:4px 7px !important}}
+</style>
+{%- if gama -%}{%- assign gn = 0 -%}
+<section class="blf bfp-gama">
+  <div class="bf-wrap bf-sec">
+    <header class="bf-sec__h"><div><div class="bf-k">Din aceeași gamă</div><h2 class="bf-h">{{ gama.title | split: ' – ' | first | split: ' | ' | first | remove: '🔥' | strip }}</h2></div><a class="bf-more" href="{{ gama.url }}">Vezi toată gama</a></header>
+    <div class="bf-row">
+      <button class="bf-arrow bf-row__nav bf-row__nav--l" aria-label="Înapoi">‹</button>
+      <button class="bf-arrow bf-row__nav bf-row__nav--r" aria-label="Înainte">›</button>
+      <div class="bf-row__track bf-grid--clean">
+        {%- for p in gama.products limit: 14 -%}{%- if p.available and p.id != product.id and gn < 10 -%}{%- assign gn = gn | plus: 1 -%}{%- render 'bio-bf-card', p: p, tag: blank, rich: false -%}{%- endif -%}{%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+{%- assign nobest = 'Ozlex,Themra,Q7 Premium,Sahimerdan,Lotus Premium,Vital Honey' | split: ',' -%}
+{%- if product.tags contains 'bestseller' -%}{%- unless nobest contains product.vendor -%}<template id="bfp-best-tpl"><div class="bfp-best"><i>★</i>{{ st.best | default: 'Bestseller BioLuna' }}</div></template>{%- endunless -%}{%- endif -%}
+{%- if rc > 0 -%}<template id="bfp-stars-tpl"><a class="bfp-stars" href="#judgeme_product_reviews"><i>★★★★★</i><span>{{ rv | round: 1 }} · <u>{{ rc }} recenzii</u></span></a></template>{%- endif -%}
+<template id="bfp-tpl">
+<div>
+  <div class="bfp2">
+    <div class="bfp2__top"><span class="bfp2__k">{{ st.label | default: 'Preț de Black Friday' }}</span>{%- if st.deadline != blank -%}<span class="bfp2__cd" data-bfp-cd="{{ st.deadline }}" hidden><i>se termină în </i><b></b></span>{%- endif -%}</div>
+    <div class="bfp2__row"><span class="bfp2__new" data-bfp-new>{{ price | money }}</span><div class="bfp2__side"><div class="bfp2__l1"><s class="bfp2__old" data-bfp-old{% unless pct > 0 %} style="display:none"{% endunless %}>{{ cmp | money }}</s><span class="bfp2__pct" data-bfp-pct{% unless pct > 0 %} style="display:none"{% endunless %}>−{{ pct }}%</span></div><p class="bfp2__sv" data-bfp-svw{% unless pct > 0 %} style="display:none"{% endunless %}>Economisești <span data-bfp-sv>{{ cmp | minus: price | money }}</span></p></div></div>
+  </div>
+</div>
+</template>
+<template id="bfp-after-tpl">
+<div>
+  {%- if bn > 0 -%}<ul class="bfp-ben">{{ bul }}</ul>{%- endif -%}
+  <div id="bfp-ship"></div>
+  <div class="bfu bfp-up" id="bfp-up" hidden></div>
+</div>
+</template>
+<script type="application/json" id="bfp-variants">{ {%- for vv in product.variants -%}"{{ vv.id }}":{"p":{{ vv.price }},"c":{{ vv.compare_at_price | default: 0 }}}{% unless forloop.last %},{% endunless %}{%- endfor -%} }</script>
+<script type="application/json" id="bfp-prod">{"vendor":{{ product.vendor | json }},"title":{{ product.title | json }},"handle":{{ product.handle | json }}}</script>
+<script>
+(function(){
+  function main(sel){var els=document.querySelectorAll(sel);for(var i=0;i<els.length;i++){if(!els[i].closest('[id*="quick-view"],[class*="quick-view"]'))return els[i];}return null;}
+  function money(c){return (c/100).toFixed(2).replace('.',',')+' lei';}
+  function tpl(id){var t=document.getElementById(id);return t?t.content.firstElementChild.cloneNode(true):null}
+  var V=JSON.parse(document.getElementById('bfp-variants').textContent||'{}'),P=JSON.parse(document.getElementById('bfp-prod').textContent||'{}');
+  function curId(){var inp=document.querySelector('form[action*="/cart/add"] [name="id"]');return inp?inp.value:null}
+  var EM=/[\u2600-\u27BF\u2B50\u2B55\uFE0F\u200D\uD83C-\uD83E\uDC00-\uDFFF]/g;
+  function place(){
+    var title=main('.product__block--title'),price=main('.product__block--price'),buy=main('.product__block--buy_buttons');
+    if(title&&!document.getElementById('bfp-best-x')){var b=tpl('bfp-best-tpl');if(b){b.id='bfp-best-x';title.insertAdjacentElement('afterbegin',b)}}
+    if(title&&!document.getElementById('bfp-stars-x')){var s=tpl('bfp-stars-tpl');if(s){s.id='bfp-stars-x';title.appendChild(s)}}
+    var anchor=price||title;
+    if(anchor&&!document.getElementById('bfp-x')){var n=tpl('bfp-tpl');if(n){n.id='bfp-x';anchor.insertAdjacentElement('afterend',n)}}
+    if(buy&&!document.getElementById('bfp-after-x')){var a=tpl('bfp-after-tpl');if(a){a.id='bfp-after-x';buy.insertAdjacentElement('afterend',a)}}
+    document.querySelectorAll('.bx-pc,.bx-acc').forEach(function(x){var h=x.previousElementSibling;if(h&&h.classList.contains('bx-h'))h.classList.add('bfp-off')});
+    var slot=document.getElementById('bfp-ship'),ship=document.querySelector('.bx-ship');if(slot&&ship&&ship.parentElement!==slot)slot.appendChild(ship);
+    document.querySelectorAll('.product__block--description details[open]').forEach(function(d){if(!d._bf){d._bf=1;d.removeAttribute('open')}});
+    var desc=main('.product__block--description');
+    if(desc&&!desc._bf){desc._bf=1;
+      desc.querySelectorAll('div[style*="linear-gradient"]').forEach(function(g){var p=g.parentElement;if(p&&p!==desc&&/margin:0 0 14px/.test(p.getAttribute('style')||'')){p.classList.add('bfp-hide');return}g.classList.add('bfp-hide');var n=g.nextElementSibling;while(n&&n.tagName==='DIV'&&n.getAttribute('style')&&!n.querySelector('h2,h3,p,ul,ol,details,table')){n.classList.add('bfp-hide');n=n.nextElementSibling}});
+      desc.querySelectorAll('h2,h3,h4,summary').forEach(function(h){var w=document.createTreeWalker(h,NodeFilter.SHOW_TEXT),t;while((t=w.nextNode())){var v=t.nodeValue.replace(EM,'');if(v!==t.nodeValue)t.nodeValue=v.replace(/\s{2,}/g,' ')}});
+      if(!desc.querySelector('details')&&desc.scrollHeight>430){desc.classList.add('bfp-clamp');var mb=document.createElement('button');mb.type='button';mb.className='bfp-more';mb.setAttribute('aria-expanded','false');mb.innerHTML='<span>Citește toată descrierea</span><i></i>';desc.insertAdjacentElement('afterend',mb);mb.addEventListener('click',function(){var o=desc.classList.toggle('bfp-clamp');mb.setAttribute('aria-expanded',o?'false':'true');mb.firstChild.textContent=o?'Citește toată descrierea':'Restrânge descrierea';if(o)desc.scrollIntoView({block:'nearest'})})}
+    }
+    document.querySelectorAll('.bx-ingr').forEach(function(x){if(x.closest('details'))return;var d=document.createElement('details');d.className='bfp-ingr';var sm=document.createElement('summary');var b=x.querySelector('b');sm.textContent=(b?b.textContent:'Ce conține').replace(EM,'').trim();if(b)b.remove();x.parentNode.insertBefore(d,x);d.appendChild(sm);d.appendChild(x)});
+    var es=document.getElementById('es-popup-button');if(es&&!es._bf){es._bf=1;es.style.setProperty('background','linear-gradient(135deg,#2f6bff 0%,#1d349a 100%)','important');es.style.setProperty('border-radius','999px','important');es.style.setProperty('box-shadow','0 10px 24px rgba(29,52,154,.38)','important')}
+  }
+  function upd(){var d=V[curId()],b=document.getElementById('bfp-x');if(!d||!b)return;
+    var pct=d.c>d.p?Math.round((d.c-d.p)*100/d.c):0;b.querySelector('[data-bfp-new]').textContent=money(d.p);
+    var o=b.querySelector('[data-bfp-old]'),p=b.querySelector('[data-bfp-pct]'),w=b.querySelector('[data-bfp-svw]'),s=b.querySelector('[data-bfp-sv]');
+    o.textContent=money(d.c);o.style.display=pct?'':'none';p.textContent='−'+pct+'%';p.style.display=pct?'':'none';s.textContent=money(d.c-d.p);w.style.display=pct?'':'none';
+    ups(d.p);}
+  function ups(price){var box=document.getElementById('bfp-up');if(!box||!window.BFU)return;
+    var list=BFU.pick([{vendor:P.vendor,title:P.title,handle:P.handle,price:price}],2);
+    if(!list.length){box.hidden=true;return}box.innerHTML=BFU.html(list,'Completează comanda','un click și e în coș');box.hidden=false;}
+  function cd(){var el=document.querySelector('[data-bfp-cd]');if(!el)return;var end=new Date(el.getAttribute('data-bfp-cd').replace(' ','T')+':00+02:00').getTime(),b=el.querySelector('b');if(isNaN(end))return;
+    function p2(n){return(n<10?'0':'')+n}function t(){var s=Math.floor((end-Date.now())/1000);if(s<=0){el.hidden=true;return}var d=Math.floor(s/86400);s%=86400;b.textContent=(d>0?d+'z ':'')+p2(Math.floor(s/3600))+'h '+p2(Math.floor(s%3600/60))+'m '+p2(s%60)+'s';el.hidden=false;setTimeout(t,1000)}t()}
+  function init(){place();ups({{ price }});upd();cd();setTimeout(function(){place();if(!document.querySelector('#bfp-up .bfu__it'))ups({{ price }});upd()},700);setTimeout(place,1800);setTimeout(place,4000);
+    document.addEventListener('change',function(e){if(e.target&&(e.target.name==='id'||e.target.closest('variant-picker,variant-radios,variant-selects,.product__block--variant_picker')))setTimeout(upd,80)});
+    new MutationObserver(function(){var id=curId();if(id&&id!==init._v){init._v=id;upd()}}).observe(document.body,{subtree:true,attributes:true,attributeFilter:['value']});}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+{% schema %}
+{"name":"BF – Produs BioLuna","settings":[
+{"type":"text","id":"label","label":"Etichetă cutie preț","default":"Preț de Black Friday"},
+{"type":"text","id":"deadline","label":"Final campanie (YYYY-MM-DD HH:MM)","default":"2026-12-01 00:00"},
+{"type":"text","id":"best","label":"Text badge bestseller","default":"Bestseller BioLuna"},
+{"type":"text","id":"t1a","label":"Încredere 1 – titlu","default":"Plata la curier"},{"type":"text","id":"t1b","label":"Încredere 1 – text","default":"ramburs sau card"},
+{"type":"text","id":"t2a","label":"Încredere 2 – titlu","default":"Livrare 1–2 zile"},{"type":"text","id":"t2b","label":"Încredere 2 – text","default":"curier rapid"},
+{"type":"text","id":"t3a","label":"Încredere 3 – titlu","default":"Retur 14 zile"},{"type":"text","id":"t3b","label":"Încredere 3 – text","default":"produse sigilate"}],
+"presets":[{"name":"BF – Produs BioLuna"}]}
+{% endschema %}

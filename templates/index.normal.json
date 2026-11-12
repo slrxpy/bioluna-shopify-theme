@@ -1,0 +1,1729 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_slider_mEJ9wy": {
+      "type": "image-with-text-slider",
+      "blocks": {
+        "image_slide_nhbi87": {
+          "type": "image-slide",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-1",
+            "desktop_content_position": "top-left",
+            "desktop_content_alignment": "left",
+            "mobile_content_alignment": "left",
+            "subheading": "Add a tagline",
+            "heading": "Image slide",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd2",
+            "text": "<p>Tell your brand's story through images</p>",
+            "text_size": "text-base",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": false
+          }
+        },
+        "image_slide_KNJLDn": {
+          "type": "image-slide",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/hf_20260528_145638_49f29a6b-2862-493c-b49d-46beb9e07c4a.webp",
+            "desktop_content_position": "middle-center",
+            "desktop_content_alignment": "left",
+            "mobile_content_alignment": "left",
+            "subheading": "Rezultate naturale",
+            "heading": "Detox. Metabolism. Siluetă.",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "#0b61cd",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "text": "<p>Ceaiuri și cafele turcești originale Ozlex, For X5<br/>      și 21 Days pentru detoxifiere și slăbire naturală.<br/>    </p>",
+            "text_size": "text-sm",
+            "button_label": "Descoperă Produsele",
+            "button_link": "shopify://collections/pachete-promo-slabit-ozlex-x5",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": true
+          }
+        },
+        "image_slide_ekVPMt": {
+          "type": "image-slide",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/hf_20260525_142457_095b625c-a18d-4fba-b423-d30aacaf4ea3_1.png",
+            "desktop_content_position": "middle-center",
+            "desktop_content_alignment": "left",
+            "mobile_content_alignment": "left",
+            "subheading": "Redefinește-ți stilul",
+            "heading": "<em>Hidratare. Strălucire. Volum. Protecție.</em>",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "#0b61cd",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>Produse REDIST pentru hidratare, reparare și îngrijire profesională a părului.</p>",
+            "text_size": "text-sm",
+            "button_label": "Descoperă gama",
+            "button_link": "shopify://collections/redist-professional",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": true
+          }
+        },
+        "image_slide_tra7Vd": {
+          "type": "image-slide",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/hf_20260603_092851_7ab18804-9358-4534-bb22-dc2962f3ae5e_1.jpg",
+            "desktop_content_position": "middle-center",
+            "desktop_content_alignment": "left",
+            "mobile_content_alignment": "left",
+            "subheading": "Themra Original Turcia",
+            "heading": "Noaptea asta poate sa <em> fie             memorabilă</em>",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "#0b61cd",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>O linguriță de magiun Themra cu 30 de minute înainte. Restul vine de la sine.</p>",
+            "text_size": "text-sm",
+            "button_label": "Încearcă Themra",
+            "button_link": "shopify://collections/themra-miere-magiun-afrodisiac-original-turcia",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": true
+          }
+        },
+        "image_slide_yDW4QE": {
+          "type": "image-slide",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/hf_20260527_140756_9ac5f4cb-77f1-46f1-94b2-38ce07d60d3b.webp",
+            "desktop_content_position": "middle-center",
+            "desktop_content_alignment": "left",
+            "mobile_content_alignment": "left",
+            "subheading": "Redefinește-ți stilul",
+            "heading": "Curăță mai mult.       Cheltuiești <em>mai puțin.</em>",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "#0b61cd",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "text": "<p>Șervețele Sleepy cu bicarbonat și oțet natural.8 arome. 100 bucăți. Antibacteriene. Pentru fiecare cameră din casă.</p>",
+            "text_size": "text-sm",
+            "button_label": "Vezi Gama Sleepy",
+            "button_link": "shopify://collections/servetele-umede-sleepy",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": true
+          }
+        }
+      },
+      "block_order": [
+        "image_slide_nhbi87",
+        "image_slide_KNJLDn",
+        "image_slide_ekVPMt",
+        "image_slide_tra7Vd",
+        "image_slide_yDW4QE"
+      ],
+      "name": "t:sections.image-with-text-slider.presets.name",
+      "settings": {
+        "container": "full",
+        "color_scheme": "",
+        "image_height": "adapt",
+        "image_width": 70,
+        "image_position": "right",
+        "show_controls": true,
+        "autoplay": false,
+        "autoplay_delay": 3,
+        "desktop_controls_position": "start",
+        "mobile_controls_position": "inherit",
+        "padding_top": 24,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_slider_6qbNfj": {
+      "type": "collection-list-slider",
+      "blocks": {
+        "featured_collection_wGAMmQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "toate-pachetele-promo",
+            "title": "🔥 Pachete Promo"
+          }
+        },
+        "featured_collection_P8YVyW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "themra-miere-magiun-afrodisiac-original-turcia",
+            "title": "Afrodisiace"
+          }
+        },
+        "featured_collection_L9N3Tg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sampoane-redist-professional",
+            "title": "Sampoane"
+          }
+        },
+        "featured_collection_gxdACj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "masti-tratamente-redist-professional",
+            "title": "Mǎşti"
+          }
+        },
+        "featured_collection_FJ3hKC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "balsame-bifazice-redist-leave-in",
+            "image": "shopify://shop_images/balsambifazicredist.png",
+            "title": "Balsam Bifazic"
+          }
+        },
+        "featured_collection_jQXtir": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "seruri-uleiuri-redist-professional",
+            "title": "Ulei & Ser"
+          }
+        },
+        "featured_collection_CdJHnR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ozlex-detox-slabit-complet",
+            "title": "Slăbit & Detox"
+          }
+        },
+        "featured_collection_4H9LzM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "servetele-umede-sleepy",
+            "title": "Servețele"
+          }
+        },
+        "featured_collection_N6GeyM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "odorizante-camera-alya",
+            "title": "Odorizante"
+          }
+        },
+        "featured_collection_iwaqHh": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "prezervative-durex",
+            "title": "Prezervative"
+          }
+        },
+        "featured_collection_QATaEM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "redone-professional",
+            "title": "Styling Păr"
+          }
+        },
+        "featured_collection_69V9U9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ingrijire-barbateasca-after-shave",
+            "title": "Îngrijire Bărbați"
+          }
+        },
+        "featured_collection_3HkxzR": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "soul-of-scents-body-mist",
+            "title": "Spray de corp"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_wGAMmQ",
+        "featured_collection_P8YVyW",
+        "featured_collection_L9N3Tg",
+        "featured_collection_gxdACj",
+        "featured_collection_FJ3hKC",
+        "featured_collection_jQXtir",
+        "featured_collection_CdJHnR",
+        "featured_collection_4H9LzM",
+        "featured_collection_N6GeyM",
+        "featured_collection_iwaqHh",
+        "featured_collection_QATaEM",
+        "featured_collection_69V9U9",
+        "featured_collection_3HkxzR"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "card_color_scheme": "",
+        "card_style": "standard",
+        "card_heading_size": "text-base",
+        "card_image_ratio": "1/1",
+        "card_image_width": "medium",
+        "card_image_padding": "none",
+        "rounded_card_image": true,
+        "mobile_layout": "vertical",
+        "carousel_item_size": "auto",
+        "columns_desktop": 6,
+        "carousel_control_color_scheme": "",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      },
+      "disabled": true
+    },
+    "featured_collection_aNiA3E": {
+      "type": "featured-collection",
+      "blocks": {
+        "collection_gYgEXK": {
+          "type": "collection",
+          "settings": {
+            "collection": "pachete-promo-slabit-ozlex-x5",
+            "title": "Ozlex",
+            "show_banner": true,
+            "color_scheme": "scheme-inverse",
+            "card_link": "shopify://collections/produse-de-slabit-detox-natural",
+            "banner_image": "shopify://shop_images/hf_20260531_233021_80083589-5505-4b24-9615-19c738b8a6ca_1.webp",
+            "image_overlay_opacity": 10,
+            "content_position": "split-top-subheading",
+            "content_alignment": "center",
+            "subheading": "<em>Promotii</em>",
+            "subheading_style": "border",
+            "heading": "",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Descopera produse",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "collection_7bbgL3": {
+          "type": "collection",
+          "settings": {
+            "collection": "for-x5-doctor-irfan-demir-ceai-cafea-detox",
+            "title": "X5",
+            "show_banner": true,
+            "color_scheme": "scheme-inverse",
+            "card_link": "shopify://collections/for-x5-doctor-irfan-demir-ceai-cafea-detox",
+            "banner_image": "shopify://shop_images/hf_20260612_224049_2e1e02c5-fbcf-43d6-8c30-825c4774fa6a.png",
+            "image_overlay_opacity": 20,
+            "content_position": "split-bottom-button",
+            "content_alignment": "left",
+            "subheading": "Turcia",
+            "subheading_style": "border",
+            "heading": "<em>X5</em>",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "#eaaf49",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Comanda acum",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "collection_dyjkXH": {
+          "type": "collection",
+          "settings": {
+            "collection": "21-days-coffee-cafea-functionala-slabit",
+            "title": "21 Days",
+            "show_banner": true,
+            "color_scheme": "scheme-inverse",
+            "card_link": "shopify://collections/21-days-coffee-cafea-functionala-slabit",
+            "banner_image": "shopify://shop_images/hf_20260531_233916_0ad5d97e-a378-4617-871e-79de9bd77956_1.webp",
+            "image_overlay_opacity": 10,
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "subheading": "",
+            "subheading_style": "border",
+            "heading": "<strong>21 Days</strong>",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "#ffffff",
+            "highlight_text_color": "#ffffff",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Comanda",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "collection_gYgEXK",
+        "collection_7bbgL3",
+        "collection_dyjkXH"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "limit": 7,
+        "columns": 5,
+        "column_gap": "medium",
+        "row_gap": "large",
+        "enable_slider": true,
+        "content_overflow": true,
+        "navigation_position": "bottom",
+        "pcard_image_ratio": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "featured_collection_eceKbj": {
+      "type": "featured-collection",
+      "blocks": {
+        "collection_HLqPm7": {
+          "type": "collection",
+          "settings": {
+            "collection": "sadoer-rozmarin",
+            "title": "Sadoer",
+            "show_banner": true,
+            "color_scheme": "scheme-inverse",
+            "card_link": "shopify://collections/sadoer-rozmarin",
+            "banner_image": "shopify://shop_images/hf_20260528_141200_e0593f32-2cec-4049-bf7d-12e69754b7db.webp",
+            "image_overlay_opacity": 10,
+            "content_position": "split-top-subheading",
+            "content_alignment": "center",
+            "subheading": "<em>NOU Sadoer Rozmarin</em>",
+            "subheading_style": "border",
+            "heading": "",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Descopera produse",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "collection_HLqPm7"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "limit": 7,
+        "columns": 5,
+        "column_gap": "medium",
+        "row_gap": "large",
+        "enable_slider": true,
+        "content_overflow": true,
+        "navigation_position": "bottom",
+        "pcard_image_ratio": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "featured_collection_HVHVW4": {
+      "type": "featured-collection",
+      "blocks": {
+        "collection_W78A3B": {
+          "type": "collection",
+          "settings": {
+            "collection": "themra-miere-magiun-afrodisiac-original-turcia",
+            "title": "GAMA Magiun Afrodisiac THEMRA",
+            "show_banner": true,
+            "color_scheme": "scheme-inverse",
+            "card_link": "shopify://collections/themra-miere-magiun-afrodisiac-original-turcia",
+            "banner_image": "shopify://shop_images/hf_20260531_215804_8c72bca3-6587-4080-a758-d0f34edac0d0.webp",
+            "image_overlay_opacity": 16,
+            "content_position": "split-top-subheading",
+            "content_alignment": "center",
+            "subheading": "<em>Promotii</em>",
+            "subheading_style": "border",
+            "heading": "",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Descopera produse",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "collection_3qWALK": {
+          "type": "collection",
+          "settings": {
+            "collection": "q7-premium-magiun-ciocolata-afrodisiaca-turcia",
+            "title": "GAMA Q7 Premium",
+            "show_banner": true,
+            "color_scheme": "scheme-inverse",
+            "card_link": "shopify://collections/q7-premium-magiun-ciocolata-afrodisiaca-turcia",
+            "banner_image": "shopify://shop_images/hf_20260531_220529_d8132656-83c9-41da-a5ea-f4d13ddf3a16.webp",
+            "image_overlay_opacity": 20,
+            "content_position": "split-bottom-button",
+            "content_alignment": "left",
+            "subheading": "Magiun",
+            "subheading_style": "border",
+            "heading": "<em>Q7</em>",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "#eaaf49",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Comanda acum",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "collection_AWAYPz": {
+          "type": "collection",
+          "settings": {
+            "collection": "afrodisiace-naturale-lotus-premium-turcia",
+            "title": "GAMA Lotus",
+            "show_banner": true,
+            "color_scheme": "scheme-inverse",
+            "card_link": "shopify://collections/afrodisiace-naturale-lotus-premium-turcia",
+            "banner_image": "shopify://shop_images/hf_20260531_231748_4f2db41b-374e-405a-a65b-89efd2a9df84.webp",
+            "image_overlay_opacity": 20,
+            "content_position": "split-bottom-button",
+            "content_alignment": "left",
+            "subheading": "Magiun",
+            "subheading_style": "border",
+            "heading": "<em>Lotus</em>",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "#eaaf49",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Descoperǎ",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "collection_VrhKwz": {
+          "type": "collection",
+          "settings": {
+            "collection": "vital-honey-miere-naturala-plante",
+            "title": "",
+            "show_banner": false,
+            "color_scheme": "scheme-1",
+            "card_link": "",
+            "image_overlay_opacity": 0,
+            "content_position": "top-left",
+            "content_alignment": "left",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Collections",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Button label",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "collection_W78A3B",
+        "collection_3qWALK",
+        "collection_AWAYPz",
+        "collection_VrhKwz"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "limit": 7,
+        "columns": 5,
+        "column_gap": "medium",
+        "row_gap": "large",
+        "enable_slider": true,
+        "content_overflow": true,
+        "navigation_position": "bottom",
+        "pcard_image_ratio": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "featured_collection_bdaamt": {
+      "type": "featured-collection",
+      "blocks": {
+        "collection_ydJPzX": {
+          "type": "collection",
+          "settings": {
+            "collection": "sampoane-redist-professional",
+            "title": "Noutăți",
+            "show_banner": false,
+            "color_scheme": "scheme-inverse",
+            "card_link": "",
+            "image_overlay_opacity": 20,
+            "content_position": "split-bottom-button",
+            "content_alignment": "left",
+            "subheading": "Promotion",
+            "subheading_style": "",
+            "heading": "Soft Stools Design",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Shop now",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "collection_E83rKg": {
+          "type": "collection",
+          "settings": {
+            "collection": "masti-tratamente-redist-professional",
+            "title": "Reduceri",
+            "show_banner": true,
+            "color_scheme": "scheme-inverse",
+            "card_link": "shopify://collections/masti-tratamente-redist-professional",
+            "banner_image": "shopify://shop_images/hf_20260525_145254_fee68111-365a-43d3-996e-340d8cda9359.jpg",
+            "image_overlay_opacity": 20,
+            "content_position": "split-bottom-button",
+            "content_alignment": "left",
+            "subheading": "Promotii",
+            "subheading_style": "",
+            "heading": "Masti Redist",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Comanda",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "collection_ydJPzX",
+        "collection_E83rKg"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Noutăți",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "<p>Produse profesionale pentru îngrijirea părului acum disponibile la prețuri mai mici decât oriunde în România.<br/><br/></p>",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "limit": 7,
+        "columns": 5,
+        "column_gap": "medium",
+        "row_gap": "large",
+        "enable_slider": true,
+        "content_overflow": true,
+        "navigation_position": "bottom",
+        "pcard_image_ratio": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "show_progress_bar": true,
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "bioluna_alya_promo": {
+      "type": "image-with-text",
+      "blocks": {
+        "sub_1": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Nou în BioLuna"
+          }
+        },
+        "heading_1": {
+          "type": "heading",
+          "settings": {
+            "heading": "37 de arome care transformă orice cameră",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2"
+          }
+        },
+        "text_1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Reed diffuser-uri premium Alya și Yumos cu bețișoare din ratan natural. Parfum continuu 4–10 săptămâni, fără flacără, fără electricitate — se amplasează și uiți de el. Florale, fructate, orientale și proaspete.</p><p>Alya 100ml · Yumos 120ml · Livrare rapidă</p>",
+            "subtext_color": true
+          }
+        },
+        "icon_1": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 24,
+            "color": "#000000",
+            "heading": "⏱ 4–10 săptămâni durată",
+            "heading_size": "body",
+            "text": "",
+            "vertical_alignment": "center"
+          }
+        },
+        "icon_2": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 24,
+            "color": "#000000",
+            "heading": "🕯️ Fără flacără sau electricitate",
+            "heading_size": "body",
+            "text": "",
+            "vertical_alignment": "center"
+          }
+        },
+        "icon_3": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 24,
+            "color": "#000000",
+            "heading": "🌸 37 arome premium disponibile",
+            "heading_size": "body",
+            "text": "",
+            "vertical_alignment": "center"
+          }
+        },
+        "btn_1": {
+          "type": "button",
+          "settings": {
+            "button_label": "Explorează toate aromele",
+            "button_link": "/pages/odorizante-camera-alya-yumos-reed-diffuser",
+            "button_style": "primary",
+            "button_icon": "arrow-right"
+          }
+        }
+      },
+      "block_order": [
+        "sub_1",
+        "heading_1",
+        "text_1",
+        "icon_1",
+        "icon_2",
+        "icon_3",
+        "btn_1"
+      ],
+      "settings": {
+        "container": "full-width",
+        "color_scheme": "scheme-1",
+        "image": "shopify://shop_images/hf_20260530_143413_0f23abd1-8c51-4d17-a227-278dbe437c95.png",
+        "image_position": "right",
+        "image_width": 50,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "custom_content_HPgFTK": {
+      "type": "custom-content",
+      "blocks": {
+        "image_card_with_product_3khACH": {
+          "type": "image_card_with_product",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image": "shopify://shop_images/hf_20260527_194155_8aa4adb5-c610-46ba-ae05-dd58a2e472d2.webp",
+            "image_ratio": "adapt",
+            "subheading": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "description": "",
+            "button_label": "Comandǎ",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "product": "pachet-promo-redist-usturoi-sampon-1000ml-masca-475ml",
+            "width": "25%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_with_product_qBJGcT": {
+          "type": "image_card_with_product",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image": "shopify://shop_images/pachet-balsam-bifazic-redist-5x400ml.png",
+            "image_ratio": "3/4",
+            "subheading": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "description": "",
+            "button_label": "Comanda",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "product": "pachet-promo-balsam-bifazic-redist-gama-completa-5x400ml",
+            "width": "25%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_with_product_G77z3R": {
+          "type": "image_card_with_product",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image": "shopify://shop_images/hf_20260528_144002_01e71c74-bbbe-49f5-916e-8174560ce234_1.webp",
+            "image_ratio": "3/4",
+            "subheading": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "description": "",
+            "button_label": "Comandǎ",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "product": "pachet-promo-ozlex-tea-cafea-detox-for-x5-original",
+            "width": "25%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_with_product_dMnGc4": {
+          "type": "image_card_with_product",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image": "shopify://shop_images/hf_20260527_195417_67544ff2-b433-4031-ac21-bfd2765c0a86.webp",
+            "image_ratio": "adapt",
+            "subheading": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "description": "",
+            "button_label": "Comandǎ",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "product": "pachet-3x-servetele-sleepy-sapun-de-plante-300buc-1",
+            "width": "25%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_card_with_product_3khACH",
+        "image_card_with_product_qBJGcT",
+        "image_card_with_product_G77z3R",
+        "image_card_with_product_dMnGc4"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "enable_sticky_column": false,
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h5",
+        "description": "",
+        "text_size": "text-base",
+        "column_gap": "2xs",
+        "row_gap": "large",
+        "swipe_on_mobile": true,
+        "columns_mobile": "1",
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "products_bundle_GgUBhR": {
+      "type": "products-bundle",
+      "blocks": {
+        "product_FVPKcw": {
+          "type": "product",
+          "settings": {
+            "product": "masca-redist-usturoi-475ml-tratament-intensiv-anticadere-reparare",
+            "color_scheme": "",
+            "horizontal_position": 56,
+            "vertical_position": 32,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 32
+          }
+        },
+        "product_YTikrz": {
+          "type": "product",
+          "settings": {
+            "product": "sampon-redist-anticadere-500ml-radacini-puternice-par-des",
+            "color_scheme": "",
+            "horizontal_position": 38,
+            "vertical_position": 75,
+            "horizontal_position_mobile": 38,
+            "vertical_position_mobile": 60
+          }
+        },
+        "product_LgW3Lg": {
+          "type": "product",
+          "settings": {
+            "product": "ulei-redist-overdose-miracle-40-plante-150ml-regenerator-anticadere",
+            "color_scheme": "",
+            "horizontal_position": 80,
+            "vertical_position": 45,
+            "horizontal_position_mobile": 65,
+            "vertical_position_mobile": 45
+          }
+        }
+      },
+      "block_order": [
+        "product_FVPKcw",
+        "product_YTikrz",
+        "product_LgW3Lg"
+      ],
+      "name": "t:sections.products-bundle.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "image": "shopify://shop_images/hf_20260528_065227_08bec049-bda3-4220-a9e1-cb267db2be29_1.webp",
+        "image_position": "right",
+        "image_ratio": "adapt",
+        "show_hotspot": true,
+        "subheading": "Construiește-ți Coșul Perfect",
+        "heading": "<em>Oferta saptamanii</em>",
+        "highlight_style": "hand_drawn_circle",
+        "highlight_font_style": "normal",
+        "highlight_style_color": "#24567d",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "columns": 3,
+        "column_gap": "2xs",
+        "pcard_image_ratio": "adapt",
+        "columns_mobile": "1",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "horizontal_products_list_4rTkHk": {
+      "type": "horizontal-products-list",
+      "name": "t:sections.horizontal-products-list.presets.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-1",
+        "collection": "pachete-promo-ozlex-ceai-cafea-detox",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "<em><strong>Produse reduse saptamana aceasta</strong></em>",
+        "highlight_style": "none",
+        "highlight_font_style": "normal",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-sm",
+        "button_label": "Vezi toate produsele",
+        "button_link": "shopify://collections/pachete-promo-slabit-ozlex-x5",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "max_height": 0,
+        "pcard_button_type": "icon",
+        "pcard_title_line_limit": "3-lines",
+        "limit": 9,
+        "columns": 3,
+        "column_gap": "2xs",
+        "row_gap": "extra-small",
+        "max_height_mobile": 0,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "brand_logos_rwJeAT": {
+      "type": "brand-logos",
+      "blocks": {
+        "logo_cVkPEP": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/ozlexlogo.png",
+            "image_link": "shopify://collections/pachete-promo-slabit-ozlex-x5"
+          }
+        },
+        "logo_QtCm3T": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/sleepylogo.png",
+            "image_link": "shopify://collections/servetele-umede-sleepy"
+          }
+        },
+        "logo_X3gKCx": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/redistlogo.png",
+            "image_link": "shopify://collections/redist-professional"
+          }
+        },
+        "logo_CGQxyQ": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Redone_Logo.png",
+            "image_link": "shopify://collections/redone-professional"
+          }
+        },
+        "logo_DNqRMe": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/sadoerlogo.png",
+            "image_link": "shopify://collections/sadoer-professional"
+          }
+        },
+        "logo_aqD6jy": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/themralogo.png",
+            "image_link": "shopify://collections/themra-miere-magiun-afrodisiac-original-turcia"
+          }
+        },
+        "logo_HFDCRt": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/q7logo.png",
+            "image_link": "shopify://collections/q7-premium-magiun-ciocolata-afrodisiaca-turcia"
+          }
+        },
+        "logo_dNXqt4": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/alyalogo.png",
+            "image_link": "shopify://collections/odorizante-camera-alya"
+          }
+        },
+        "logo_YdEHcL": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/yumoslogo.png",
+            "image_link": "shopify://collections/odorizante-camera-yumos"
+          }
+        },
+        "logo_g3d7Mj": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_84.png",
+            "image_link": "shopify://collections/for-x5-doctor-irfan-demir-ceai-cafea-detox"
+          }
+        }
+      },
+      "block_order": [
+        "logo_cVkPEP",
+        "logo_QtCm3T",
+        "logo_X3gKCx",
+        "logo_CGQxyQ",
+        "logo_DNqRMe",
+        "logo_aqD6jy",
+        "logo_HFDCRt",
+        "logo_dNXqt4",
+        "logo_YdEHcL",
+        "logo_g3d7Mj"
+      ],
+      "name": "t:sections.brand-logos.presets",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "<em><strong>Branduri atent selectionate</strong></em>",
+        "highlight_style": "hand_drawn_circle",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "#2a95f9",
+        "highlight_text_color": "#000000",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-sm",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "image_padding": "none",
+        "image_width": "large",
+        "columns_desktop": 5,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "grid_bordered": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "buttons_with_icon_7zH9F3": {
+      "type": "buttons-with-icon",
+      "blocks": {
+        "button_item_A8ctbq": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Transport Gratuit",
+            "button_link": "",
+            "icon": "truck"
+          }
+        },
+        "button_item_gp6wzj": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Produse Calitative",
+            "button_link": "",
+            "icon": "smiley"
+          }
+        },
+        "button_item_KjqtJi": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Retur in 30 de zile",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_Q3cegW": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Plata Securizată",
+            "button_link": "",
+            "icon": "lightning"
+          }
+        },
+        "button_item_pqRX7H": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Suport Online",
+            "button_link": "",
+            "icon": "phone"
+          }
+        }
+      },
+      "block_order": [
+        "button_item_A8ctbq",
+        "button_item_gp6wzj",
+        "button_item_KjqtJi",
+        "button_item_Q3cegW",
+        "button_item_pqRX7H"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "<strong>Tot ce ai nevoie pentru tine și casa ta,</strong> <em>într-un singur loc.</em>",
+        "highlight_style": "wave_underline",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "#2a95f9",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "item_alignment": "center",
+        "item_button_style": "btn--icon",
+        "item_button_font": "button",
+        "enable_slider": true,
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "featured_blog_4narCt": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Blog",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "blog": "noutați",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "row_gap": "large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "card_title_size": "h4",
+        "show_tags": true,
+        "show_excerpt": false,
+        "show_date": true,
+        "show_author": true,
+        "show_button": false,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "1781374942e3e2635f": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_cards_carousel_QdgCYG": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": false,
+            "reviews_selection": "all",
+            "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "all",
+            "show_review_media": false,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Ce spun clienții",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        },
+        "judge_me_reviews_preview_badge_dzjAwg": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_cards_carousel_QdgCYG",
+        "judge_me_reviews_preview_badge_dzjAwg"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "bio_categories": {
+      "type": "bio-categories",
+      "blocks": {
+        "cat_0": {
+          "type": "cat",
+          "settings": {
+            "collection": "toate-pachetele-promo",
+            "label": "🎁 Pachete Promo",
+            "sub": "Seturi la preț de set"
+          }
+        },
+        "cat_1": {
+          "type": "cat",
+          "settings": {
+            "collection": "redist-professional",
+            "label": "Îngrijire Păr Redist",
+            "sub": "Șampoane, măști, balsamuri"
+          }
+        },
+        "cat_2": {
+          "type": "cat",
+          "settings": {
+            "collection": "sadoer-professional",
+            "label": "Sadoer Rozmarin",
+            "sub": "Trendul momentului"
+          }
+        },
+        "cat_3": {
+          "type": "cat",
+          "settings": {
+            "collection": "dr-okay",
+            "label": "Dr. Okay Skincare",
+            "sub": "Ten, bronz, protecție"
+          }
+        },
+        "cat_4": {
+          "type": "cat",
+          "settings": {
+            "collection": "ozlex-detox-slabit-complet",
+            "label": "Ozlex Ceai & Cafea",
+            "sub": "Ritualul zilnic din Turcia"
+          }
+        },
+        "cat_5": {
+          "type": "cat",
+          "settings": {
+            "collection": "magiun-afrodisiac-toate-produsele",
+            "label": "Magiun Tradițional",
+            "sub": "Themra, Q7, Lotus"
+          }
+        },
+        "cat_6": {
+          "type": "cat",
+          "settings": {
+            "collection": "odorizante-camera-alya",
+            "label": "Odorizante Cameră",
+            "sub": "Alya, Yumos, 1001 Nopți"
+          }
+        },
+        "cat_7": {
+          "type": "cat",
+          "settings": {
+            "collection": "wax-styling-par",
+            "label": "Styling Bărbați",
+            "sub": "Wax & colonie Redone"
+          }
+        }
+      },
+      "block_order": [
+        "cat_0",
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4",
+        "cat_5",
+        "cat_6",
+        "cat_7"
+      ],
+      "settings": {
+        "heading": "Cumpără pe categorii",
+        "kicker": "Alege ce ai nevoie – produse originale, livrare rapidă în toată România"
+      }
+    },
+    "bio_pachete": {
+      "type": "bio-home-row",
+      "settings": {
+        "collection": "toate-pachetele-promo",
+        "kicker": "CELE MAI VÂNDUTE PACHETE",
+        "heading": "Iei setul, plătești mai puțin.",
+        "sub": "Pachete gândite să lucreze împreună — mai ieftine decât produsele luate separat",
+        "pinned": "pachet-promo-redist-usturoi-sampon-1000ml-masca-475ml,pachet-5-plicuri-magiun-afrodisiac-themra-15g,pachet-promo-ozlex-clasic-ceai-60-cafea-30-plicuri,pachet-promo-ozlex-ceai-detox-2x-60-plicuri-cura-2-luni,pachet-promo-redist-usturoi-3-sampoane-1000ml-masca-500ml,pachet-promo-ozlex-ceai-detox-3x-60-plicuri-cura-3-luni,pachet-sadoer-rozmarin-sampon-balsam-pentru-volum,set-redist-par-si-corp-sampon-usturoi-1000ml-masca-475ml-lotiune-cadou,pachet-complet-redist-usturoi-sampon-masca-balsam-ser-argan,pachet-afrodisiac-magiun-themra-q7-gold-putere-placere",
+        "limit": 10
+      }
+    },
+    "bio_game": {
+      "type": "bio-categories",
+      "settings": {
+        "heading": "Cumpără pe game",
+        "kicker": "Fiecare gamă rezolvă o nevoie — alege-o pe a ta"
+      },
+      "blocks": {
+        "g0": {
+          "type": "cat",
+          "settings": {
+            "collection": "pachete-promo-redist-professional",
+            "label": "Redist Usturoi",
+            "sub": "Păr slăbit, cădere"
+          }
+        },
+        "g1": {
+          "type": "cat",
+          "settings": {
+            "collection": "sadoer-rozmarin",
+            "label": "Sadoer Rozmarin",
+            "sub": "Volum & fortifiere"
+          }
+        },
+        "g2": {
+          "type": "cat",
+          "settings": {
+            "collection": "sadoer-batana",
+            "label": "Sadoer Batana",
+            "sub": "Hrănire intensă"
+          }
+        },
+        "g3": {
+          "type": "cat",
+          "settings": {
+            "collection": "balsame-bifazice-redist-leave-in",
+            "label": "Balsamuri Leave-In",
+            "sub": "Descâlcire în 10 sec"
+          }
+        },
+        "g4": {
+          "type": "cat",
+          "settings": {
+            "collection": "ozlex-detox-slabit-complet",
+            "label": "Ozlex",
+            "sub": "Ceai & cafea din Turcia"
+          }
+        },
+        "g5": {
+          "type": "cat",
+          "settings": {
+            "collection": "dr-okay-ingrijirea-pielii",
+            "label": "Dr. Okay Ten",
+            "sub": "Vitamina C, SPF, colagen"
+          }
+        },
+        "g6": {
+          "type": "cat",
+          "settings": {
+            "collection": "themra-miere-magiun-afrodisiac-original-turcia",
+            "label": "Themra",
+            "sub": "Magiun tradițional"
+          }
+        },
+        "g7": {
+          "type": "cat",
+          "settings": {
+            "collection": "odorizante-camera-alya",
+            "label": "Alya",
+            "sub": "Parfum de cameră"
+          }
+        }
+      },
+      "block_order": [
+        "g0",
+        "g1",
+        "g2",
+        "g3",
+        "g4",
+        "g5",
+        "g6",
+        "g7"
+      ]
+    },
+    "bio_best": {
+      "type": "bio-home-row",
+      "settings": {
+        "collection": "all",
+        "kicker": "BESTSELLERI",
+        "heading": "Cele mai vândute",
+        "sub": "Ce comandă cel mai des clienții noștri",
+        "pinned": "ceai-slabit-ozlex-detox-60-plicuri-original-turcia,miere-afrodisiaca-themra-plante-240g-borcan-original-turcia,pachet-promo-redist-usturoi-sampon-1000ml-masca-475ml,pachet-sadoer-rozmarin-sampon-balsam-pentru-volum,cafea-slabit-detox-ozlex-30-plicuri-original-turcia",
+        "limit": 10
+      }
+    },
+    "bio_guide": {
+      "type": "bio-home-guide",
+      "settings": {
+        "heading": "Nu știi de unde să începi?",
+        "sub": "Alege ce te descrie și îți arătăm exact produsele potrivite"
+      },
+      "blocks": {
+        "b0": {
+          "type": "btn",
+          "settings": {
+            "label": "💇‍♀️ Îmi cade părul",
+            "collection": "pachete-promo-redist-professional"
+          }
+        },
+        "b1": {
+          "type": "btn",
+          "settings": {
+            "label": "🌿 Vreau volum",
+            "collection": "sadoer-rozmarin"
+          }
+        },
+        "b2": {
+          "type": "btn",
+          "settings": {
+            "label": "🎨 Am părul vopsit",
+            "collection": "balsame-bifazice-redist-leave-in"
+          }
+        },
+        "b3": {
+          "type": "btn",
+          "settings": {
+            "label": "☕ Vreau un ritual zilnic",
+            "collection": "ozlex-detox-slabit-complet"
+          }
+        },
+        "b4": {
+          "type": "btn",
+          "settings": {
+            "label": "✨ Ten luminos",
+            "collection": "dr-okay-ingrijirea-pielii"
+          }
+        },
+        "b5": {
+          "type": "btn",
+          "settings": {
+            "label": "☀️ Bronz rapid",
+            "collection": "dr-okay"
+          }
+        },
+        "b6": {
+          "type": "btn",
+          "settings": {
+            "label": "🏠 Casa să miroasă bine",
+            "collection": "odorizante-camera-alya"
+          }
+        },
+        "b7": {
+          "type": "btn",
+          "settings": {
+            "label": "🎁 Caut un cadou",
+            "collection": "toate-pachetele-promo"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7"
+      ]
+    },
+    "bio_why": {
+      "type": "bio-home-why",
+      "settings": {
+        "heading": "De ce BioLuna"
+      },
+      "blocks": {
+        "w0": {
+          "type": "c",
+          "settings": {
+            "icon": "🇹🇷",
+            "title": "Import direct, produse originale",
+            "text": "Cutii sigilate, cu hologramă acolo unde există. Factură pe fiecare comandă."
+          }
+        },
+        "w1": {
+          "type": "c",
+          "settings": {
+            "icon": "💳",
+            "title": "Plătești la curier",
+            "text": "Ramburs, când primești coletul. Sau cu cardul, dacă preferi."
+          }
+        },
+        "w2": {
+          "type": "c",
+          "settings": {
+            "icon": "🚚",
+            "title": "Expediem azi până la 17:00",
+            "text": "Livrare în 1–2 zile lucrătoare, în toată România. Gratuit peste 250 lei."
+          }
+        },
+        "w3": {
+          "type": "c",
+          "settings": {
+            "icon": "💬",
+            "title": "Răspundem pe WhatsApp",
+            "text": "Întrebări despre produse, ingrediente sau comandă — răspuns rapid, de la oameni."
+          }
+        }
+      },
+      "block_order": [
+        "w0",
+        "w1",
+        "w2",
+        "w3"
+      ]
+    },
+    "bio_seo": {
+      "type": "bio-home-seo",
+      "settings": {
+        "content": "<h2>Cosmetice profesionale și produse originale din Turcia, livrate rapid în toată România</h2>\n<p>BioLuna.ro aduce în România produse pe care le găseai până acum doar în saloane sau în bazarurile din Istanbul: <a href=\"/collections/redist-professional\">cosmetice profesionale Redist</a> pentru păr, <a href=\"/collections/sadoer-rozmarin\">gama Sadoer cu rozmarin</a>, <a href=\"/collections/dr-okay\">skincare Dr. Okay</a>, <a href=\"/collections/ozlex-detox-slabit-complet\">ceaiul și cafeaua Ozlex</a>, <a href=\"/collections/magiun-afrodisiac-toate-produsele\">magiunul tradițional Themra și Q7</a> și <a href=\"/collections/odorizante-camera-alya\">parfumurile de cameră Alya</a>. Toate sigilate, cu factură, plătite la curier când primești coletul.</p>\n<h3>Îngrijire păr la nivel de salon, acasă</h3>\n<p>Dacă părul cade, se rupe sau nu mai are volum, începe cu <a href=\"/collections/pachete-promo-redist-professional\">pachetele Redist cu usturoi</a> — șampon și mască folosite de coafori, fără miros după clătire. Pentru păr vopsit ai <a href=\"/collections/balsame-bifazice-redist-leave-in\">balsamurile bifazice leave-in</a> și gama cu keratină; pentru volum și scalp revigorat, <a href=\"/collections/sadoer-rozmarin\">Sadoer Rozmarin</a>, trendul momentului în îngrijirea părului; pentru păr uscat și deteriorat, <a href=\"/collections/sadoer-batana\">uleiul de batana</a>. Fiecare produs are pe pagină ingredientele, modul de utilizare și cui i se potrivește — ca să alegi în cunoștință de cauză.</p>\n<h3>Ritualuri zilnice din Turcia</h3>\n<p><a href=\"/collections/ozlex-detox-slabit-complet\">Ceaiul Ozlex</a> cu fructe de pădure și cafeaua instant Ozlex au devenit un ritual pentru mii de clienți: un plic pe zi, o cutie pentru două luni, gust care se ține. Alături, <a href=\"/collections/themra-miere-magiun-afrodisiac-original-turcia\">magiunul Themra</a> — miere, ginseng și plante după rețeta tradițională — și <a href=\"/collections/odorizante-camera-alya\">odorizantele Alya și Yumos</a> care umplu camera în câteva minute și țin săptămâni.</p>\n<h3>Pachete promo — mai ieftin decât produsele luate separat</h3>\n<p>Am construit <a href=\"/collections/toate-pachetele-promo\">peste 100 de pachete promo</a> în care produsele se completează: șampon + mască, ceai + cafea, rutina completă de ten. Prețul de referință afișat este suma reală a componentelor, iar reducerea o vezi exact, în lei. Livrăm în 1–2 zile lucrătoare, gratuit peste 250 lei, iar la orice întrebare răspundem pe WhatsApp — de la oameni, nu de la roboți.</p>"
+      }
+    }
+  },
+  "order": [
+    "image_with_text_slider_mEJ9wy",
+    "bio_categories",
+    "bio_pachete",
+    "bio_game",
+    "bio_best",
+    "bio_guide",
+    "collection_list_slider_6qbNfj",
+    "featured_collection_aNiA3E",
+    "featured_collection_eceKbj",
+    "featured_collection_HVHVW4",
+    "featured_collection_bdaamt",
+    "bioluna_alya_promo",
+    "custom_content_HPgFTK",
+    "products_bundle_GgUBhR",
+    "horizontal_products_list_4rTkHk",
+    "brand_logos_rwJeAT",
+    "buttons_with_icon_7zH9F3",
+    "bio_why",
+    "featured_blog_4narCt",
+    "1781374942e3e2635f",
+    "bio_seo"
+  ]
+}

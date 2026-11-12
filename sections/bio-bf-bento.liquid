@@ -1,0 +1,79 @@
+{%- comment -%} BioLuna BF – „Reduceri pe categorii” v7 (poze drepte, fără rotiri): grilă cu pătrate de mărimi diferite, procent mare, culoare pe brand. {%- endcomment -%}
+{%- assign st = section.settings -%}
+<style>
+.blf .bb-g{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.blf .bb{position:relative;overflow:hidden;display:flex;border-radius:22px;background:linear-gradient(145deg,#fff 0%,var(--tint) 100%);border:1px solid rgba(0,0,0,.06);padding:22px;min-height:236px;grid-column:span 2;transition:transform .2s,box-shadow .2s}
+.blf .bb:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.09)}
+.blf .bb--big{grid-column:span 2;min-height:330px;padding:24px}
+.blf .bb--half,.blf .bb--halfw{grid-column:span 3}
+.blf .bb--wide{grid-column:1/-1;min-height:170px}
+.blf .bb__t{position:relative;z-index:2;display:flex;flex-direction:column;max-width:56%}
+.blf .bb__off small{display:block;font-size:11.5px;font-weight:700;color:#444;margin-bottom:2px}
+.blf .bb__off b{display:block;font-family:var(--bf-hf);font-weight:800;font-size:56px;line-height:.86;color:var(--bf-red2);letter-spacing:-.01em}
+.blf .bb--big .bb__off b{font-size:76px}
+.blf .bb--big .bb__t{max-width:62%}
+.blf .bb h3{font-family:var(--bf-hf) !important;font-weight:800 !important;font-size:28px;line-height:1;text-transform:uppercase;margin:auto 0 4px;padding-top:14px;color:#111}
+.blf .bb--big h3{font-size:32px}
+.blf .bb p{font-size:13.5px;color:#555;margin:0;line-height:1.35}
+.blf .bb__imgs{position:absolute;right:20px;top:58px;bottom:20px;width:46%;z-index:1;display:flex;align-items:flex-end;justify-content:flex-end;gap:8px}
+.blf .bb__imgs img{position:static;flex:0 1 auto;min-width:0;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 12px 16px rgba(0,0,0,.18));transition:transform .3s}
+.blf .bb__imgs{gap:0}.blf .bb__imgs.n2 img{max-width:60%}.blf .bb__imgs.n2 img+img{margin-left:-12%}.blf .bb__imgs.n3 img{max-width:40%}.blf .bb__imgs.n3 img+img{margin-left:-8%}
+.blf .bb:hover .bb__imgs img{transform:translateY(-4px)}
+.blf .bb--big .bb__imgs{top:64px;bottom:24px;right:24px;width:48%}
+.blf .bb__go{position:absolute;right:14px;top:14px;z-index:3;width:38px;height:38px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;transition:background .2s}
+.blf .bb:hover .bb__go{background:var(--bf-blue)}
+.blf .bb--wide .bb__imgs{width:44%;top:18px;right:70px}.blf .bb--half .bb__imgs,.blf .bb--halfw .bb__imgs{width:48%}
+@media(max-width:1023px){.blf .bb-g{grid-template-columns:repeat(2,1fr);gap:10px}.blf .bb{grid-column:span 1}.blf .bb--half{grid-column:span 1}.blf .bb--big,.blf .bb--wide,.blf .bb--halfw{grid-column:1/-1}}
+@media(max-width:719px){
+  .blf .bb{padding:14px;min-height:226px;border-radius:18px;flex-direction:column}
+  .blf .bb--big{min-height:200px;padding:18px;flex-direction:row}.blf .bb--wide,.blf .bb--halfw{min-height:150px;padding:18px;flex-direction:row}
+  .blf .bb__t{max-width:100%}.blf .bb--big .bb__t,.blf .bb--wide .bb__t,.blf .bb--halfw .bb__t{max-width:54%}
+  .blf .bb__off b{font-size:44px}.blf .bb--big .bb__off b{font-size:64px}
+  .blf .bb h3{font-size:21px;margin:8px 0 2px;padding:0}.blf .bb--big h3{font-size:28px;margin-top:auto}.blf .bb--wide h3,.blf .bb--halfw h3{margin-top:auto;font-size:24px}
+  .blf .bb p{font-size:12px}
+  .blf .bb__imgs{top:auto;bottom:10px;right:12px;left:12px;width:auto;height:92px;justify-content:center}
+  .blf .bb--big .bb__imgs,.blf .bb--wide .bb__imgs,.blf .bb--halfw .bb__imgs{left:auto;right:14px;width:46%;top:50px;bottom:14px;height:auto;justify-content:flex-end}
+  .blf .bb--wide .bb__imgs{top:14px;width:44%}.blf .bb--wide h3{font-size:21px}.blf .bb--wide .bb__t{max-width:52%}
+  .blf .bb__go{display:none}.blf .bb--big .bb__go,.blf .bb--halfw .bb__go{display:flex;width:32px;height:32px;right:12px;top:12px;font-size:15px}
+  .blf .bb--mid p,.blf .bb--half p{padding-bottom:98px}
+}
+</style>
+<section class="blf">
+  <div class="bf-wrap bf-sec">
+    <header class="bf-sec__h"><div>{%- if st.kicker != blank -%}<div class="bf-k">{{ st.kicker }}</div>{%- endif -%}<h2 class="bf-h">{{ st.title }}</h2></div></header>
+    <div class="bb-g">
+    {%- for b in section.blocks -%}{%- assign bs = b.settings -%}{%- assign col = bs.collection -%}
+      {%- assign href = bs.url -%}{%- if col != blank -%}{%- assign href = col.url -%}{%- endif -%}
+      {%- assign pct = bs.pct -%}
+      {%- if pct == blank and col != blank -%}{%- assign mx = 0 -%}
+        {%- for p in col.products limit: 50 -%}{%- if p.compare_at_price > p.price -%}{%- assign d = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round -%}{%- if d > mx -%}{%- assign mx = d -%}{%- endif -%}{%- endif -%}{%- endfor -%}
+        {%- if mx > 0 -%}{%- assign pct = mx -%}{%- endif -%}
+      {%- endif -%}
+      {%- assign n = 0 -%}{%- if bs.p1 != blank -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- if bs.p2 != blank -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- if bs.p3 != blank -%}{%- assign n = n | plus: 1 -%}{%- endif -%}
+      <a class="bb bb--{{ bs.size }}" style="--tint:{{ bs.tint | default: '#EEF2F8' }}" href="{{ href }}" {{ b.shopify_attributes }}>
+        <div class="bb__t">
+          {%- if pct != blank -%}<div class="bb__off"><small>până la</small><b>−{{ pct }}%</b></div>{%- endif -%}
+          <h3>{{ bs.label }}</h3>{%- if bs.desc != blank -%}<p>{{ bs.desc }}</p>{%- endif -%}
+        </div>
+        <div class="bb__imgs n{{ n }}">
+          {%- if bs.p1 != blank -%}{%- render 'bio-bfx-img', p: bs.p1, w: 500, cls: '' -%}{%- endif -%}
+          {%- if bs.p2 != blank -%}{%- render 'bio-bfx-img', p: bs.p2, w: 500, cls: '' -%}{%- endif -%}
+          {%- if bs.p3 != blank -%}{%- render 'bio-bfx-img', p: bs.p3, w: 500, cls: '' -%}{%- endif -%}
+        </div>
+        <span class="bb__go" aria-hidden="true">→</span>
+      </a>
+    {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{"name":"BF – Categorii (grilă)","settings":[{"type":"text","id":"kicker","label":"Text mic","default":"Alege categoria"},{"type":"text","id":"title","label":"Titlu (<em> = roșu)","default":"Reduceri pe <em>categorii</em>"}],
+"blocks":[{"type":"tile","name":"Categorie","settings":[
+{"type":"text","id":"label","label":"Nume","default":"Redist"},{"type":"text","id":"desc","label":"Descriere"},
+{"type":"select","id":"size","label":"Mărime","options":[{"value":"big","label":"Mare"},{"value":"mid","label":"Mică"},{"value":"half","label":"Jumătate de rând"},{"value":"halfw","label":"Jumătate de rând (lată pe mobil)"},{"value":"wide","label":"Pe tot rândul"}],"default":"mid"},
+{"type":"collection","id":"collection","label":"Colecție"},{"type":"url","id":"url","label":"Sau link"},
+{"type":"text","id":"pct","label":"Procent (doar cifra; gol = calculat din colecție)"},
+{"type":"color","id":"tint","label":"Culoare","default":"#EAF1FF"},
+{"type":"product","id":"p1","label":"Produs 1 (poză)"},{"type":"product","id":"p2","label":"Produs 2 (poză)"},{"type":"product","id":"p3","label":"Produs 3 (poză)"}]}],
+"max_blocks":12,"presets":[{"name":"BF – Categorii (grilă)"}]}
+{% endschema %}

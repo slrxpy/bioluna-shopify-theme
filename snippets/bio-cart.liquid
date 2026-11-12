@@ -1,0 +1,77 @@
+{%- comment -%} BioLuna: drawer cos v2 {%- endcomment -%}
+<style>
+#CartDrawer .cart-drawer__message{display:none !important}
+#CartDrawer .drawer__inner{background:#fbf8f9}
+.bc{padding:10px 14px 2px}
+.bc-ship{background:#fff;border:1px solid #f0e6e9;border-radius:14px;padding:10px 12px;margin:0 0 8px}
+.bc-ship .t{font-size:13px;font-weight:700;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.bc-ship .t b{color:#d10a1e}.bc-ship.ok .t b{color:#1d9d55}
+.bc-bar{height:7px;background:#f0e6e9;border-radius:999px;margin:7px 0 4px;overflow:hidden}
+.bc-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#ff3b3b,#ff8c00,#3b6cff,#ff3b3b);background-size:300% 100%;animation:bc-flow 3s linear infinite;transition:width .5s}
+.bc-ship.ok .bc-bar i{background:linear-gradient(90deg,#1d9d55,#34c46f)}
+@keyframes bc-flow{to{background-position:300% 0}}
+.bc-ship .e{font-size:11.5px;color:#7a6a6e}
+.bc-save{background:#eefaf2;border:1px solid #cdeedb;color:#16703d;border-radius:10px;padding:6px 10px;margin:0 0 8px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;line-height:1.3}
+.bc-save b{font-weight:800}.bc-save i{font-style:normal;font-weight:800;background:#1d9d55;color:#fff;border-radius:999px;padding:1px 7px;font-size:11px;white-space:nowrap}
+.bc-stk{position:absolute;top:-5px;left:-5px;z-index:2;background:linear-gradient(135deg,#ff2a2a,#c40016);color:#fff;border-radius:999px;padding:2px 7px;font-size:10.5px;font-weight:800;transform:rotate(-6deg)}
+.bc-up{padding:4px 14px 12px}.bc-up b.h{display:block;font-size:12.5px;margin:0 0 8px;color:#7a6a6e;letter-spacing:.8px;text-transform:uppercase}
+.bc-up-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory}
+.bc-up-it{flex:0 0 124px;scroll-snap-align:start;border:1px solid #f0e6e9;border-radius:12px;padding:7px;background:#fff;font-size:11px;line-height:1.3}
+.bc-up-it img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;display:block;margin-bottom:5px}
+.bc-up-it .p{color:#d10a1e;font-weight:800;margin:3px 0}
+.bc-up-it button{width:100%;border:0;background:#1f1f1f;color:#fff;border-radius:999px;padding:6px 0;font-weight:700;font-size:11px;cursor:pointer}
+.bc-up-it button.on{background:#1d9d55}
+.bc-note{padding:0 14px 8px}.bc-note details{background:#fff;border:1px solid #f0e6e9;border-radius:12px;padding:0 12px}
+.bc-note summary{cursor:pointer;font-size:12.5px;font-weight:700;padding:10px 0;list-style:none;display:flex;justify-content:space-between}.bc-note summary::-webkit-details-marker{display:none}.bc-note summary:after{content:"+";color:#d10a1e}
+.bc-note details[open] summary:after{content:"–"}
+.bc-note .f{display:flex;gap:6px;padding:0 0 10px}.bc-note input,.bc-note textarea{flex:1;border:1px solid #e8dde1;border-radius:10px;padding:9px 11px;font-size:13px;font-family:inherit}.bc-note button{border:0;background:#1f1f1f;color:#fff;border-radius:10px;padding:0 12px;font-weight:700;cursor:pointer}
+#CartDrawer .drawer__footer button[name="checkout"],#CartDrawer .cart__checkout-button,#CartDrawer a[href="/checkout"],#CartDrawer button[type="submit"],#CartDrawer .drawer__footer button[name="checkout"]:hover,#CartDrawer .cart__checkout-button:hover,#CartDrawer a[href="/checkout"]:hover,#CartDrawer button[type="submit"]:hover{background-color:#ff3b3b !important;-webkit-appearance:none;appearance:none;opacity:1 !important;background:linear-gradient(90deg,#ff3b3b,#ff8c00,#3b6cff,#ff3b3b) !important;background-size:300% 100% !important;animation:bc-flow 4s linear infinite;color:#fff !important;border:0 !important;border-radius:999px !important;font-weight:800 !important;letter-spacing:.2px}
+@media(max-width:640px){.bc{padding:8px 12px 0}.bc-ship{padding:8px 10px}.bc-ship .e{display:none}.bc-up-it{flex-basis:108px}.bc-up{padding:2px 12px 8px}}
+</style>
+<script>
+(function(){
+  var TH={{ settings.bio_free_ship | default: 300 }}*100, CACHE={}, busy=false;
+  function money(c){return (c/100).toFixed(2).replace('.',',')+' lei';}
+  function eta(){var n=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Bucharest'}));var s=new Date(n);if(!(n.getDay()>=1&&n.getDay()<=5&&n.getHours()<17))s.setDate(s.getDate()+1);while(s.getDay()==0||s.getDay()==6)s.setDate(s.getDate()+1);var a=new Date(s);a.setDate(a.getDate()+1);while(a.getDay()==0||a.getDay()==6)a.setDate(a.getDate()+1);var b=new Date(a);b.setDate(b.getDate()+1);while(b.getDay()==0||b.getDay()==6)b.setDate(b.getDate()+1);var f=function(x){return x.toLocaleDateString('ro-RO',{weekday:'short',day:'numeric',month:'short'})};return f(a)+' – '+f(b);}
+  function d(){return document.getElementById('CartDrawer');}
+  function clean(dr){dr.querySelectorAll('.bc,.bc-up,.bc-note,.bc-stk').forEach(function(x){x.remove();});}
+  function render(cart){
+    var dr=d(); if(!dr) return; var hdr=dr.querySelector('.drawer__header'); if(!hdr) return;
+    clean(dr); if(!cart.items.length) return;
+    var tot=cart.items_subtotal_price, left=TH-tot, pct=Math.min(100,Math.round(tot/TH*100));
+    var box=document.createElement('div'); box.className='bc';
+    box.innerHTML='<div class="bc-ship'+(left<=0?' ok':'')+'"><div class="t"><span>🚚 '+(left<=0?'<b>Transport gratuit deblocat 🎉</b>':'Mai adaugă <b>'+money(left)+'</b> pentru transport gratuit')+'</span><span>'+pct+'%</span></div><div class="bc-bar"><i style="width:'+pct+'%"></i></div><div class="e">Ajunge '+eta()+' · plată la curier sau card</div></div>';
+    hdr.insertAdjacentElement('afterend',box);
+    var hs=[]; cart.items.forEach(function(it){ if(hs.indexOf(it.handle)<0) hs.push(it.handle); });
+    Promise.all(hs.map(function(h){ return CACHE['p:'+h]||(CACHE['p:'+h]=fetch('/products/'+h+'.js').then(function(r){return r.ok?r.json():null}).catch(function(){return null;})); })).then(function(ps){
+      var cmp={}; ps.forEach(function(p){ if(p) p.variants.forEach(function(v){ cmp[v.id]=v.compare_at_price||0; }); });
+      var full=0; cart.items.forEach(function(it){ var c=cmp[it.variant_id]||0; full+=Math.max(c,it.final_price)*it.quantity; if(c>it.final_price) stick(dr,it.handle,Math.round((c-it.final_price)*100/c)); });
+      var save=full-tot; if(save>50){ var s=document.createElement('div'); s.className='bc-save'; s.innerHTML='<span>💚 Economisești <b>'+money(save)+'</b> la comanda asta</span><i>−'+Math.round(save*100/full)+'%</i>'; box.appendChild(s); }
+    });
+    upsell(dr,cart); /* note(dr,cart); dezactivat 29.10 */
+  }
+  function stick(dr,handle,pct){ var a=dr.querySelector('.drawer__body a[href*="/products/'+handle+'"]'); if(!a) return; var img=a.querySelector('img')||a; var w=img.parentElement; if(!w||w.querySelector('.bc-stk')) return; w.style.position='relative'; var s=document.createElement('span'); s.className='bc-stk'; s.textContent='−'+pct+'%'; w.appendChild(s); }
+  function upsell(dr,cart){
+    var body=dr.querySelector('.drawer__body'); if(!body) return;
+    var ids=cart.items.slice(0,2).map(function(i){return i.product_id;}); var inCart=cart.items.map(function(i){return i.product_id;});
+    Promise.all(ids.map(function(id){ return CACHE['r:'+id]||(CACHE['r:'+id]=fetch('/recommendations/products.json?product_id='+id+'&limit=6').then(function(r){return r.ok?r.json():{products:[]}}).then(function(j){return j.products||[]}).catch(function(){return [];})); })).then(function(lists){
+      var seen={}, picks=[]; lists.forEach(function(l){ l.forEach(function(p){ if(seen[p.id]||inCart.indexOf(p.id)>-1||!p.available) return; seen[p.id]=1; picks.push(p); }); });
+      picks=picks.slice(0,5); if(!picks.length) return;
+      var u=document.createElement('div'); u.className='bc-up'; u.innerHTML='<b class="h">Se potrivește bine cu ce ai în coș</b><div class="bc-up-row">'+picks.map(function(p){var v=p.variants[0];var img=p.featured_image||(p.images&&p.images[0])||'';return '<div class="bc-up-it"><img src="'+img+'" alt=""><div>'+p.title.split(' – ')[0].substring(0,40)+'</div><div class="p">'+money(v.price)+'</div><button data-add="'+v.id+'">+ Adaugă</button></div>';}).join('')+'</div>';
+      body.appendChild(u);
+      u.querySelectorAll('[data-add]').forEach(function(b){ b.addEventListener('click',function(){ b.textContent='…'; fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{id:b.dataset.add,quantity:1}]})}).then(function(){ b.textContent='✓'; b.classList.add('on'); refresh(); }); }); });
+    });
+  }
+  function note(dr,cart){
+    var body=dr.querySelector('.drawer__body'); if(!body||body.querySelector('.bc-note')) return;
+    var n=document.createElement('div'); n.className='bc-note'; n.innerHTML='<details><summary>🎟️ Cod de reducere sau mesaj pentru comandă</summary><div class="f"><input id="bc-code" placeholder="Cod de reducere"><button id="bc-apply">Aplică</button></div><div class="f"><textarea id="bc-msg" rows="2" placeholder="Mesaj (ex: „cadou” – nu punem factura în colet)">'+(cart.note||'')+'</textarea><button id="bc-msgok">Salvează</button></div></details>';
+    body.appendChild(n);
+    n.querySelector('#bc-apply').addEventListener('click',function(){ var c=n.querySelector('#bc-code').value.trim(); if(c) location.href='/discount/'+encodeURIComponent(c)+'?redirect='+encodeURIComponent(location.pathname); });
+    n.querySelector('#bc-msgok').addEventListener('click',function(){ var b=this; fetch('/cart/update.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({note:n.querySelector('#bc-msg').value})}).then(function(){ b.textContent='✓ Salvat'; }); });
+  }
+  function refresh(){ var dr=d(); var sid=dr&&dr.getAttribute('data-section-id'); if(!sid){ location.reload(); return; } fetch('/?sections='+sid).then(function(r){return r.json()}).then(function(j){ var tmp=document.createElement('div'); tmp.innerHTML=j[sid]; var inner=tmp.querySelector('.drawer__inner'); var cur=dr.querySelector('.drawer__inner'); if(inner&&cur) cur.innerHTML=inner.innerHTML; update(); }).catch(function(){ location.reload(); }); }
+  var tmr=null; function update(){ clearTimeout(tmr); tmr=setTimeout(function(){ if(busy) return; busy=true; fetch('/cart.js').then(function(r){return r.json()}).then(function(c){ render(c); }).finally(function(){ busy=false; }); },180); }
+  function watch(){ var dr=d(); if(!dr) return; new MutationObserver(function(ms){ for(var i=0;i<ms.length;i++){ var m=ms[i]; if(m.type==='attributes'&&m.attributeName==='hidden'&&!dr.hidden){ update(); return; } if(m.type==='childList'){ var mine=[].every.call(m.addedNodes,function(n){return !n.classList||n.classList.contains('bc')||n.classList.contains('bc-up')||n.classList.contains('bc-note')||n.classList.contains('bc-stk')||n.classList.contains('bc-save')}); if(!mine){ update(); return; } } } }).observe(dr,{attributes:true,childList:true,subtree:true}); if(!dr.hidden) update(); }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',watch);else watch();
+})();
+</script>

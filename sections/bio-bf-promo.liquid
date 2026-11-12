@@ -1,0 +1,45 @@
+{%- comment -%} BioLuna BF – banner compact (ex. Pachetele Black Friday). {%- endcomment -%}
+{%- render 'bio-bf-base' -%}
+{%- assign st = section.settings -%}
+{%- assign href = st.url -%}{%- if st.collection != blank -%}{%- assign href = st.collection.url -%}{%- endif -%}
+<section class="blf">
+  <div class="bf-wrap" style="padding-top:{{ st.pad_top }}px;padding-bottom:{{ st.pad_bottom }}px">
+    <a class="bf-promo" href="{{ href }}">
+      <div class="bf-promo__grid">
+        {%- if st.tag != blank -%}<span class="bf-promo__tag">{{ st.tag }}</span>{%- endif -%}
+        {%- if st.img1 != blank -%}<span class="c"><img src="{{ st.img1 | image_url: width: 240 }}" alt="" loading="lazy" width="240" height="240"></span>{%- endif -%}
+        {%- if st.img2 != blank -%}<span class="c"><img src="{{ st.img2 | image_url: width: 240 }}" alt="" loading="lazy" width="240" height="240"></span>{%- endif -%}
+        {%- if st.img3 != blank -%}<span class="c"><img src="{{ st.img3 | image_url: width: 240 }}" alt="" loading="lazy" width="240" height="240"></span>{%- endif -%}
+        <span class="c plus">+<small>{{ st.plus_text | default: 'economisești' }}</small></span>
+      </div>
+      <div class="bf-promo__t">
+        {%- if st.kicker != blank -%}<div class="bf-k">{{ st.kicker }}</div>{%- endif -%}
+        <h2 class="bf-h">{{ st.title }}</h2>
+        {%- if st.sub != blank -%}<p>{{ st.sub }}</p>{%- endif -%}
+        <span class="bf-more">{{ st.cta }} →</span>
+      </div>
+      <span class="bf-promo__go" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "BF – Banner BioLuna",
+  "settings": [
+    {"type":"text","id":"kicker","label":"Text mic","default":"Black Friday · Pachete"},
+    {"type":"text","id":"title","label":"Titlu (<em> = roșu)","default":"Pachetele <em>Black Friday</em>"},
+    {"type":"text","id":"sub","label":"Subtitlu","default":"Ceai + cafea, magiun și îngrijire păr în pachete cu până la -44% față de prețul de listă."},
+    {"type":"text","id":"cta","label":"Text link","default":"Vezi pachetele"},
+    {"type":"text","id":"tag","label":"Etichetă galbenă","default":"până la -44%"},
+    {"type":"text","id":"plus_text","label":"Text sub +","default":"economisești"},
+    {"type":"collection","id":"collection","label":"Colecție"},
+    {"type":"url","id":"url","label":"Sau link"},
+    {"type":"image_picker","id":"img1","label":"Imagine 1"},
+    {"type":"image_picker","id":"img2","label":"Imagine 2"},
+    {"type":"image_picker","id":"img3","label":"Imagine 3"},
+    {"type":"range","id":"pad_top","label":"Spațiu sus","min":0,"max":80,"step":4,"default":24},
+    {"type":"range","id":"pad_bottom","label":"Spațiu jos","min":0,"max":80,"step":4,"default":8}
+  ],
+  "presets": [{"name":"BF – Banner BioLuna"}]
+}
+{% endschema %}

@@ -1,0 +1,29 @@
+{%- comment -%} BioLuna BF card. render 'bio-bf-card', p: product, tag: 'Bestseller', rich: true (stele + descriere scurtă). Reducerea = reală, din compare_at_price. {%- endcomment -%}
+{%- assign v = p.selected_or_first_available_variant | default: p.first_available_variant | default: p.variants.first -%}
+{%- assign price = v.price -%}
+{%- assign cmp = v.compare_at_price | default: 0 -%}
+{%- assign pct = 0 -%}
+{%- if cmp > price -%}{%- assign pct = cmp | minus: price | times: 100.0 | divided_by: cmp | round -%}{%- endif -%}
+{%- assign t = p.title | split: ' – ' | first | split: ' | ' | first | split: ' - ' | first -%}
+{%- assign cut = p.metafields.custom.bf_cutout -%}
+{%- assign rc = p.metafields.reviews.rating_count | plus: 0 -%}
+{%- assign rv = p.metafields.reviews.rating.value.rating | default: 0 | times: 1.0 -%}
+{%- assign tagx = tag -%}
+{%- if tagx == blank and p.tags contains 'bestseller' -%}{%- assign tagx = 'Bestseller' -%}{%- endif -%}
+<article class="bf-card">
+  {%- if pct > 0 -%}<div class="bf-card__badge">-{{ pct }}%</div>{%- endif -%}
+  {%- if tagx != blank -%}<div class="bf-card__tag">{{ tagx }}</div>{%- endif -%}
+  {%- if cut != blank -%}
+  <a class="bf-card__img" href="{{ p.url }}" aria-label="{{ p.title | escape }}"><img src="{{ cut | image_url: width: 500 }}" srcset="{{ cut | image_url: width: 500 }} 1x, {{ cut | image_url: width: 900 }} 2x" alt="{{ p.title | escape }}" loading="lazy" width="500" height="500"></a>
+  {%- elsif p.featured_image -%}
+  <a class="bf-card__img raw" href="{{ p.url }}" aria-label="{{ p.title | escape }}"><img src="{{ p.featured_image | image_url: width: 500 }}" alt="{{ p.title | escape }}" loading="lazy" width="500" height="500"></a>
+  {%- endif -%}
+  <div class="bf-card__b">
+    <a class="bf-card__t" href="{{ p.url }}">{{ t }}</a>
+    <span class="bf-stars">{%- if rc > 0 -%}<i>★★★★★</i>{{ rv | round: 1 }} · {{ rc }} recenzii{%- endif -%}</span>
+    {%- if rich -%}{%- assign short = p.metafields.custom.bf_short -%}{%- if short == blank -%}{%- assign short = p.description | strip_html | strip | truncate: 95 -%}{%- endif -%}<p class="bf-card__d">{{ short }}</p>{%- endif -%}
+    <div class="bf-card__p"><b>{{ price | money }}</b>{%- if pct > 0 -%}<s>{{ cmp | money }}</s>{%- endif -%}</div>
+    <div class="bf-card__sv">{%- if pct > 0 -%}economisești {{ cmp | minus: price | money }}{%- endif -%}</div>
+    <a class="bf-card__btn" href="{{ p.url }}">Vezi produsul</a>
+  </div>
+</article>

@@ -1,0 +1,438 @@
+{%- comment -%} BioLuna — Black Friday scroll-story 3D (three.js). v2 24.09.2026 — cutia Sadoer Rozmarin {%- endcomment -%}
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+
+.bf3d{--paper:#f4ede2;--paper-2:#ece3d3;--ink:#1f1a16;--ink-2:#5a5148;--gold:#b8873a;--gold-2:#d9b56b;--night:#1c1917;--red:#d10a1e;--green:#2f5d3a;
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Poppins",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;box-sizing:border-box;
+}
+.bf3d *,.bf3d *::before,.bf3d *::after{box-sizing:border-box}
+.bf3d{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+.bf3d img{max-width:100%;display:block} a{color:inherit}
+.bf3d h1, .bf3d h2, .bf3d h3{font-family:var(--serif);font-weight:500;line-height:1;margin:0}
+.bf3d .wrap{width:min(1180px,92vw);margin:0 auto}
+
+.bf3d .strip{position:sticky;top:var(--hdr,0px);z-index:30;background:var(--night);color:#f4ede2;font-size:13px}
+.bf3d .strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px}
+.bf3d .strip .tag{font-family:var(--serif);font-size:18px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-2)}
+.bf3d .cd{display:flex;align-items:center;gap:10px;white-space:nowrap}.cd .lbl{opacity:.75}.cd b{font-weight:500;font-variant-numeric:tabular-nums;font-size:15px}.cd b i{font-style:normal;opacity:.55;margin:0 3px 0 1px;font-size:12px}
+@media (max-width:640px){.strip .tag{font-size:14px}.cd .lbl{display:none}}
+
+/* ---- the scroll scrubber ---- */
+.bf3d .scroller{position:relative;height:820vh}
+.bf3d .stage{position:sticky;top:calc(var(--hdr,0px) + var(--strip,44px));height:calc(100vh - var(--hdr,0px) - var(--strip,44px));height:calc(100svh - var(--hdr,0px) - var(--strip,44px));overflow:hidden}
+.bf3d .stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .9s}.stage canvas.ready{opacity:1}
+.bf3d .ptitle{position:absolute;left:0;right:0;top:26px;text-align:center;pointer-events:none;transition:opacity .4s}
+.bf3d .ptitle h2{font-size:clamp(22px,3vw,40px);letter-spacing:.22em;text-transform:uppercase;color:#4a2f1f}
+.bf3d .ov{position:absolute;left:4vw;top:50%;transform:translateY(-50%);width:min(40vw,540px);opacity:0;pointer-events:none;transition:opacity .35s,transform .5s}
+.bf3d .ov.on{opacity:1;pointer-events:auto}
+.bf3d .ov h1{font-size:clamp(52px,7vw,104px)} .ov h2{font-size:clamp(42px,5.6vw,80px)}
+.bf3d .l2{display:block;color:var(--gold);font-style:italic}
+.bf3d .ov .eyebrow{font-family:var(--serif);font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:#4a2f1f;margin-bottom:18px}
+.bf3d .ov p{max-width:36ch;color:var(--ink-2);font-size:clamp(15px,1.15vw,17px);margin:20px 0}
+.bf3d .btn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:15px;border-radius:999px;padding:15px 30px;background:var(--gold);color:#fff;box-shadow:0 10px 26px -12px rgba(184,135,58,.9);transition:transform .2s}
+.bf3d .btn:hover{transform:translateY(-1px)} .btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.bf3d .btn.red{background:var(--red);box-shadow:0 10px 26px -12px rgba(209,10,30,.8)} .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.bf3d .price{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 18px}
+.bf3d .price .now{font-family:var(--serif);font-size:42px;font-weight:600;color:var(--red);line-height:1}
+.bf3d .price .old{color:var(--ink-2);text-decoration:line-through} .price .save{font-size:13px;font-weight:600;color:var(--red);background:rgba(209,10,30,.08);padding:4px 10px;border-radius:999px}
+.bf3d .ctas{display:flex;gap:12px;flex-wrap:wrap} .omni{font-size:12px;color:var(--ink-2);margin-top:12px;max-width:40ch}
+.bf3d .hint{position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .4s;pointer-events:none}
+.bf3d .hint i{width:1px;height:34px;background:var(--gold);display:block;animation:hint 1.6s ease-in-out infinite}
+@keyframes hint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.bf3d .prog{position:absolute;right:4vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
+.bf3d .prog i{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.15);display:block;transition:background .3s,transform .3s}
+.bf3d .prog i.on{background:var(--gold);transform:scale(1.5)}
+@media (max-width:900px){
+.bf3d .ov{left:5vw;right:5vw;width:auto;top:auto;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:none;padding-top:20px;background:linear-gradient(rgba(244,237,226,0),var(--paper) 22%)}
+.bf3d .ov h1{font-size:clamp(40px,11vw,60px)} .ov h2{font-size:clamp(34px,9vw,52px)}
+.bf3d .ov p{font-size:14px;margin:12px 0;max-width:none} .ov .eyebrow{margin-bottom:10px;font-size:13px}
+.bf3d .price .now{font-size:32px} .price{margin-bottom:12px} .btn{padding:13px 22px;font-size:14px}
+.bf3d .prog{display:none} .hint{bottom:auto;top:calc(44px + env(safe-area-inset-top,0px) + 70px)} .ptitle{display:none}
+}
+
+/* ---- after the story ---- */
+.bf3d .all{padding:80px 0 50px;background:var(--paper-2)}
+.bf3d .all h2{font-size:clamp(40px,5.4vw,76px);text-align:center}
+.bf3d .all .lead{text-align:center;max-width:48ch;margin:16px auto 40px;color:var(--ink-2)}
+.bf3d .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,1fr);gap:12px}}
+.bf3d .card{background:var(--paper);border:1px solid rgba(0,0,0,.06);padding:18px;text-decoration:none;position:relative;display:flex;flex-direction:column;gap:10px}
+.bf3d .card .im{aspect-ratio:1;display:grid;place-items:center;padding:8px}.card .im img{max-height:100%;object-fit:contain}
+.bf3d .card .n{font-family:var(--serif);font-size:24px;line-height:1.1;font-weight:600}.card .s{font-size:13px;color:var(--ink-2)}
+.bf3d .card .p{display:flex;gap:10px;align-items:baseline;margin-top:auto}.card .p b{color:var(--red);font-size:20px;font-weight:600;white-space:nowrap}.card .p s{font-size:13px;color:var(--ink-2)}
+.bf3d .card .stk{position:absolute;left:12px;top:12px;background:var(--red);color:#fff;border-radius:999px;font-size:12px;font-weight:600;padding:5px 10px}
+@media (max-width:900px){.card{padding:12px}.card .n{font-size:18px}.card .p b{font-size:16px}.card .s{font-size:12px}}
+.bf3d .center{text-align:center;margin-top:34px}
+.bf3d .faq{padding:70px 0 90px}.faq h2{font-size:clamp(36px,4.4vw,60px);margin-bottom:26px}
+.bf3d .faq details{border-top:1px solid rgba(0,0,0,.12);padding:16px 0}.faq details:last-of-type{border-bottom:1px solid rgba(0,0,0,.12)}
+.bf3d .faq summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.bf3d .faq summary::after{content:"+";font-family:var(--serif);font-size:26px;line-height:1;color:var(--gold)}.faq details[open] summary::after{content:"–"}
+.bf3d .faq details p{color:var(--ink-2);margin:10px 0 0;max-width:70ch}
+.bf3d .foot{padding:26px 0 40px;font-size:12px;color:var(--ink-2);text-align:center}
+@media (prefers-reduced-motion:reduce){.hint i{animation:none}}
+
+
+.bf3d h1,.bf3d h2,.bf3d h3,.bf3d .price .now,.bf3d .card .n{font-family:var(--serif) !important;font-weight:500 !important;line-height:1 !important;letter-spacing:0 !important;text-transform:none !important;margin:0 !important}
+.bf3d .price .now,.bf3d .card .n{font-weight:600 !important}
+.bf3d .ov h1{font-size:clamp(52px,7vw,104px) !important}.bf3d .ov h2{font-size:clamp(42px,5.6vw,80px) !important}
+.bf3d .all h2{font-size:clamp(40px,5.4vw,76px) !important}.bf3d .faq h2{font-size:clamp(36px,4.4vw,60px) !important}
+.bf3d .ptitle h2{font-size:clamp(22px,3vw,40px) !important;letter-spacing:.22em !important;text-transform:uppercase !important}
+.bf3d .strip .tag{font-family:var(--serif) !important;white-space:nowrap}
+.bf3d .strip .wrap{flex-wrap:nowrap}
+@media (max-width:640px){.bf3d .strip .tag{font-size:13px !important;letter-spacing:.1em}.bf3d .cd b{font-size:13px}.bf3d .ov{background:linear-gradient(rgba(244,237,226,0),var(--paper) 38%);padding-top:34px}}
+.bf3d .btn,.bf3d .btn:hover{font-family:var(--sans) !important;text-transform:none !important;letter-spacing:.01em !important;border-radius:999px !important;line-height:1.2 !important;min-height:0 !important;height:auto !important;text-decoration:none !important}
+.bf3d p{margin:20px 0}.bf3d .ov .eyebrow{font-family:var(--serif) !important}
+@media (max-width:900px){.bf3d .ov h1{font-size:clamp(40px,11vw,60px) !important}.bf3d .ov h2{font-size:clamp(34px,9vw,52px) !important}.bf3d .card .n{font-size:18px !important}}
+
+.bf3d .bfgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.bf3d .bfcard{position:relative;display:flex;flex-direction:column;background:#faf6ef;border:1px solid rgba(184,135,58,.28);text-decoration:none !important;color:var(--ink);overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+.bf3d .bfcard::before{content:"";position:absolute;inset:8px;border:1px solid rgba(184,135,58,.35);pointer-events:none}
+.bf3d .bfcard:hover{transform:translateY(-4px);box-shadow:0 26px 40px -30px rgba(60,40,10,.45);border-color:rgba(184,135,58,.6)}
+.bf3d .bfim{height:270px;display:grid;place-items:center;padding:28px 28px 8px;background:radial-gradient(ellipse at 50% 70%,rgba(184,135,58,.16),rgba(184,135,58,0) 65%)}
+.bf3d .bfim img{max-height:230px !important;max-width:80% !important;width:auto !important;height:auto !important;object-fit:contain;filter:drop-shadow(0 18px 18px rgba(0,0,0,.18));transition:transform .35s}
+.bf3d .bfcard:hover .bfim img{transform:translateY(-6px) scale(1.03)}
+.bf3d .bfbody{padding:6px 26px 26px;display:flex;flex-direction:column;gap:6px;text-align:center}
+.bf3d .bfn{font-family:var(--serif) !important;font-size:27px !important;font-weight:600 !important;line-height:1.1 !important;letter-spacing:0 !important;text-transform:none !important;margin:0 !important}
+.bf3d .bfs{font-size:13px;color:var(--ink-2)}
+.bf3d .bfp{display:flex;gap:10px;align-items:baseline;justify-content:center;margin-top:8px}
+.bf3d .bfp b{font-family:var(--serif) !important;color:var(--red);font-size:30px;font-weight:600;white-space:nowrap;line-height:1}
+.bf3d .bfp s{font-size:14px;color:var(--ink-2)}
+.bf3d .bfcta{margin-top:12px;align-self:center;font-size:13px;font-weight:600;letter-spacing:.02em;border-bottom:1.5px solid var(--gold);padding-bottom:2px;color:var(--ink)}
+.bf3d .bfstk{position:absolute;left:18px;top:18px;z-index:2;width:52px;height:52px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:600;transform:rotate(-8deg);box-shadow:0 8px 16px -8px rgba(209,10,30,.7)}
+.bf3d .bfnum{position:absolute;right:20px;top:14px;font-family:var(--serif) !important;font-size:44px;color:rgba(184,135,58,.35);line-height:1}
+@media (max-width:900px){.bf3d .bfgrid{grid-template-columns:repeat(2,1fr);gap:12px}.bf3d .bfim{height:180px;padding:22px 14px 4px}.bfim img{max-height:150px !important}.bf3d .bfbody{padding:4px 12px 16px}.bf3d .bfn{font-size:19px !important}.bf3d .bfp b{font-size:22px}.bf3d .bfstk{width:42px;height:42px;font-size:12px;left:10px;top:10px}.bf3d .bfnum{font-size:30px;right:12px;top:8px}.bf3d .bfcta{font-size:12px}}
+
+@media (max-width:900px){
+  .bf3d .ov{left:0;right:0;width:auto;top:auto;bottom:0;transform:none;padding:26px 5vw calc(14px + env(safe-area-inset-bottom,0px)) !important;background:linear-gradient(rgba(244,237,226,0),var(--paper) 26%) !important}
+  .bf3d .ov p{display:none} .bf3d #ov-hero p,.bf3d #ov-end p{display:block;font-size:14px;margin:8px 0 12px}
+  .bf3d .ov h1{font-size:clamp(38px,10vw,54px) !important} .bf3d .ov h2{font-size:clamp(30px,8.4vw,44px) !important}
+  .bf3d .ov .eyebrow{margin-bottom:6px;font-size:12px}
+  .bf3d .price{margin:8px 0 10px;gap:10px} .bf3d .price .now{font-size:30px !important} .bf3d .price .old{font-size:13px} .bf3d .price .save{font-size:11px;padding:3px 8px}
+  .bf3d .ctas{gap:8px;flex-wrap:nowrap} .bf3d .ctas .btn{padding:12px 16px;font-size:13px;flex:1;white-space:nowrap}
+  .bf3d .hint,.bf3d .prog,.bf3d .ptitle{display:none !important}
+  .bf3d .bfim img{height:150px !important;max-height:150px !important;width:auto !important;max-width:82% !important}
+}
+/* EasySell / theme extras that cover the CTAs on this page only */
+#es-popup-button,.es-popup-button,[class*="es-sticky"],[id*="es-sticky"]{display:none !important}
+@media (max-width:900px){#wa-btn{bottom:calc(150px + env(safe-area-inset-bottom,0px)) !important;transform:scale(.85);transform-origin:bottom right}}
+</style>
+
+<div class="bf3d" id="bf3d-{{ section.id }}">
+
+<div class="scroller" id="scroller">
+<div class="strip"><div class="wrap"><div class="tag">Black Friday BioLuna</div><div class="cd" id="cd"><span class="lbl">Începe în</span><b id="cdv">—</b></div></div></div>
+  <div class="stage" id="stage">
+    <canvas id="c"></canvas>
+    <div class="ptitle" id="ptitle"><h2>Black Friday</h2></div>
+    <div class="ov" id="ov-hero">
+      <h1>{{ section.settings.h1_line1 }} <span class="l2">{{ section.settings.h1_line2 }}</span></h1>
+      <p>{{ section.settings.hero_text }}</p>
+      <a class="btn" href="#poveste" id="startBtn">Deschide cutia</a>
+    </div>
+    <!--CHAPTERS-->
+    <div class="ov" id="ov-end">
+      <h2>Cutia e doar <span class="l2">începutul.</span></h2>
+      <p>Toată gama Sadoer Rozmarin, cu prețul de Black Friday, plus restul reducerilor din magazin. Reducerea se aplică automat, fără cod.</p>
+      <a class="btn red" href="#oferte">Vezi toate ofertele</a>
+    </div>
+    <div class="hint" id="hint"><span>Derulează</span><i></i></div>
+    <div class="prog" id="prog"></div>
+  </div>
+</div>
+
+<section class="all" id="oferte"><div class="wrap">
+  <h2>{{ section.settings.all_title }}</h2>
+  <p class="lead">{{ section.settings.all_text }}</p>
+  <div class="bfgrid" id="cards"></div>
+  <div class="center"><a class="btn red" href="{{ section.settings.all_url }}">{{ section.settings.all_cta }}</a></div>
+</div></section>
+
+<section class="faq"><div class="wrap">
+  <h2>Întrebări frecvente</h2>
+  <details><summary>Când începe și când se termină Black Friday la BioLuna?</summary><p>Începe pe <b class="d1"></b> și se încheie pe <b class="d2"></b>. Prețurile de pe această pagină sunt active doar în această perioadă.</p></details>
+  <details><summary>Trebuie să folosesc un cod de reducere?</summary><p>Nu. Prețul de Black Friday e deja pus pe fiecare produs și se vede în coș. Nu se cumulează cu alte coduri.</p></details>
+  <details><summary>Cum se calculează reducerea?</summary><p>Conform Directivei Omnibus, procentul se raportează la cel mai mic preț practicat de BioLuna în ultimele 30 de zile înainte de reducere.</p></details>
+  <details><summary>Transportul e gratuit?</summary><p>Da, la comenzi de peste 300 lei. Sub această sumă se aplică taxa standard de livrare, afișată în coș.</p></details>
+  <details><summary>Pot plăti ramburs?</summary><p>Da. Poți plăti ramburs la curier sau online, cu cardul, la plasarea comenzii.</p></details>
+  <details><summary>Cât durează livrarea?</summary><p>Comenzile plasate până la ora 17:00 pleacă în aceeași zi și ajung de obicei în 1–2 zile lucrătoare.</p></details>
+</div></section>
+<div class="foot">{{ section.settings.omnibus_note }} Stoc limitat.</div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+
+/* ===== CONFIG ===== */
+const BF={start:"{{ section.settings.start_date }}T00:00:00+02:00",end:"{{ section.settings.end_date }}T23:59:59+02:00"};
+const PRODUCTS=[
+{%- for block in section.blocks -%}{%- assign p = block.settings.product -%}{%- if p == blank -%}{%- continue -%}{%- endif -%}
+  {%- assign pct = 0 -%}{%- if p.compare_at_price > p.price -%}{%- assign pct = p.compare_at_price | minus: p.price | times: 100 | divided_by: p.compare_at_price -%}{%- endif -%}
+  {%- assign img = block.settings.asset -%}{%- if img != blank -%}{%- assign src = img | asset_url -%}{%- else -%}{%- assign src = p.featured_image | image_url: width: 1000 -%}{%- endif -%}
+  {"handle":{{ p.handle | json }},"title":{{ p.title | json }},"url":{{ p.url | json }},"img":{{ src | json }},"vid":{{ p.selected_or_first_available_variant.id | json }},
+   "now":{{ p.price | money_without_currency | json }},"ref":{{ p.compare_at_price | default: p.price | money_without_currency | json }},"pct":{{ pct }},
+   "eyebrow":{{ block.settings.eyebrow | json }},"h1":{{ block.settings.h_line1 | json }},"h2":{{ block.settings.h_line2 | json }},"text":{{ block.settings.text | json }},"short":{{ block.settings.short | json }},"sub":{{ block.settings.sub | json }}}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+];
+
+/* ===== countdown ===== */
+(function(){const el=document.getElementById('cdv'),lbl=document.querySelector('#cd .lbl');const s=new Date(BF.start),e=new Date(BF.end);const fmt=d=>d.toLocaleDateString('ro-RO',{day:'numeric',month:'long'});
+document.querySelectorAll('.d1').forEach(x=>x.textContent=fmt(s));document.querySelectorAll('.d2').forEach(x=>x.textContent=fmt(e));
+function tick(){const n=new Date();let t,txt;if(n<s){t=s-n;txt='Începe în';}else if(n<e){t=e-n;txt='Se termină în';}else{el.textContent='Black Friday s-a încheiat';lbl.textContent='';return;}
+lbl.textContent=txt;const d=Math.floor(t/864e5),h=Math.floor(t%864e5/36e5),m=Math.floor(t%36e5/6e4),sc=Math.floor(t%6e4/1e3);
+el.innerHTML=(d?d+'<i>z</i>':'')+String(h).padStart(2,'0')+'<i>h</i>'+String(m).padStart(2,'0')+'<i>m</i>'+String(sc).padStart(2,'0')+'<i>s</i>';}tick();setInterval(tick,1000);})();
+
+/* ===== DOM: chapters + cards ===== */
+const lei=v=>String(v).replace('.',',')+' lei';
+const ROOT=document.getElementById('bf3d-{{ section.id }}');
+const HDR=(function(){const hs=[...document.querySelectorAll('[id*="__header"], #shopify-section-header, .section-header, .header-wrapper, header')].filter(h=>h.getBoundingClientRect().height>0);const st=ROOT.querySelector('.strip');
+  function m(){let b=0;hs.forEach(h=>{const r=h.getBoundingClientRect();const cs=getComputedStyle(h);if((cs.position==='sticky'||cs.position==='fixed')&&r.top<=1&&r.bottom>0)b=Math.max(b,r.bottom);});ROOT.style.setProperty('--hdr',Math.round(b)+'px');if(st)ROOT.style.setProperty('--strip',st.offsetHeight+'px');return b;}
+  m();addEventListener('scroll',m,{passive:true});addEventListener('resize',m);return m;})();
+const stageEl=document.getElementById('stage'), endOv=document.getElementById('ov-end');
+PRODUCTS.forEach((p,i)=>{
+  const pct=p.pct, now=p.now, ref=p.ref;
+  const ov=document.createElement('div');ov.className='ov';ov.id='ov-'+i;
+  ov.innerHTML=`<div class="eyebrow">Sertarul ${i+1} — ${p.eyebrow}</div><h2>${p.h1}<span class="l2">${p.h2}</span></h2><p>${p.text}</p>
+  <div class="price"><span class="now">${lei(now)}</span>${pct>=5?`<span class="old">${lei(ref)}</span><span class="save">−${pct}%</span>`:``}</div>
+  <div class="ctas"><a class="btn red" href="${p.url}">Cumpără acum</a><button type="button" class="btn ghost bf-add" data-vid="${p.vid}">Adaugă în coș</button></div>`;
+  stageEl.insertBefore(ov,endOv);
+  document.getElementById('cards').insertAdjacentHTML('beforeend',`<a class="bfcard" href="${p.url}">${pct>=5?`<span class="bfstk">−${pct}%</span>`:``}<span class="bfnum">${i+1}</span><div class="bfim"><img alt="${p.title}" loading="lazy" src="${p.img}"></div><div class="bfbody"><div class="bfn">${p.short}</div><div class="bfs">${p.sub}</div><div class="bfp"><b>${lei(now)}</b>${pct>=5?`<s>${lei(ref)}</s>`:``}</div><span class="bfcta">Vezi produsul</span></div></a>`);
+  document.getElementById('prog').insertAdjacentHTML('beforeend','<i></i>');
+});
+
+ROOT.addEventListener('click',e=>{const b=e.target.closest('.bf-add');if(!b)return;b.disabled=true;const t=b.textContent;b.textContent='Se adaugă…';
+  fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({items:[{id:+b.dataset.vid,quantity:1}]})}).then(r=>{if(!r.ok)throw 0;b.textContent='Adăugat ✓';setTimeout(()=>location.href='/cart',500);}).catch(()=>{b.textContent=t;b.disabled=false;location.href='/cart';});});
+/* ===== THREE scene ===== */
+const canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(26,1,0.1,60);
+scene.add(new THREE.HemisphereLight(0xfff6e8,0x6b5a45,0.95));
+const sun=new THREE.DirectionalLight(0xfff1dc,1.25);sun.position.set(2.2,7,3.4);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
+Object.assign(sun.shadow.camera,{near:1,far:14,left:-4,right:4,top:4,bottom:-4});sun.shadow.bias=-0.0006;sun.shadow.radius=4;scene.add(sun);
+const fill=new THREE.DirectionalLight(0xe8f0ff,0.35);fill.position.set(-3,1,2);scene.add(fill);
+const glint=new THREE.PointLight(0xfff3dc,0,9,2);scene.add(glint);
+/* soft vignette backdrop behind the box */
+(function(){const c=document.createElement('canvas');c.width=c.height=512;const g=c.getContext('2d');const gr=g.createRadialGradient(256,256,20,256,256,256);gr.addColorStop(0,'rgba(255,250,240,1)');gr.addColorStop(.55,'rgba(244,237,226,.6)');gr.addColorStop(1,'rgba(244,237,226,0)');g.fillStyle=gr;g.fillRect(0,0,512,512);
+  const t=new THREE.CanvasTexture(c);const m=new THREE.Mesh(new THREE.PlaneGeometry(16,16),new THREE.MeshBasicMaterial({map:t,transparent:true,depthWrite:false}));m.position.set(1.2,.4,-4);scene.add(m);window.__bd=m;})();
+
+/* materials */
+const CREAM=0xf3ebdd, CREAM2=0xe9dfcd, DARK=0x1b1815;
+const mCream=new THREE.MeshStandardMaterial({color:CREAM,roughness:.85,metalness:0});
+const mCream2=new THREE.MeshStandardMaterial({color:CREAM2,roughness:.9});
+const mDark=new THREE.MeshStandardMaterial({color:DARK,roughness:.95});
+const mGold=new THREE.MeshStandardMaterial({color:0xd9b56b,roughness:.35,metalness:.7});
+
+/* brand logo for the doors */
+const LOGO=new Image();LOGO.crossOrigin='anonymous';let logoReady=false;LOGO.onload=()=>{logoReady=true;redrawFaces();};LOGO.src="{{ 'bf-logo.png' | asset_url }}";
+function redrawFaces(){try{const src=doorFaceCanvas();dl.material[4].map=tex(halfCanvas(src,true));dr.material[4].map=tex(halfCanvas(src,false));dl.material[4].needsUpdate=true;dr.material[4].needsUpdate=true;}catch(e){}}
+/* canvas textures */
+function tex(c){const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;return t;}
+function doorFaceCanvas(){
+  const S=1024,c=document.createElement('canvas');c.width=S;c.height=S*1.18;const g=c.getContext('2d');
+  const grd=g.createLinearGradient(0,0,0,c.height);grd.addColorStop(0,'#f9f4ec');grd.addColorStop(1,'#eee5d6');g.fillStyle=grd;g.fillRect(0,0,c.width,c.height);
+  g.strokeStyle='#d9b56b';g.lineWidth=4;
+  const arch=(x,y,w,h)=>{g.beginPath();g.moveTo(x,y+h);g.lineTo(x,y+w/2);g.arc(x+w/2,y+w/2,w/2,Math.PI,0);g.lineTo(x+w,y+h);g.closePath();g.stroke();};
+  arch(120,110,S-240,c.height-220);arch(160,150,S-320,c.height-300);
+  // wordmark
+  g.fillStyle='#9a7431';g.textAlign='center';g.font='600 74px "Cormorant Garamond", Georgia, serif';
+  const spaced=(t,y,sz)=>{g.font=`600 ${sz}px "Cormorant Garamond", Georgia, serif`;let w=0;for(const ch of t)w+=g.measureText(ch).width+sz*.28;let x=S/2-w/2;for(const ch of t){g.fillText(ch,x+g.measureText(ch).width/2,y);x+=g.measureText(ch).width+sz*.28;}};
+  if(LOGO&&LOGO.complete&&LOGO.naturalWidth){const lw=S*.72,lh=lw*LOGO.naturalHeight/LOGO.naturalWidth;g.drawImage(LOGO,(S-lw)/2,c.height*.44-lh/2,lw,lh);}else{spaced('BIOLUNA',c.height*.44,124);}
+  spaced('BLACK FRIDAY',c.height*.44+112,44);
+  // crescent
+  g.save();g.translate(S/2,c.height*.17);g.fillStyle='#d9b56b';g.beginPath();g.arc(0,0,30,0,Math.PI*2);g.fill();g.fillStyle='#f6f0e6';g.beginPath();g.arc(12,-6,28,0,Math.PI*2);g.fill();g.restore();
+  // leaves
+  g.strokeStyle='#d9b56b';g.lineWidth=2.4;g.lineCap='round';
+  const sprig=(x0,y0,dir)=>{g.beginPath();g.moveTo(x0,y0);g.bezierCurveTo(x0+dir*70,y0-90,x0+dir*120,y0-160,x0+dir*200,y0-260);g.stroke();
+    for(let i=1;i<=6;i++){const t=i/7;const bx=x0+dir*(70*3*t*(1-t)*(1-t)+120*3*t*t*(1-t)+200*t*t*t),by=y0-(90*3*t*(1-t)*(1-t)+160*3*t*t*(1-t)+260*t*t*t);
+      g.beginPath();g.moveTo(bx,by);g.quadraticCurveTo(bx+dir*10-30,by-40,bx-dir*18-10,by-72);g.stroke();g.beginPath();g.moveTo(bx,by);g.quadraticCurveTo(bx+dir*40,by-10,bx+dir*70,by-40);g.stroke();}};
+  sprig(90,c.height-90,1);sprig(S-90,c.height-90,-1);
+  return c;
+}
+function halfCanvas(src,left){const c=document.createElement('canvas');c.width=src.width/2;c.height=src.height;c.getContext('2d').drawImage(src,left?0:src.width/2,0,src.width/2,src.height,0,0,c.width,c.height);return c;}
+function drawerFaceCanvas(n){const c=document.createElement('canvas');c.width=512;c.height=360;const g=c.getContext('2d');
+  const grd=g.createLinearGradient(0,0,0,360);grd.addColorStop(0,'#f6efe4');grd.addColorStop(1,'#e4d8c4');g.fillStyle=grd;g.fillRect(0,0,512,360);
+  g.fillStyle='rgba(0,0,0,.08)';g.beginPath();g.roundRect?g.roundRect(216,0,80,18,[0,0,10,10]):g.rect(216,0,80,18);g.fill();
+  g.fillStyle='#8c6a2f';g.textAlign='center';g.textBaseline='middle';g.font='600 190px "Cormorant Garamond", Georgia, serif';g.fillText(String(n),256,196);
+  g.strokeStyle='rgba(0,0,0,.08)';g.lineWidth=6;g.strokeRect(3,3,506,354);g.strokeStyle='rgba(184,135,58,.55)';g.lineWidth=2;g.strokeRect(22,22,468,316);return c;}
+
+/* geometry helpers */
+function box(w,h,d,mat,x=0,y=0,z=0,shadow=true){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);m.castShadow=shadow;m.receiveShadow=true;return m;}
+
+/* ===== build the cabinet ===== */
+const W=2.3,H=2.7,D=1.5,T=.06;
+const root=new THREE.Group();scene.add(root);
+const cab=new THREE.Group();root.add(cab);
+cab.add(box(W,T,D,mCream,0,H/2-T/2,0));       // top
+cab.add(box(W,T,D,mCream2,0,-H/2+T/2,0));     // bottom
+cab.add(box(T,H,D,mCream,-W/2+T/2,0,0));      // left
+cab.add(box(T,H,D,mCream,W/2-T/2,0,0));       // right
+cab.add(box(W,H,T,mDark,0,0,-D/2+T/2));       // back (dark)
+// dark inner lining
+cab.add(box(W-2*T,H-2*T,T,mDark,0,0,-D/2+T*1.5,false));
+cab.add(box(T*.5,H-2*T,D-2*T,mDark,-W/2+T*1.25,0,0,false));cab.add(box(T*.5,H-2*T,D-2*T,mDark,W/2-T*1.25,0,0,false));
+cab.add(box(W-2*T,T*.5,D-2*T,mDark,0,H/2-T*1.25,0,false));cab.add(box(W-2*T,T*.5,D-2*T,mDark,0,-H/2+T*1.25,0,false));
+// gold trim line on top front edge
+cab.add(box(W,.012,.012,mGold,0,H/2+.001,D/2-.006,false));
+cab.add(box(W,.012,.012,mGold,0,-H/2-.001,D/2-.006,false));cab.add(box(.012,H,.012,mGold,-W/2-.001,0,D/2-.006,false));cab.add(box(.012,H,.012,mGold,W/2+.001,0,D/2-.006,false));
+
+/* drawers: 2 cols x 3 rows */
+const cols=2,rows=3,gap=.09,innerW=W-2*T-gap*(cols+1),innerH=H-2*T-gap*(rows+1),dw=innerW/cols,dh=innerH/rows,dd=D-2*T-.08;
+const drawers=[],products=[];
+for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
+  const i=r*cols+c;const g=new THREE.Group();
+  const x=-W/2+T+gap+dw/2+c*(dw+gap), y=H/2-T-gap-dh/2-r*(dh+gap);
+  g.position.set(x,y,0);
+  const faceMat=new THREE.MeshStandardMaterial({map:tex(drawerFaceCanvas(i+1)),roughness:.85});
+  const front=new THREE.Mesh(new THREE.BoxGeometry(dw,dh,.05),[mCream2,mCream2,mCream2,mCream2,faceMat,mCream2]);front.position.z=D/2-.025;front.castShadow=true;front.receiveShadow=true;g.add(front);
+  // body (open-top tray)
+  const body=new THREE.Group();body.position.z=D/2-.05-dd/2;
+  body.add(box(dw-.04,.04,dd,mCream2,0,-dh/2+.02,0));body.add(box(.03,dh-.1,dd,mCream2,-dw/2+.035,0,0));body.add(box(.03,dh-.1,dd,mCream2,dw/2-.035,0,0));body.add(box(dw-.04,dh-.1,.03,mCream2,0,0,-dd/2+.015));
+  g.add(body);cab.add(g);drawers.push({g,i,x,y});
+}
+/* doors */
+const doorSrc=doorFaceCanvas();
+const doorMat=(left)=>[mCream,mCream,mCream,mCream,new THREE.MeshStandardMaterial({map:tex(halfCanvas(doorSrc,left)),roughness:.8}),mCream2];
+const doorL=new THREE.Group(),doorR=new THREE.Group();doorL.position.set(-W/2,0,D/2);doorR.position.set(W/2,0,D/2);
+const dl=new THREE.Mesh(new THREE.BoxGeometry(W/2-.006,H,.05),doorMat(true));dl.position.set(W/4,0,.025);dl.castShadow=true;dl.receiveShadow=true;doorL.add(dl);
+const dr=new THREE.Mesh(new THREE.BoxGeometry(W/2-.006,H,.05),doorMat(false));dr.position.set(-W/4,0,.025);dr.castShadow=true;dr.receiveShadow=true;doorR.add(dr);
+// knobs
+const knobG=new THREE.CylinderGeometry(.02,.02,.16,16);
+const kl=new THREE.Mesh(knobG,mGold);kl.position.set(W/2-.08,-.62,.07);doorL.add(kl);const kr=new THREE.Mesh(knobG,mGold);kr.position.set(-W/2+.08,-.62,.07);doorR.add(kr);
+root.add(doorL,doorR);
+/* floor shadow catcher */
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(30,30),new THREE.ShadowMaterial({opacity:.1}));floor.rotation.x=-Math.PI/2;floor.position.y=-H/2-.001;floor.receiveShadow=true;scene.add(floor);
+
+/* ===== products: curved photo face + solid core sized from the silhouette ===== */
+const loader=new THREE.TextureLoader();loader.setCrossOrigin('anonymous');
+function analyze(img){ // silhouette bands + dominant colour
+  const S=96,c=document.createElement('canvas');c.width=S;c.height=S;const g=c.getContext('2d');g.drawImage(img,0,0,S,S);
+  let d;try{d=g.getImageData(0,0,S,S).data;}catch(e){return null;}
+  const rows=[];const hist=new Map();
+  for(let y=0;y<S;y++){let l=-1,r=-1;for(let x=0;x<S;x++){const i=(y*S+x)*4;if(d[i+3]>120){if(l<0)l=x;r=x;const lum=d[i]*.3+d[i+1]*.59+d[i+2]*.11;if(lum<160){const k=((d[i]>>5)<<10)|((d[i+1]>>5)<<5)|(d[i+2]>>5);const e=hist.get(k)||[0,0,0,0];e[0]++;e[1]+=d[i];e[2]+=d[i+1];e[3]+=d[i+2];hist.set(k,e);}}}rows.push(l<0?0:(r-l+1)/S);}
+  let best=null;hist.forEach(e=>{if(!best||e[0]>best[0])best=e;});
+  const band=(a,b)=>{let m=1,any=false;for(let y=Math.floor(a*S);y<Math.floor(b*S);y++){if(rows[y]>0.06){m=Math.min(m,rows[y]);any=true;}}return any?m:0;};
+  const col=best?new THREE.Color(best[1]/best[0]/255,best[2]/best[0]/255,best[3]/best[0]/255).multiplyScalar(.85):new THREE.Color(0x2a4a2c);
+  return {bands:[[0,.2,band(0,.2)],[.2,.45,band(.2,.45)],[.45,1,band(.45,1)]],color:col};
+}
+PRODUCTS.forEach((p,i)=>{
+  const d=drawers[i];if(!d)return;
+  const grp=new THREE.Group();grp.visible=false;scene.add(grp);
+  const rec={m:grp,home:new THREE.Vector3(d.x,d.y-dh/2+.03,D/2-.05-dd/2),i,ph:dh*.92,mat:null};
+  products.push(rec);
+  loader.load(p.img,tx=>{
+    tx.encoding=THREE.sRGBEncoding;tx.minFilter=THREE.LinearFilter;tx.anisotropy=8;
+    const ar=tx.image.width/tx.image.height;const ph=dh*.92,pw=ph*ar;rec.ph=ph;
+    const wide=ar>.85;const A=THREE.MathUtils.degToRad(wide?55:105);const r=pw/A;
+    const geo=new THREE.CylinderGeometry(r,r,ph,64,1,true,-A/2,A);
+    const mat=new THREE.MeshStandardMaterial({map:tx,emissiveMap:tx,emissive:0xffffff,emissiveIntensity:.42,roughness:.42,metalness:.05,transparent:true,alphaTest:.1,side:THREE.DoubleSide,opacity:0});
+    rec.mat=mat;
+    const face=new THREE.Mesh(geo,mat);face.position.set(0,ph/2,-r+.02);face.castShadow=true;face.receiveShadow=false;
+    face.customDepthMaterial=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking,map:tx,alphaTest:.35});
+    grp.add(face);
+    const an=analyze(tx.image);
+    if(an){const core=new THREE.MeshStandardMaterial({color:an.color,roughness:.5,metalness:.05,transparent:true,opacity:0});rec.coreMat=core;
+      an.bands.forEach(([y0,y1,w],bi)=>{if(w<.12)return;if(bi===0&&(wide||w<.3))return;const k=bi===0?.5:bi===1?.78:.86;const cw=w*pw*k,ch=(y1-y0)*ph*(bi===0?.7:.98);const cy=ph-(y0+y1)/2*ph;
+        const zs=wide?.3:.6;const m=new THREE.Mesh(new THREE.CylinderGeometry(cw/2,cw/2,ch,40),core);m.scale.z=zs;m.position.set(0,cy,-(cw/2)*zs-.01);m.castShadow=true;grp.add(m);});}
+    grp.userData.ready=true;
+  });
+});
+/* ===== timeline ===== */
+const ease=t=>t<0?0:t>1?1:t*t*(3-2*t);
+const easeOut=t=>1-Math.pow(1-(t<0?0:t>1?1:t),3);
+const N=PRODUCTS.length;const T_INTRO=.09,T_DOOR0=.09,T_DOOR1=.20,SEG0=.21,SEG=(.965-SEG0)/N;
+const isMobile=()=>innerWidth<900;
+const ovHero=document.getElementById('ov-hero'),hint=document.getElementById('hint'),progDots=[...document.querySelectorAll('#prog i')],ptitle=document.getElementById('ptitle');
+const chapOv=PRODUCTS.map((_,i)=>document.getElementById('ov-'+i));
+let target=0,prog=0,mx=0,my=0,now=0;
+function readScroll(){const sc=document.getElementById('scroller');const r=sc.getBoundingClientRect();const h=sc.offsetHeight-innerHeight;target=Math.min(1,Math.max(0,-r.top/h));}
+addEventListener('scroll',readScroll,{passive:true});addEventListener('resize',()=>{resize();readScroll();});
+addEventListener('pointermove',e=>{mx=(e.clientX/innerWidth-.5);my=(e.clientY/innerHeight-.5);},{passive:true});
+document.getElementById('startBtn').addEventListener('click',e=>{e.preventDefault();const sc=document.getElementById('scroller');window.scrollTo({top:sc.offsetTop+(sc.offsetHeight-innerHeight)*(SEG0+.02),behavior:'smooth'});});
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function resize(){const w=stageEl.clientWidth,h=stageEl.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+resize();readScroll();
+
+const camBase=new THREE.Vector3(),look=new THREE.Vector3();
+function update(p){
+  const mob=isMobile();
+  /* box placement: right of the text on desktop */
+  const bx=mob?0:1.55;root.position.set(bx,0,0);
+  /* box yaw: sweeping intro */
+  const yaw=-.42+ease(p/T_INTRO)*(.42-.16)+p*.10+Math.sin(now*.5)*.018; root.rotation.y=yaw;root.position.y=Math.sin(now*.8)*.012;if(window.__bd)window.__bd.position.x=bx;
+  /* doors */
+  const dt=ease((p-T_DOOR0)/(T_DOOR1-T_DOOR0));const ang=dt*THREE.MathUtils.degToRad(152);doorL.rotation.y=-ang;doorR.rotation.y=ang;
+  /* camera path */
+  const camZ=mob?12.6:9.8, camY=(mob?.6:.9)+.5*Math.sin(p*Math.PI)-.2*p;
+  camBase.set(bx*.35+(mob?.15:.45)*Math.sin(p*Math.PI*2)+mx*.4,camY+my*-.25,camZ-.9*ease((p-T_DOOR0)/.3));
+  camera.position.lerp(camBase,reduce?1:.12);look.set(bx,mob?-.85:-.1,0);camera.lookAt(look);
+  /* drawers + products */
+  let active=-1;
+  for(let i=0;i<N;i++){
+    const a=SEG0+i*SEG,t=(p-a)/SEG;const d=drawers[i],pr=products[i];
+    const ob=x=>{x=x<0?0:x>1?1:x;const c1=1.4,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2);};const out=ob(t/.22)*(1-ease((t-.86)/.14));
+    d.g.position.z=out*dd*.82;
+    if(!pr)continue;
+    const rise=ease((t-.12)/.36)*(1-ease((t-.8)/.16));
+    const showing=t>.05&&t<1.0&&pr.m.userData.ready;pr.m.visible=showing;
+    if(showing){
+      // phase 1: lift straight up out of the open drawer; phase 2: glide forward to the stage
+      const p1=easeOut(Math.min(1,rise/.45)), p2=easeOut(Math.max(0,(rise-.45)/.55)), rr=p2;
+      const s=.62+.38*p2*(mob?2.3:2.7);
+      const tx=(mob?0:-.15), ty=(mob?.35:.35)-pr.ph*s*.5, tz=D/2+(mob?1.6:1.9);
+      const hx=pr.home.x, hy=pr.home.y, hz=pr.home.z+out*dd*.82;
+      const liftY=d.y+dh/2+.06; // bottom of product clears the drawer's top edge
+      const lx=hx+(tx-hx)*p2, ly=(hy+(liftY-hy)*p1)+(ty-(hy+(liftY-hy)))*p2+Math.sin(now*1.3+i)*.025*p2, lz=hz+(tz-hz)*p2;
+      const v=new THREE.Vector3(lx,ly,lz).applyAxisAngle(new THREE.Vector3(0,1,0),root.rotation.y).add(root.position);
+      pr.m.position.copy(v);
+      pr.m.scale.set(s,s,s);
+      const spin=(1-rr)*-0.9 + Math.sin(now*.7+i*1.7)*.28*rr + (mx*.5)*rr;
+      pr.m.rotation.set(-.06*rr+Math.sin(now*.9)*.03*rr, root.rotation.y*(1-rr)+spin, .03*Math.sin(now*1.1)*rr);
+      const op=Math.min(1,out*1.6);if(pr.mat)pr.mat.opacity=op;if(pr.coreMat)pr.coreMat.opacity=op;
+      glint.position.set(v.x+1.4,v.y+1.2,v.z+1.6);glint.intensity=.9*rr;
+    }
+    if(t>.1&&t<.9)active=i;
+    chapOv[i].classList.toggle('on',t>.16&&t<.88);
+  }
+  ovHero.classList.toggle('on',p<T_DOOR0*.9);ptitle.style.opacity=p<T_DOOR1?1:0;
+  endOv.classList.toggle('on',p>.965);hint.style.opacity=p<.04?1:0;
+  progDots.forEach((d,i)=>d.classList.toggle('on',i===active));
+}
+function loop(){now=performance.now()/1000;prog+=(target-prog)*(reduce?1:.085);update(prog);renderer.render(scene,camera);requestAnimationFrame(loop);}
+document.fonts?document.fonts.ready.then(()=>{canvas.classList.add('ready');redrawFaces();drawers.forEach((d,i)=>{d.g.children[0].material[4].map=tex(drawerFaceCanvas(i+1));});loop();}):loop();
+
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Trebuie să folosesc un cod de reducere?","acceptedAnswer":{"@type":"Answer","text":"Nu. Prețul de Black Friday e deja pus pe fiecare produs și se vede în coș."}},{"@type":"Question","name":"Cum se calculează reducerea?","acceptedAnswer":{"@type":"Answer","text":"Conform Directivei Omnibus, procentul se raportează la cel mai mic preț practicat în ultimele 30 de zile înainte de reducere."}},{"@type":"Question","name":"Transportul e gratuit?","acceptedAnswer":{"@type":"Answer","text":"Da, la comenzi de peste 300 lei."}}]}</script>
+{% schema %}
+{
+  "name": "BF – Cutia 3D",
+  "settings": [
+    {"type":"text","id":"start_date","label":"Data start (YYYY-MM-DD)","default":"2026-11-13"},
+    {"type":"text","id":"end_date","label":"Data final (YYYY-MM-DD)","default":"2026-11-30"},
+    {"type":"text","id":"h1_line1","label":"Titlu linia 1","default":"Am pregătit"},
+    {"type":"text","id":"h1_line2","label":"Titlu linia 2 (auriu)","default":"o cutie."},
+    {"type":"textarea","id":"hero_text","label":"Text hero","default":"Toată gama Sadoer Rozmarin, în șase sertare. Derulează și se deschid pe rând, cu prețul de Black Friday deja pus."},
+    {"type":"text","id":"all_title","label":"Titlu secțiune oferte","default":"Toată gama, într-un loc."},
+    {"type":"textarea","id":"all_text","label":"Text secțiune oferte","default":"Cele șase produse din cutie, cu prețul de Black Friday. Reducerea se raportează la cel mai mic preț din ultimele 30 de zile."},
+    {"type":"url","id":"all_url","label":"Link colecție"},
+    {"type":"text","id":"all_cta","label":"Buton colecție","default":"Vezi colecția Sadoer Rozmarin"},
+    {"type":"text","id":"omnibus_note","label":"Notă Omnibus","default":"Reducerile de Black Friday se raportează la cel mai mic preț practicat în ultimele 30 de zile (Directiva Omnibus)."}
+  ],
+  "blocks": [
+    {"type":"drawer","name":"Sertar (produs)","limit":6,"settings":[
+      {"type":"product","id":"product","label":"Produs"},
+      {"type":"text","id":"asset","label":"Imagine decupată din assets (ex. bf-sad-sampon.webp)"},
+      {"type":"text","id":"eyebrow","label":"Etichetă"},
+      {"type":"text","id":"h_line1","label":"Titlu linia 1"},
+      {"type":"text","id":"h_line2","label":"Titlu linia 2 (auriu)"},
+      {"type":"textarea","id":"text","label":"Text"},
+      {"type":"text","id":"short","label":"Nume scurt (card)"},
+      {"type":"text","id":"sub","label":"Subtitlu (card)"}
+    ]}
+  ],
+  "presets": [{"name":"BF – Cutia 3D"}]
+}
+{% endschema %}

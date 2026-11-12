@@ -1,0 +1,65 @@
+{%- comment -%} BioLuna BF hero pentru paginile de brand (colecții): pill + titlu + countdown + chip-uri + bandă. {%- endcomment -%}
+{%- render 'bio-bf-base' -%}
+{%- assign st = section.settings -%}
+{%- assign is_col = false -%}
+{%- if template.name == 'collection' and collection != blank -%}{%- assign is_col = true -%}{%- endif -%}
+<div class="blf">
+  <div class="bf-wrap bf-colhero">
+    <span class="bf-pill" data-bf-pill data-before="{{ st.pill_before | escape }}" data-live="{{ st.pill_live | escape }}">{{ st.pill_before }}</span>
+    {%- if is_col -%}
+      <h1 class="bf-h">{{ st.col_prefix }}<em>{{ collection.title | split: ' – ' | first | split: ' - ' | first }}</em></h1>
+      <p>{{ collection.products_count }} produse la reducere · stoc limitat</p>
+    {%- else -%}
+      <h1 class="bf-h">{{ st.title_before }}</h1>
+      {%- if st.sub != blank -%}<p>{{ st.sub }}</p>{%- endif -%}
+    {%- endif -%}
+    {%- if st.show_cd -%}
+    <div class="bf-cdwrap" data-bf-cd data-start="{{ st.start }}" data-deadline="{{ st.deadline }}" data-lbl-start="{{ st.lbl_start | escape }}" data-lbl-end="{{ st.lbl_end | escape }}">
+      <p class="bf-cdl">{{ st.lbl_start }}</p>
+      <div class="bf-cd"></div>
+    </div>
+    {%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+    <nav class="bf-chips" aria-label="Branduri Black Friday">
+      {%- for b in section.blocks -%}
+        {%- assign c = b.settings.collection -%}
+        {%- assign href = b.settings.url -%}
+        {%- if c != blank -%}{%- assign href = c.url -%}{%- endif -%}
+        {%- assign on = false -%}
+        {%- if is_col and c != blank and c.handle == collection.handle -%}{%- assign on = true -%}{%- endif -%}
+        <a class="bf-chip{% if on %} on{% endif %}" href="{{ href }}" {{ b.shopify_attributes }}>{{ b.settings.label }}{%- if b.settings.badge != blank -%}<small>{{ b.settings.badge }}</small>{%- endif -%}</a>
+      {%- endfor -%}
+    </nav>
+    {%- endif -%}
+  </div>
+  {%- if st.marquee != blank -%}
+  <div class="bf-marq"><div>{%- for i in (1..8) -%}<span>⚡ {{ st.marquee }}</span>{%- endfor -%}</div></div>
+  {%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "BF – Hero colecție",
+  "settings": [
+    {"type":"text","id":"pill_before","label":"Pill înainte de start","default":"Black Friday · 6 – 15 noiembrie"},
+    {"type":"text","id":"pill_live","label":"Pill când e live","default":"Black Friday este live"},
+    {"type":"text","id":"title_before","label":"Titlu (dacă nu e colecție)","default":"Black Friday <em>BioLuna</em>"},
+    {"type":"text","id":"sub","label":"Subtitlu"},
+    {"type":"text","id":"col_prefix","label":"Prefix titlu pe colecție","default":"Black Friday "},
+    {"type":"checkbox","id":"show_cd","label":"Arată countdown","default":true},
+    {"type":"text","id":"start","label":"Start (YYYY-MM-DD HH:MM)","default":"2026-11-06 00:00"},
+    {"type":"text","id":"deadline","label":"Final (YYYY-MM-DD HH:MM)","default":"2026-11-16 00:00"},
+    {"type":"text","id":"lbl_start","label":"Etichetă înainte de start","default":"Black Friday începe în"},
+    {"type":"text","id":"lbl_end","label":"Etichetă când e live","default":"Black Friday se termină în"},
+    {"type":"text","id":"marquee","label":"Text bandă roșie","default":"Black Friday · 6 – 15 noiembrie · până la -44%"}
+  ],
+  "blocks": [
+    {"type":"chip","name":"Chip brand","settings":[
+      {"type":"text","id":"label","label":"Text","default":"Ozlex"},
+      {"type":"text","id":"badge","label":"Badge (ex. -45%)"},
+      {"type":"collection","id":"collection","label":"Colecție"},
+      {"type":"url","id":"url","label":"Sau link"}
+    ]}
+  ],
+  "presets": [{"name":"BF – Hero colecție"}]
+}
+{% endschema %}

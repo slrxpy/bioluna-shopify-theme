@@ -1,0 +1,19 @@
+{%- assign st = section.settings -%}{%- assign col = st.collection -%}
+{%- if col != blank -%}
+<div class="bf2w"><section class="rw"><div class="rw-h"><h2>{{ st.title | default: col.title }}</h2><a href="{{ col.url }}">{{ st.more }}</a></div>
+<div class="rw-s">
+{%- for p in col.products limit: st.limit -%}
+{%- assign off = 0 -%}{%- if p.compare_at_price > p.price -%}{%- assign off = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round -%}{%- endif -%}
+<a class="pc" href="{{ p.url }}"><div class="pc-im">{%- if off > 0 -%}<span class="pc-off">−{{ off }}%</span>{%- endif -%}
+{%- if p.featured_image -%}<img src="{{ p.featured_image | image_url: width: 480 }}" alt="{{ p.title | escape }}" loading="lazy" width="480" height="480">{%- endif -%}</div>
+<div class="pc-b"><div class="pc-v">{{ p.vendor | remove: ' Professional' }}</div><h3>{{ p.title | split: ' | ' | first | truncate: 66 }}</h3>
+<div class="pc-p"><b>{{ p.price | money }}</b>{%- if off > 0 -%}<s>{{ p.compare_at_price | money }}</s>{%- endif -%}</div>
+{%- if off > 0 -%}<div class="pc-s">Economisești {{ p.compare_at_price | minus: p.price | money }}</div>{%- endif -%}</div></a>
+{%- endfor -%}
+</div></section></div>
+{%- endif -%}
+{% schema %}
+{"name":"BF2 – Rând produse","settings":[{"type":"text","id":"title","label":"Titlu"},{"type":"collection","id":"collection","label":"Colecție"},
+{"type":"range","id":"limit","label":"Câte produse","min":4,"max":12,"step":1,"default":8},{"type":"text","id":"more","label":"Text link","default":"Vezi toate"}],
+"presets":[{"name":"BF2 – Rând produse"}]}
+{% endschema %}

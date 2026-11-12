@@ -1,0 +1,31 @@
+{%- render 'bio-bfx-base' -%}
+{%- assign st = section.settings -%}
+<div class="bf2w">
+{%- if st.end != blank -%}<div class="tm" data-bfx-end="{{ st.end }}" hidden>{{ st.timer_text }} <b></b></div>{%- endif -%}
+<section class="hr"><div class="w"><div>
+<h1>{{ st.title }}</h1>
+<p>{{ st.text }}</p>
+<a class="btn" href="{{ st.link | default: '/collections/all' }}">{{ st.btn }}</a></div>
+<div class="hr-art">{%- if st.pct != blank -%}<div class="big"><small>până la</small><span>−{{ st.pct }}%</span></div>{%- endif -%}
+{%- if st.p1 != blank -%}{%- render 'bio-bfx-img', p: st.p1, w: 600, cls: 'h0' -%}{%- endif -%}
+{%- if st.p2 != blank -%}{%- render 'bio-bfx-img', p: st.p2, w: 600, cls: 'h1' -%}{%- endif -%}
+{%- if st.p3 != blank -%}{%- render 'bio-bfx-img', p: st.p3, w: 600, cls: 'h2' -%}{%- endif -%}
+</div></div></section>
+<div class="ok"><ul>{%- if st.ok1 != blank -%}<li>{{ st.ok1 }}</li>{%- endif -%}{%- if st.ok2 != blank -%}<li>{{ st.ok2 }}</li>{%- endif -%}{%- if st.ok3 != blank -%}<li>{{ st.ok3 }}</li>{%- endif -%}</ul></div>
+</div>
+<script>(function(){var el=document.querySelector('[data-bfx-end]');if(!el)return;var end=new Date(el.getAttribute('data-bfx-end')).getTime(),b=el.querySelector('b');if(isNaN(end))return;
+function p(n){return(n<10?'0':'')+n}function t(){var s=Math.floor((end-Date.now())/1000);if(s<=0){el.hidden=true;return}var d=Math.floor(s/86400);s%=86400;
+b.textContent=(d>0?d+(d==1?' zi ':' zile '):'')+p(Math.floor(s/3600))+':'+p(Math.floor(s%3600/60))+':'+p(s%60);el.hidden=false;setTimeout(t,1000)}t()})();</script>
+{% schema %}
+{"name":"BF2 – Hero","settings":[
+{"type":"text","id":"timer_text","label":"Text bară timp","default":"Black Friday la BioLuna se termină în"},
+{"type":"text","id":"end","label":"Sfârșit (ex. 2026-11-16T00:00:00+02:00)","default":"2026-11-16T00:00:00+02:00"},
+{"type":"text","id":"title","label":"Titlu (<i> = înclinat, <br> = rând nou)","default":"Black <i>Friday,</i><br>pe bune."},
+{"type":"text","id":"text","label":"Text","default":"Păr, ceai, cafea și parfumuri de casă, la cele mai mici prețuri din an. Plătești la livrare."},
+{"type":"text","id":"btn","label":"Buton","default":"Vezi toate reducerile"},
+{"type":"url","id":"link","label":"Link buton"},
+{"type":"text","id":"pct","label":"Procent bulină (doar cifra)","default":"44"},
+{"type":"product","id":"p1","label":"Produs stânga"},{"type":"product","id":"p2","label":"Produs mijloc"},{"type":"product","id":"p3","label":"Produs dreapta"},
+{"type":"text","id":"ok1","label":"Promisiune 1","default":"Plata la livrare"},{"type":"text","id":"ok2","label":"Promisiune 2","default":"Retur în 30 de zile"},{"type":"text","id":"ok3","label":"Promisiune 3","default":"Produse originale"}],
+"presets":[{"name":"BF2 – Hero"}]}
+{% endschema %}

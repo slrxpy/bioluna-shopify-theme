@@ -1,0 +1,28 @@
+{%- assign st = section.settings -%}
+<div class="bf2w"><section class="nd"><div class="w"><h2>{{ st.title }}</h2>{%- if st.text != blank -%}<p>{{ st.text }}</p>{%- endif -%}
+<div class="tls">
+{%- for b in section.blocks -%}{%- assign bs = b.settings -%}{%- assign col = bs.collection -%}
+{%- assign badge = bs.badge -%}
+{%- if badge == blank and col != blank -%}{%- assign mx = 0 -%}
+  {%- for p in col.products limit: 50 -%}{%- if p.compare_at_price > p.price -%}{%- assign d = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round -%}{%- if d > mx -%}{%- assign mx = d -%}{%- endif -%}{%- endif -%}{%- endfor -%}
+  {%- if mx > 0 -%}{%- capture badge -%}până la −{{ mx }}%{%- endcapture -%}{%- endif -%}
+{%- endif -%}
+{%- if bs.wide -%}
+<a class="tl all" href="{{ col.url | default: bs.url }}" {{ b.shopify_attributes }}><div><h3>{{ bs.label }}</h3><p>{{ bs.desc }}</p></div>{%- if badge != blank -%}<span class="stk">{{ badge }}</span>{%- endif -%}</a>
+{%- else -%}
+<a class="tl" style="--bg:{{ bs.bg }}" href="{{ col.url | default: bs.url }}" {{ b.shopify_attributes }}>{%- if badge != blank -%}<span class="stk">{{ badge }}</span>{%- endif -%}<h3>{{ bs.label }}</h3><p>{{ bs.desc }}</p>
+{%- if bs.product != blank -%}{%- render 'bio-bfx-img', p: bs.product, w: 480, cls: '' -%}{%- endif -%}</a>
+{%- endif -%}
+{%- endfor -%}
+</div></div></section></div>
+{% schema %}
+{"name":"BF2 – Ce cauți azi","settings":[{"type":"text","id":"title","label":"Titlu","default":"Ce cauți azi?"},{"type":"text","id":"text","label":"Text","default":"Alege după ce ai nevoie și vezi doar reducerile care te interesează."}],
+"blocks":[{"type":"tile","name":"Pătrat","settings":[
+{"type":"text","id":"label","label":"Nume","default":"Ceai și cafea"},{"type":"text","id":"desc","label":"Descriere"},
+{"type":"collection","id":"collection","label":"Colecție"},{"type":"url","id":"url","label":"Sau link"},
+{"type":"product","id":"product","label":"Produs pentru poză"},
+{"type":"text","id":"badge","label":"Etichetă (gol = calculată din colecție)"},
+{"type":"color","id":"bg","label":"Culoare fundal","default":"#E6DDFB"},
+{"type":"checkbox","id":"wide","label":"Bandă lată, închisă la culoare","default":false}]}],
+"max_blocks":9,"presets":[{"name":"BF2 – Ce cauți azi"}]}
+{% endschema %}

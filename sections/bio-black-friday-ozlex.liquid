@@ -1,0 +1,326 @@
+{%- comment -%} BioLuna — Black Friday Ozlex (Ceai & Cafea) — eMAG-style deals page, black+gold. 24.09.2026 {%- endcomment -%}
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+.bfoz{--bg:#0f0e0d;--bg2:#171514;--bg3:#201d1b;--cream:#f4ede2;--cream-2:#bdb3a6;--gold:#d9b56b;--gold-2:#b8873a;--red:#e0142a;--green:#4caf72;
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Poppins",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;box-sizing:border-box;
+}
+.bfoz *,.bfoz *::before,.bfoz *::after{box-sizing:border-box}
+.bfoz{background:var(--bg);color:var(--cream);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+/*SCOPE*/
+.bfoz img{max-width:100%;display:block} a{color:inherit}
+.bfoz h1, .bfoz h2, .bfoz h3{font-family:var(--serif);font-weight:500;line-height:1;margin:0}
+.bfoz .wrap{width:min(1200px,92vw);margin:0 auto}
+.bfoz .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:15px;border-radius:999px;padding:15px 30px;background:var(--gold);color:#1a1408;transition:transform .2s,background .2s}
+.bfoz .btn:hover{transform:translateY(-1px);background:#e6c67f} .btn:focus-visible{outline:3px solid var(--cream);outline-offset:3px}
+.bfoz .btn.red{background:var(--red);color:#fff} .btn.red:hover{background:#f0243a}
+.bfoz .btn.ghost{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1.5px rgba(244,237,226,.5)}
+.bfoz .btn.sm{padding:11px 18px;font-size:13px}
+.bfoz .eyebrow{font-family:var(--serif);font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.bfoz .badge{display:inline-flex;align-items:center;justify-content:center;background:var(--red);color:#fff;font-weight:700;border-radius:8px;padding:6px 10px;font-size:14px;line-height:1}
+
+/* ===== HERO ===== */
+.bfoz .hero{position:relative;overflow:hidden;padding:70px 0 60px;background:radial-gradient(ellipse at 70% 30%,rgba(217,181,107,.16),rgba(15,14,13,0) 55%),var(--bg)}
+.bfoz .hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.bfoz .hero h1{font-size:clamp(50px,7vw,106px);color:var(--cream)}
+.bfoz .hero h1 .l2{display:block;color:var(--gold);font-style:italic}
+.bfoz .hero p{max-width:44ch;color:var(--cream-2);font-size:clamp(15px,1.2vw,18px);margin:24px 0 28px}
+.bfoz .cd{display:flex;gap:10px;margin:26px 0 30px}
+.bfoz .cd div{background:var(--bg2);border:1px solid rgba(217,181,107,.35);border-radius:14px;min-width:86px;padding:12px 10px 10px;text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.bfoz .cd b{display:block;font-family:var(--serif);font-size:clamp(40px,4.4vw,64px);line-height:1;color:var(--cream);font-variant-numeric:tabular-nums;font-weight:600}
+.bfoz .cd small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:6px}
+.bfoz .cd-lbl{font-size:13px;color:var(--cream-2);letter-spacing:.06em;text-transform:uppercase}
+.bfoz .float{position:relative;height:520px}
+.bfoz .float img{position:absolute;filter:drop-shadow(0 40px 40px rgba(0,0,0,.6));transition:transform .15s ease-out;will-change:transform}
+.bfoz .float .f1{width:64%;left:8%;top:6%;z-index:2}
+.bfoz .float .f2{width:50%;right:0;top:44%}
+.bfoz .float .ring{position:absolute;inset:10% 0;border:1px solid rgba(217,181,107,.25);border-radius:50%;transform:rotateX(65deg);animation:spin 26s linear infinite}
+@keyframes spin{to{transform:rotateX(65deg) rotate(360deg)}}
+.bfoz .hero .ticks{display:flex;gap:26px;flex-wrap:wrap;margin-top:8px;font-size:13px;color:var(--cream-2)}
+.bfoz .hero .ticks span::before{content:"✦";color:var(--gold);margin-right:8px}
+@media (max-width:900px){.bfoz .hero{padding:40px 0 30px}.bfoz .hero .wrap{grid-template-columns:1fr}.bfoz .float{height:260px;order:-1}.bfoz .float .f1{width:56%;left:4%;top:0}.bfoz .float .f2{width:42%;right:2%;top:24%}.bfoz .cd div{min-width:0;flex:1;padding:10px 6px}.bfoz .cd b{font-size:36px}.bfoz .hero h1{font-size:clamp(44px,12vw,64px)}}
+
+/* ===== OFERTA OREI ===== */
+.bfoz .hour{padding:30px 0 60px}
+.bfoz .hourcard{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;background:linear-gradient(135deg,#1d1a17,#141211);border:1px solid rgba(217,181,107,.45);border-radius:22px;overflow:hidden;position:relative}
+.bfoz .hourcard::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(217,181,107,.14),transparent 55%);pointer-events:none}
+.bfoz .hourcard .im{display:grid;place-items:center;padding:40px;min-height:380px}
+.bfoz .hourcard .im img{max-height:340px;object-fit:contain;filter:drop-shadow(0 30px 30px rgba(0,0,0,.6))}
+.bfoz .hourcard .bd{padding:44px 44px 40px;position:relative}
+.bfoz .hourhead{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.bfoz .hourhead .lbl{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.bfoz .hourhead .lbl i{width:8px;height:8px;border-radius:50%;background:var(--red);display:block;animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(224,20,42,.6)}60%{box-shadow:0 0 0 9px rgba(224,20,42,0)}}
+.bfoz .hourhead .t{font-family:var(--serif);font-size:24px;color:var(--cream);font-variant-numeric:tabular-nums}
+.bfoz .hourhead .t small{font-family:var(--sans);font-size:12px;color:var(--cream-2);margin-right:8px}
+.bfoz .hourcard h2{font-size:clamp(34px,3.6vw,52px);color:var(--cream)}
+.bfoz .hourcard .sub{color:var(--cream-2);margin:10px 0 18px}
+.bfoz .pricerow{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.bfoz .pricerow .now{font-family:var(--serif);font-size:56px;font-weight:600;color:var(--cream);line-height:1}
+.bfoz .pricerow .old{color:var(--cream-2);text-decoration:line-through;font-size:17px}
+.bfoz .pricerow .save{font-size:13px;font-weight:600;color:var(--gold);background:rgba(217,181,107,.12);border:1px solid rgba(217,181,107,.35);padding:5px 10px;border-radius:999px}
+.bfoz .perday{font-size:13px;color:var(--cream-2);margin-top:6px}
+.bfoz .perday b{color:var(--cream)}
+.bfoz .stock{margin:22px 0 22px}
+.bfoz .stock .bar{height:8px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.bfoz .stock .bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--red),#ff7a45)}
+.bfoz .stock .txt{display:flex;justify-content:space-between;font-size:12px;color:var(--cream-2);margin-top:8px}
+.bfoz .stock .txt b{color:var(--cream)}
+.bfoz .ctas{display:flex;gap:12px;flex-wrap:wrap}
+@media (max-width:900px){.bfoz .hourcard{grid-template-columns:1fr}.bfoz .hourcard .im{min-height:0;padding:26px 26px 0}.bfoz .hourcard .im img{max-height:220px}.bfoz .hourcard .bd{padding:22px 22px 26px}.bfoz .pricerow .now{font-size:44px}}
+
+/* ===== GRID ===== */
+.bfoz .deals{padding:30px 0 70px}
+.bfoz .sechead{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.bfoz .sechead h2{font-size:clamp(36px,4.4vw,64px);color:var(--cream)}
+.bfoz .sechead h2 em{font-style:italic;color:var(--gold)}
+.bfoz .chips{display:flex;gap:8px;flex-wrap:wrap}
+.bfoz .chip{border:1px solid rgba(244,237,226,.25);color:var(--cream);background:transparent;border-radius:999px;padding:9px 16px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--sans)}
+.bfoz .chip.on{background:var(--gold);color:#1a1408;border-color:var(--gold)}
+.bfoz .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media (max-width:1100px){.bfoz .grid{grid-template-columns:repeat(3,1fr)}.bfoz .grid{grid-template-columns:repeat(2,1fr);gap:10px}}
+.bfoz .dc{background:var(--bg2);border:1px solid rgba(255,255,255,.07);border-radius:18px;overflow:hidden;position:relative;display:flex;flex-direction:column;transition:transform .25s,border-color .25s,box-shadow .25s}
+.bfoz .dc:hover{transform:translateY(-4px);border-color:rgba(217,181,107,.5);box-shadow:0 30px 40px -30px rgba(0,0,0,.9)}
+.bfoz .dc.hide{display:none}
+.bfoz .dc .im{aspect-ratio:1;display:grid;place-items:center;padding:22px;background:radial-gradient(ellipse at 50% 80%,rgba(217,181,107,.12),transparent 60%)}
+.bfoz .dc .im img{max-height:100%;object-fit:contain;filter:drop-shadow(0 16px 16px rgba(0,0,0,.55))}
+.bfoz .dc .pct{position:absolute;left:12px;top:12px;z-index:2}
+.bfoz .dc .days{position:absolute;right:12px;top:12px;font-size:11px;color:var(--gold);border:1px solid rgba(217,181,107,.4);border-radius:999px;padding:4px 9px;background:rgba(15,14,13,.6)}
+.bfoz .dc .bd{padding:6px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.bfoz .dc .n{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.1;color:var(--cream)}
+.bfoz .dc .s{font-size:12px;color:var(--cream-2)}
+.bfoz .dc .p{display:flex;align-items:baseline;gap:8px;margin-top:8px}
+.bfoz .dc .p b{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--cream);line-height:1}
+.bfoz .dc .p s{font-size:12px;color:var(--cream-2)}
+.bfoz .dc .sv{font-size:12px;color:var(--gold)}
+.bfoz .dc .stk{font-size:11px;color:var(--cream-2);margin-top:6px}
+.bfoz .dc .stk i{display:block;height:4px;border-radius:99px;background:rgba(255,255,255,.08);margin-top:4px;overflow:hidden}
+.bfoz .dc .stk i b{display:block;height:100%;background:linear-gradient(90deg,var(--red),#ff7a45)}
+.bfoz .dc .act{display:flex;gap:8px;margin-top:auto;padding-top:12px}
+.bfoz .dc .act .btn{flex:1;padding:11px 10px;font-size:12px}
+@media (max-width:800px){.bfoz .dc .bd{padding:4px 12px 12px}.bfoz .dc .n{font-size:17px}.bfoz .dc .p b{font-size:22px}.bfoz .dc .act{flex-direction:column}}
+
+/* ===== CURA ===== */
+.bfoz .cura{padding:60px 0 70px;background:linear-gradient(180deg,var(--bg),#141210 30%,var(--bg))}
+.bfoz .cura h2{text-align:center;font-size:clamp(36px,4.6vw,66px)} .cura h2 em{font-style:italic;color:var(--gold)}
+.bfoz .cura .lead{text-align:center;color:var(--cream-2);max-width:56ch;margin:14px auto 36px}
+.bfoz .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+@media (max-width:800px){.bfoz .plans{grid-template-columns:1fr}}
+.bfoz .plan{position:relative;background:var(--bg2);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:28px 26px 26px;display:flex;flex-direction:column;gap:8px}
+.bfoz .plan.best{border-color:var(--gold);background:linear-gradient(180deg,#1f1a14,#171514);transform:scale(1.03)}
+.bfoz .plan .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#1a1408;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:999px;white-space:nowrap}
+.bfoz .plan .m{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1}
+.bfoz .plan .m small{font-size:18px;color:var(--cream-2);font-weight:500;margin-left:6px}
+.bfoz .plan .pl{font-size:13px;color:var(--cream-2)}
+.bfoz .plan .pd{font-family:var(--serif);font-size:30px;color:var(--gold);margin-top:10px;line-height:1}
+.bfoz .plan .pd small{font-family:var(--sans);font-size:12px;color:var(--cream-2)}
+.bfoz .plan .pr{display:flex;align-items:baseline;gap:10px;margin-top:8px}
+.bfoz .plan .pr b{font-size:26px;font-family:var(--serif);font-weight:600}
+.bfoz .plan .pr s{font-size:13px;color:var(--cream-2)}
+.bfoz .plan ul{list-style:none;padding:0;margin:14px 0 18px;display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--cream-2)}
+.bfoz .plan ul li::before{content:"✓";color:var(--green);font-weight:700;margin-right:8px}
+.bfoz .plan .btn{margin-top:auto}
+
+/* ===== RITUAL + FAQ ===== */
+.bfoz .ritual{padding:60px 0}
+.bfoz .ritual h2{font-size:clamp(34px,4vw,56px);margin-bottom:26px} .ritual h2 em{font-style:italic;color:var(--gold)}
+.bfoz .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:800px){.bfoz .steps{grid-template-columns:1fr}}
+.bfoz .step{background:var(--bg2);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:24px}
+.bfoz .step .k{font-family:var(--serif);font-size:44px;color:var(--gold);line-height:1;margin-bottom:8px}
+.bfoz .step h3{font-family:var(--sans);font-size:16px;font-weight:600;margin-bottom:6px;color:var(--cream)}
+.bfoz .step p{font-size:14px;color:var(--cream-2);margin:0}
+.bfoz .faq{padding:20px 0 90px}
+.bfoz .faq h2{font-size:clamp(32px,4vw,52px);margin-bottom:20px}
+.bfoz .faq details{border-top:1px solid rgba(255,255,255,.12);padding:16px 0}
+.bfoz .faq details:last-of-type{border-bottom:1px solid rgba(255,255,255,.12)}
+.bfoz .faq summary{cursor:pointer;font-weight:600;font-size:16px;list-style:none;display:flex;justify-content:space-between;gap:16px;color:var(--cream)}
+.bfoz .faq summary::after{content:"+";font-family:var(--serif);font-size:26px;line-height:1;color:var(--gold)}
+.bfoz .faq details[open] summary::after{content:"–"}
+.bfoz .faq details p{color:var(--cream-2);margin:10px 0 0;max-width:70ch;font-size:14px}
+.bfoz .foot{padding:20px 0 120px;font-size:12px;color:var(--cream-2);text-align:center}
+
+/* ===== MOBILE STICKY BAR ===== */
+.bfoz .mbar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:40;display:none;align-items:center;justify-content:space-between;gap:10px;background:rgba(23,21,20,.92);backdrop-filter:blur(10px);border:1px solid rgba(217,181,107,.4);border-radius:999px;padding:8px 8px 8px 16px}
+.bfoz .mbar .t{font-size:12px;color:var(--cream-2)} .mbar .t b{color:var(--cream);font-variant-numeric:tabular-nums;font-size:14px;display:block}
+@media (max-width:800px){.bfoz .mbar{display:flex}}
+@media (prefers-reduced-motion:reduce){.bfoz .float .ring, .bfoz .hourhead .lbl i{animation:none}.bfoz .float img{transition:none}}
+
+.bfoz h1,.bfoz h2,.bfoz h3,.bfoz .cd b,.bfoz .pricerow .now,.bfoz .dc .n,.bfoz .dc .p b,.bfoz .plan .m,.bfoz .plan .pd,.bfoz .plan .pr b,.bfoz .hourhead .t,.bfoz .step .k{font-family:var(--serif) !important;letter-spacing:0 !important;text-transform:none !important;margin:0 !important;line-height:1 !important}
+.bfoz h1,.bfoz h2,.bfoz .sechead h2,.bfoz .cura h2,.bfoz .ritual h2,.bfoz .faq h2{font-weight:500 !important;color:var(--cream) !important}
+.bfoz .hero h1{font-size:clamp(50px,7vw,106px) !important;margin-top:14px !important}.bfoz .hourcard h2{font-size:clamp(34px,3.6vw,52px) !important}.bfoz .sechead h2{font-size:clamp(36px,4.4vw,64px) !important}.bfoz .cura h2{font-size:clamp(36px,4.6vw,66px) !important;text-align:center}.bfoz .ritual h2{font-size:clamp(34px,4vw,56px) !important;margin-bottom:26px !important}.bfoz .faq h2{font-size:clamp(32px,4vw,52px) !important;margin-bottom:20px !important}
+.bfoz .step h3{font-family:var(--sans) !important;font-size:16px !important;font-weight:600 !important;margin-bottom:6px !important}
+.bfoz .btn,.bfoz .btn:hover,.bfoz .chip{font-family:var(--sans) !important;text-transform:none !important;letter-spacing:.01em !important;border-radius:999px !important;line-height:1.2 !important;min-height:0 !important;height:auto !important;text-decoration:none !important}
+.bfoz p{margin:0}.bfoz .hero p{margin:24px 0 28px}.bfoz .cura .lead{margin:14px auto 36px}.bfoz .faq details p{margin:10px 0 0}.bfoz .step p{margin:0}
+@media (max-width:900px){.bfoz .hero h1{font-size:clamp(36px,9.6vw,54px) !important}.bfoz .dc .p{flex-wrap:wrap;gap:6px}.bfoz .dc .p b{font-size:20px !important;white-space:nowrap}.bfoz .dc .n{font-size:16px !important}.bfoz .pricerow .now{font-size:40px !important}}
+#es-popup-button,.es-popup-button,[class*="es-sticky"],[id*="es-sticky"]{display:none !important}
+@media (max-width:800px){#wa-btn{bottom:calc(84px + env(safe-area-inset-bottom,0px)) !important;transform:scale(.85);transform-origin:bottom right}}
+</style>
+
+<div class="bfoz" id="bfoz-{{ section.id }}">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Black Friday · BioLuna</div>
+      <h1 style="margin-top:14px">{{ section.settings.h1_line1 }} <span class="l2">{{ section.settings.h1_line2 }}</span></h1>
+      <div class="cd-lbl" id="cdl">Începe în</div>
+      <div class="cd" id="cd"><div><b id="cdd">00</b><small>zile</small></div><div><b id="cdh">00</b><small>ore</small></div><div><b id="cdm">00</b><small>min</small></div><div><b id="cds">00</b><small>sec</small></div></div>
+      <p>{{ section.settings.hero_text }}</p>
+      <a class="btn" href="#oferte">Vezi ofertele</a>
+      <div class="ticks"><span>Reducerea se aplică automat</span><span>Livrare 1–2 zile</span><span>Ramburs sau card</span></div>
+    </div>
+    <div class="float" id="float"><div class="ring"></div><img class="f1" alt="Ceai Ozlex" src="{{ 'bf-ceai.webp' | asset_url }}"><img class="f2" alt="Cafea Ozlex" src="{{ 'bf-cafea.webp' | asset_url }}"></div>
+  </div>
+</section>
+
+<section class="hour" id="oferta-orei">
+  <div class="wrap"><div class="hourcard" id="hourcard"></div></div>
+</section>
+
+<section class="deals" id="oferte">
+  <div class="wrap">
+    <div class="sechead"><h2>Toate ofertele <em>Ozlex.</em></h2>
+      <div class="chips" id="chips"><button class="chip on" data-f="all">Toate</button><button class="chip" data-f="ceai">Ceai</button><button class="chip" data-f="cafea">Cafea</button><button class="chip" data-f="combo">Ceai + Cafea</button><button class="chip" data-f="cadou">Cadouri</button></div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="cura" id="cura">
+  <div class="wrap">
+    <h2>Alege-ți <em>cura.</em></h2>
+    <p class="lead">Un plic pe zi. Cu cât alegi mai multe luni, cu atât plătești mai puțin pe zi — și ai ritualul asigurat până în primăvară.</p>
+    <div class="plans" id="plans"></div>
+  </div>
+</section>
+
+<section class="ritual">
+  <div class="wrap">
+    <h2>Cum arată <em>ritualul.</em></h2>
+    <div class="steps">
+      <div class="step"><div class="k">1</div><h3>Un plic, o cană</h3><p>Dimineața sau seara, un plic de ceai Ozlex în 200 ml de apă fierbinte, 5–7 minute. Atât.</p></div>
+      <div class="step"><div class="k">2</div><h3>Aceeași oră, în fiecare zi</h3><p>Secretul nu e plicul, e constanța. O cutie ține 60 de zile — două luni de obicei nou.</p></div>
+      <div class="step"><div class="k">3</div><h3>Original, cu hologramă</h3><p>Fiecare cutie are holograma producătorului din Turcia. Importăm direct, fără intermediari.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq"><div class="wrap">
+  <h2>Întrebări frecvente</h2>
+  <details><summary>Când începe și când se termină Black Friday la BioLuna?</summary><p>Începe pe <b class="d1"></b> și se încheie pe <b class="d2"></b>. Prețurile de pe această pagină sunt active doar în această perioadă.</p></details>
+  <details><summary>Trebuie să folosesc un cod?</summary><p>Nu. Prețul de Black Friday e deja pus pe fiecare produs și se vede în coș. Nu se cumulează cu alte coduri.</p></details>
+  <details><summary>Cum se calculează reducerea?</summary><p>Conform Directivei Omnibus, procentul se raportează la cel mai mic preț practicat de BioLuna în ultimele 30 de zile înainte de reducere.</p></details>
+  <details><summary>Ce înseamnă „Oferta orei"?</summary><p>În fiecare oră punem în față un alt pachet Ozlex din ofertele de Black Friday. Prețul e același preț de Black Friday, doar produsul evidențiat se schimbă.</p></details>
+  <details><summary>Transportul e gratuit?</summary><p>Da, la comenzi de peste 300 lei. Sub această sumă se aplică taxa standard de livrare, afișată în coș.</p></details>
+  <details><summary>Cât durează livrarea?</summary><p>Comenzile plasate până la ora 17:00 pleacă în aceeași zi și ajung de obicei în 1–2 zile lucrătoare, oriunde în România.</p></details>
+</div></section>
+<div class="foot">Reducerile de Black Friday se raportează la cel mai mic preț practicat în ultimele 30 de zile (Directiva Omnibus). Stoc limitat. Ceaiul și cafeaua Ozlex sunt băuturi tradiționale; nu înlocuiesc o alimentație echilibrată.</div>
+
+<div class="mbar" id="mbar"><div class="t">Black Friday <b id="mcd">—</b></div><a class="btn sm" href="#oferte">Vezi ofertele</a></div>
+</div>
+
+
+<script>
+const BF={start:"{{ section.settings.start_date }}T00:00:00+02:00",end:"{{ section.settings.end_date }}T23:59:59+02:00"};
+const PRODUCTS=[
+{%- for block in section.blocks -%}{%- assign p = block.settings.product -%}{%- if p == blank -%}{%- continue -%}{%- endif -%}
+  {%- assign v = p.selected_or_first_available_variant -%}
+  {%- assign img = block.settings.asset -%}{%- if img != blank -%}{%- assign src = img | asset_url -%}{%- else -%}{%- assign src = p.featured_image | image_url: width: 800 -%}{%- endif -%}
+  {%- assign days = p.metafields.custom.zile | default: block.settings.days -%}
+  {%- assign qty = 0 -%}{%- if v.inventory_management != blank -%}{%- assign qty = v.inventory_quantity -%}{%- endif -%}
+  {"handle":{{ p.handle | json }},"short":{{ block.settings.short | default: p.title | json }},"sub":{{ block.settings.sub | json }},"cat":{{ block.settings.cat | json }},"days":{{ days | default: 0 }},"hour":{{ block.settings.hour }},"qty":{{ qty | default: 0 }},
+   "url":{{ p.url | json }},"img":{{ src | json }},"vid":{{ v.id | json }},"now":{{ v.price | money_without_currency | json }},"ref":{{ v.compare_at_price | default: v.price | money_without_currency | json }}}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+];
+(function(){
+const R=document.getElementById('bfoz-{{ section.id }}');
+const lei=v=>(typeof v==='string'?v:v.toFixed(2)).replace('.',',')+' lei';
+const num=v=>typeof v==='string'?parseFloat(v.replace(/\./g,'').replace(',','.')):v;
+/* normalise: preview computes a demo BF price, Shopify passes live now/ref */
+PRODUCTS.forEach(p=>{ if(p.now==null){const pct=p.pct??BF.pct;p.ref=p.compare&&p.compare>p.price?p.compare:p.price;p.now=Math.floor(p.price*(1-pct/100))+0.99;p.pct=pct;} });
+const pctOf=p=>{const n=num(p.now),r=num(p.ref);return r>n?Math.round((r-n)/r*100):0;};
+const saveOf=p=>Math.max(0,num(p.ref)-num(p.now));
+const perDay=p=>p.days?(num(p.now)/p.days):null;
+
+/* countdown */
+const S=new Date(BF.start),E=new Date(BF.end);const fmt=d=>d.toLocaleDateString('ro-RO',{day:'numeric',month:'long'});
+R.querySelectorAll('.d1').forEach(x=>x.textContent=fmt(S));R.querySelectorAll('.d2').forEach(x=>x.textContent=fmt(E));
+const q=id=>R.querySelector('#'+id);
+function tick(){const n=new Date();let t,txt;if(n<S){t=S-n;txt='Începe în';}else if(n<E){t=E-n;txt='Se termină în';}else{t=0;txt='S-a încheiat';}
+  const d=Math.floor(t/864e5),h=Math.floor(t%864e5/36e5),m=Math.floor(t%36e5/6e4),s=Math.floor(t%6e4/1e3);const z=x=>String(x).padStart(2,'0');
+  q('cdl').textContent=txt;q('cdd').textContent=z(d);q('cdh').textContent=z(h);q('cdm').textContent=z(m);q('cds').textContent=z(s);
+  q('mcd').textContent=t?`${txt.toLowerCase()} ${d}z ${z(h)}:${z(m)}:${z(s)}`:txt;}
+tick();setInterval(tick,1000);
+
+/* hero parallax */
+const fl=q('float');if(fl&&matchMedia('(pointer:fine)').matches){addEventListener('pointermove',e=>{const x=(e.clientX/innerWidth-.5),y=(e.clientY/innerHeight-.5);fl.querySelector('.f1').style.transform=`translate(${x*-18}px,${y*-12}px) rotate(${x*-3}deg)`;fl.querySelector('.f2').style.transform=`translate(${x*22}px,${y*16}px) rotate(${x*4}deg)`;},{passive:true});}
+
+/* oferta orei: rotates hourly through the bundles */
+const pool=PRODUCTS.filter(p=>p.hour!==false&&pctOf(p)>0);
+function hourDeal(){const n=new Date();const idx=(n.getDate()*24+n.getHours())%pool.length;const p=pool[idx];const next=new Date(n);next.setHours(n.getHours()+1,0,0,0);
+  const left=next-n;const z=x=>String(x).padStart(2,'0');const mm=Math.floor(left/6e4),ss=Math.floor(left%6e4/1e3);
+  const pd=perDay(p);const pct=pctOf(p);
+  q('hourcard').innerHTML=`<div class="im"><img alt="${p.short}" src="${p.img}"></div><div class="bd">
+    <div class="hourhead"><span class="lbl"><i></i>Oferta orei</span><span class="t"><small>se schimbă în</small>${z(mm)}:${z(ss)}</span></div>
+    <h2>${p.short}</h2><div class="sub">${p.sub}</div>
+    <div class="pricerow"><span class="now">${lei(p.now)}</span>${pct?`<span class="old">${lei(p.ref)}</span><span class="save">economisești ${lei(saveOf(p))}</span>`:''}</div>
+    ${pd?`<div class="perday">≈ <b>${pd.toFixed(2).replace('.',',')} lei/zi</b> · ține ~${p.days} zile</div>`:''}
+    ${stockHtml(p,true)}
+    <div class="ctas"><button class="btn red add" data-vid="${p.vid}">Adaugă în coș</button><a class="btn ghost" href="${p.url}">Vezi produsul</a></div></div>`;}
+function stockHtml(p,big){if(!(p.qty>0&&p.qty<=40))return big?'<div class="stock"><div class="txt"><span>Stoc disponibil · livrare 1–2 zile</span></div></div>':'';
+  const w=Math.max(6,Math.round(p.qty/40*100));return big?`<div class="stock"><div class="bar"><i style="width:${w}%"></i></div><div class="txt"><span>Au mai rămas <b>${p.qty}</b> bucăți la acest preț</span><span>stoc limitat</span></div></div>`:`<div class="stk">Au mai rămas ${p.qty} buc.<i><b style="width:${w}%"></b></i></div>`;}
+hourDeal();setInterval(hourDeal,1000);
+
+/* grid */
+const grid=q('grid');
+PRODUCTS.forEach(p=>{const pct=pctOf(p),pd=perDay(p);
+  grid.insertAdjacentHTML('beforeend',`<div class="dc" data-cat="${p.cat}">${pct?`<span class="badge pct">−${pct}%</span>`:''}${p.days?`<span class="days">≈ ${p.days} zile</span>`:''}
+    <a class="im" href="${p.url}"><img alt="${p.short}" loading="lazy" src="${p.img}"></a>
+    <div class="bd"><div class="n">${p.short}</div><div class="s">${p.sub}</div>
+      <div class="p"><b>${lei(p.now)}</b>${pct?`<s>${lei(p.ref)}</s>`:''}</div>${pct?`<div class="sv">economisești ${lei(saveOf(p))}${pd?` · ≈ ${pd.toFixed(2).replace('.',',')} lei/zi`:''}</div>`:(pd?`<div class="sv">≈ ${pd.toFixed(2).replace('.',',')} lei/zi</div>`:'')}
+      ${stockHtml(p,false)}
+      <div class="act"><button class="btn red add" data-vid="${p.vid}">Adaugă în coș</button><a class="btn ghost" href="${p.url}">Detalii</a></div></div></div>`);});
+q('chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;R.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===b));const f=b.dataset.f;grid.querySelectorAll('.dc').forEach(c=>c.classList.toggle('hide',f!=='all'&&c.dataset.cat!==f));});
+
+/* cura: the tea 1/2/3 months */
+const teas=PRODUCTS.filter(p=>p.cat==='ceai'&&p.days).sort((a,b)=>a.days-b.days);
+const plans=q('plans');
+teas.forEach((p,k)=>{const months=Math.round(p.days/30),pd=perDay(p),pct=pctOf(p);const best=k===1;
+  plans.insertAdjacentHTML('beforeend',`<div class="plan ${best?'best':''}">${best?'<span class="tag">Cea mai aleasă</span>':''}
+    <div class="m">${months}<small>${months===1?'lună':'luni'}</small></div><div class="pl">${p.days} plicuri · un plic pe zi</div>
+    <div class="pd">${pd.toFixed(2).replace('.',',')} lei<small> / zi</small></div>
+    <div class="pr"><b>${lei(p.now)}</b>${pct?`<s>${lei(p.ref)}</s>`:''}</div>
+    <ul><li>Original Turcia, cu hologramă</li><li>${months>1?'Transport gratuit (peste 300 lei)':'Livrare 1–2 zile'}</li>${pct?`<li>Economisești ${lei(saveOf(p))}</li>`:''}</ul>
+    <button class="btn ${best?'red':''} add" data-vid="${p.vid}">Alege ${months} ${months===1?'lună':'luni'}</button></div>`);});
+
+/* add to cart */
+R.addEventListener('click',e=>{const b=e.target.closest('.add');if(!b)return;const t=b.textContent;b.disabled=true;b.textContent='Se adaugă…';
+  fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({items:[{id:+b.dataset.vid,quantity:1}]})}).then(r=>{if(!r.ok)throw 0;b.textContent='Adăugat ✓';setTimeout(()=>location.href='/cart',450);}).catch(()=>{b.textContent=t;b.disabled=false;location.href='/cart';});});
+})();
+
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Trebuie să folosesc un cod?","acceptedAnswer":{"@type":"Answer","text":"Nu. Prețul de Black Friday e deja pus pe fiecare produs și se vede în coș."}},{"@type":"Question","name":"Cum se calculează reducerea?","acceptedAnswer":{"@type":"Answer","text":"Conform Directivei Omnibus, procentul se raportează la cel mai mic preț practicat în ultimele 30 de zile înainte de reducere."}},{"@type":"Question","name":"Transportul e gratuit?","acceptedAnswer":{"@type":"Answer","text":"Da, la comenzi de peste 300 lei."}}]}</script>
+{% schema %}
+{
+  "name": "BF – Ozlex (oferte)",
+  "settings": [
+    {"type":"text","id":"start_date","label":"Data start (YYYY-MM-DD)","default":"2026-11-13"},
+    {"type":"text","id":"end_date","label":"Data final (YYYY-MM-DD)","default":"2026-11-30"},
+    {"type":"text","id":"h1_line1","label":"Titlu linia 1","default":"Ritualul Ozlex,"},
+    {"type":"text","id":"h1_line2","label":"Titlu linia 2 (auriu)","default":"la cel mai mic preț al anului."},
+    {"type":"textarea","id":"hero_text","label":"Text hero","default":"Ceai și cafea Ozlex, originale din Turcia, cu hologramă. Un plic pe zi, aceeași cană, prețul de Black Friday deja pus pe fiecare produs — fără cod."}
+  ],
+  "blocks": [
+    {"type":"deal","name":"Ofertă (produs)","limit":16,"settings":[
+      {"type":"product","id":"product","label":"Produs"},
+      {"type":"select","id":"cat","label":"Categorie","options":[{"value":"ceai","label":"Ceai"},{"value":"cafea","label":"Cafea"},{"value":"combo","label":"Ceai + Cafea"},{"value":"cadou","label":"Cadouri"}],"default":"ceai"},
+      {"type":"text","id":"short","label":"Nume scurt"},
+      {"type":"text","id":"sub","label":"Subtitlu"},
+      {"type":"number","id":"days","label":"Zile (dacă nu există metafield custom.zile)"},
+      {"type":"text","id":"asset","label":"Imagine decupată din assets (ex. bf-oz-01.webp)"},
+      {"type":"checkbox","id":"hour","label":"Intră în rotația „Oferta orei”","default":true}
+    ]}
+  ],
+  "presets": [{"name":"BF – Ozlex (oferte)"}]
+}
+{% endschema %}

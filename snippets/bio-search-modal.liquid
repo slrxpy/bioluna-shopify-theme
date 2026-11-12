@@ -1,0 +1,33 @@
+{%- comment -%} BioLuna: continut modal cautare cand campul e gol {%- endcomment -%}
+<style>
+predictive-search .search__recommendations{display:none !important}
+.bsm{padding:6px 0 10px}
+.bsm b.h{display:block;font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;color:#8a7a7e;margin:12px 0 8px}
+.bsm-chips a{display:inline-block;background:#fff;border:1px solid #f2dde2;border-radius:999px;padding:7px 13px;font-size:13px;font-weight:700;color:#1f1f1f;text-decoration:none;margin:0 6px 6px 0}
+.bsm-chips a:hover{border-color:#d10a1e;color:#d10a1e}
+.bsm-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.bsm-tiles a{display:block;background:linear-gradient(120deg,#fdf4f6,#fbe9ee);border:1px solid #f2dde2;border-radius:12px;padding:12px 10px;text-align:center;font-weight:800;font-size:13px;color:#1f1f1f;text-decoration:none}
+.bsm-best{display:flex;gap:10px;overflow-x:auto;padding:2px 0 8px}
+.bsm-best .bx-pcard{flex:0 0 150px}
+@media(max-width:640px){.bsm-tiles{grid-template-columns:repeat(2,1fr)}}
+</style>
+<template id="bsm-tpl"><div class="bsm bx">
+  <b class="h">Căutări populare</b><div class="bsm-chips">{%- assign chips = 'șampon usturoi,ceai ozlex,rozmarin,magiun themra,mască de păr,odorizant,spf 50,pachet promo' | split: ',' -%}{%- for c in chips -%}<a href="/search?q={{ c | url_encode }}&type=product">{{ c }}</a>{%- endfor -%}</div>
+  <b class="h">Mergi direct la</b><div class="bsm-tiles"><a href="/collections/toate-pachetele-promo">🎁 Pachete promo</a><a href="/collections/redist-professional">💇‍♀️ Îngrijire păr</a><a href="/collections/ozlex-detox-slabit-complet">☕ Ceai & cafea</a><a href="/collections/magiun-afrodisiac-toate-produsele">🍯 Magiun</a><a href="/collections/sadoer-professional">🌿 Sadoer</a><a href="/collections/dr-okay">✨ Dr. Okay</a><a href="/collections/odorizante-camera-alya">🏠 Odorizante</a><a href="/collections/servetele-umede-sleepy">🧻 Șervețele</a></div>
+  <b class="h">⭐ Cele mai vândute</b><div class="bsm-best">{%- assign k = 0 -%}{%- for p in collections['all'].products -%}{%- if p.tags contains 'bestseller' and p.available and k < 6 -%}{%- assign k = k | plus: 1 -%}{%- render 'bio-card', p: p -%}{%- endif -%}{%- endfor -%}</div>
+</div></template>
+<script>
+(function(){
+  function go(){
+    var ps=document.querySelector('predictive-search'); if(!ps) return;
+    var box=ps.querySelector('.search__content'); var tpl=document.getElementById('bsm-tpl'); if(!box||!tpl||box.querySelector('.bsm')) return;
+    var n=tpl.content.firstElementChild.cloneNode(true); box.insertBefore(n,box.firstChild);
+    var inp=ps.querySelector('input[type="search"],input[name="q"]');
+    function tog(){ n.style.display=(inp&&inp.value.trim().length)?'none':'block'; }
+    if(inp){ inp.addEventListener('input',tog); inp.addEventListener('keyup',tog); } tog();
+    new MutationObserver(tog).observe(box,{childList:true});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
+  document.addEventListener('click',function(){setTimeout(go,50);},true);
+})();
+</script>

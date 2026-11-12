@@ -1,0 +1,69 @@
+{%- comment -%} BioLuna BF – pagina de rezultate la căutare: câmp de căutare, rezultatele imediat dedesubt (carduri BF), sugestii doar când nu s-a găsit nimic sau la final. {%- endcomment -%}
+{%- unless template.suffix == 'bf' or shop.metafields.custom.bf_live.value == true -%}{%- render 'bio-bf-base' -%}{%- endunless -%}
+{%- assign st = section.settings -%}
+{%- assign pops = st.chips | newline_to_br | split: '<br />' -%}
+{%- assign cats = 'Ceai Ozlex:ozlex-detox-slabit-complet|Redist:redist-professional|Sadoer:sadoer-professional|Magiun:magiun-afrodisiac-toate-produsele|Q7:q7-premium-magiun-ciocolata-afrodisiaca-turcia|Şahımerdan:magiun-sahimerdan|Odorizante:odorizante-de-camera|Toate reducerile:toate-pachetele-promo' | split: '|' -%}
+<style>
+.bfs{padding-top:18px}
+.bfs-form{position:relative;max-width:640px;margin:0 0 14px}
+.bfs-form input[type=search]{width:100%;height:52px;border:1.5px solid #111;border-radius:999px;background:#fff;padding:0 60px 0 20px;font-size:16px;color:#111;outline:0;-webkit-appearance:none;appearance:none;box-shadow:none}
+.bfs-form input[type=search]:focus{border-color:var(--bf-blue);box-shadow:0 0 0 4px rgba(37,99,235,.15)}
+.bfs-form input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
+.bfs-form button{position:absolute !important;right:6px;top:6px;width:40px !important;min-width:0 !important;height:40px !important;min-height:0 !important;padding:0 !important;margin:0 !important;border:0 !important;border-radius:50% !important;background:#111 !important;color:#fff !important;display:flex !important;align-items:center;justify-content:center;cursor:pointer}
+.bfs-form button:before,.bfs-form button:after{display:none !important}
+.bfs-form button:hover{background:var(--bf-blue)}
+.bfs-form svg{width:17px !important;height:17px !important;stroke:#fff;fill:none;position:relative;z-index:1}
+.bfs h1.bf-h{font-size:clamp(30px,5vw,54px);margin:4px 0 4px;word-break:break-word}
+.bfs-n{font-size:14px;color:#5b616b;margin:0 0 16px}
+.bfs-n b{color:#111}
+.bfs-lbl{display:block;font-size:12px;font-weight:700;color:#5b616b;margin:22px 0 9px}
+.bfs-chips{display:flex;flex-wrap:wrap;gap:8px}
+.bfs-chips a{display:inline-flex;align-items:center;border:1px solid #d5dae3;background:#fff;color:#111;border-radius:999px;padding:9px 15px;font-size:13.5px;font-weight:600;line-height:1;text-decoration:none}
+.bfs-chips a:hover{border-color:#111}
+.bfs-none{background:#f6f7fa;border-radius:18px;padding:22px 18px;margin:4px 0 0}
+.bfs-none b{display:block;font-family:var(--bf-hf);font-size:26px;line-height:1;text-transform:uppercase;color:#111}
+.bfs-none p{margin:8px 0 0;font-size:14px;color:#5b616b;line-height:1.45}
+.bfs-end{padding:8px 0 34px}
+@media(max-width:767px){.bfs{padding-top:12px}.bfs-form input[type=search]{height:48px}.bfs-form button{width:36px !important;height:36px !important}}
+</style>
+<section class="blf bfs">
+  <div class="bf-wrap">
+    <form class="bfs-form" action="{{ routes.search_url }}" method="get" role="search">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Caută un produs" aria-label="Caută un produs" autocomplete="off">
+      <input type="hidden" name="type" value="product"><input type="hidden" name="options[prefix]" value="last">
+      <button type="submit" aria-label="Caută"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7.5"/><line x1="20.5" y1="20.5" x2="16.6" y2="16.6"/></svg></button>
+    </form>
+    {%- if search.performed -%}
+      {%- paginate search.results by 24 -%}
+      {%- assign n = 0 -%}{%- for it in search.results -%}{%- if it.object_type == 'product' -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- endfor -%}
+      <h1 class="bf-h">„{{ search.terms | escape }}”</h1>
+      {%- if n > 0 -%}
+        <p class="bfs-n"><b>{{ search.results_count }}</b> {% if search.results_count == 1 %}rezultat{% else %}rezultate{% endif %}</p>
+        <div class="bf-grid bf-grid--clean">
+          {%- for it in search.results -%}{%- if it.object_type == 'product' -%}{%- render 'bio-bf-card', p: it, tag: blank, rich: false -%}{%- endif -%}{%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+        <nav class="bf-pag" aria-label="Paginare">
+          {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" aria-label="Pagina anterioară">‹</a>{%- endif -%}
+          {%- for part in paginate.parts -%}{%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- elsif part.title == paginate.current_page -%}<span class="cur">{{ part.title }}</span>{%- else -%}<span>{{ part.title }}</span>{%- endif -%}{%- endfor -%}
+          {%- if paginate.next -%}<a href="{{ paginate.next.url }}" aria-label="Pagina următoare">›</a>{%- endif -%}
+        </nav>
+        {%- endif -%}
+      {%- else -%}
+        <div class="bfs-none"><b>Nu am găsit nimic</b><p>Verifică dacă ai scris corect sau încearcă un cuvânt mai scurt, de exemplu numele gamei.</p></div>
+      {%- endif -%}
+      {%- endpaginate -%}
+    {%- else -%}
+      <h1 class="bf-h">Caută în reduceri</h1>
+    {%- endif -%}
+    <div class="bfs-end">
+      <span class="bfs-lbl">Căutări populare</span>
+      <div class="bfs-chips">{%- for c in pops -%}{%- assign cc = c | strip -%}{%- if cc != blank -%}<a href="{{ routes.search_url }}?q={{ cc | url_encode }}&type=product&options%5Bprefix%5D=last">{{ cc }}</a>{%- endif -%}{%- endfor -%}</div>
+      <span class="bfs-lbl">Categorii</span>
+      <div class="bfs-chips">{%- for r in cats -%}{%- assign lh = r | split: ':' -%}{%- assign c = collections[lh[1]] -%}{%- if c != blank -%}<a href="{{ c.url }}">{{ lh[0] }}</a>{%- endif -%}{%- endfor -%}</div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{"name":"BF – Căutare","settings":[{"type":"textarea","id":"chips","label":"Căutări populare (una pe rând)","default":"ceai ozlex\nșampon usturoi\nmagiun themra\nq7\nrozmarin\nodorizant"}],"presets":[{"name":"BF – Căutare"}]}
+{% endschema %}

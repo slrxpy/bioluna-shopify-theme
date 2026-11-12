@@ -1,0 +1,87 @@
+{%- comment -%} BioLuna BF – pagina de colecție v2 (curată): titlu, nr. produse + reducerea maximă reală, sortare, chip-uri pe familia de brand (subcategorii), grilă paginată.
+Chip-urile se aleg singure după colecția curentă – vezi lista „fam_cfg” de mai jos (nume:handle-colecție). {%- endcomment -%}
+{%- unless template.suffix == 'bf' or shop.metafields.custom.bf_live.value == true -%}{%- render 'bio-bf-base' -%}{%- render 'bio-bf-cart' -%}{%- endunless -%}
+{%- assign st = section.settings -%}
+{%- capture fam_cfg -%}
+redist=Tot Redist:redist-professional|Pachete:pachete-promo-redist-professional|Șampoane:sampoane-redist-professional|Măști:masti-tratamente-redist-professional|Balsamuri leave-in:balsame-bifazice-redist-leave-in|Seruri și uleiuri:seruri-uleiuri-par-stralucire-protectie|Parfumuri de păr:parfumuri-de-par-redist|Loțiuni de corp:lotiuni-de-corp-redist
+;magiun=Tot magiunul:magiun-afrodisiac-toate-produsele|Themra:themra-miere-magiun-afrodisiac-original-turcia|Q7:q7-premium-magiun-ciocolata-afrodisiaca-turcia|Şahımerdan:magiun-sahimerdan|Plicuri:magiun-afrodisiac-plicuri|Borcane:magiun-afrodisiac-borcane|Ciocolată:ciocolata-afrodisiaca-q7|Pachete:pachete-magiun-afrodisiac|Lotus:afrodisiace-naturale-lotus-premium-turcia|Vital Honey:vital-honey-miere-naturala-plante
+;ozlex=Tot Ozlex:ozlex-detox-slabit-complet|Ceai:ceai-slabit-ozlex-detox-original-turcia|Cafea:cafea-slabit-ozlex-detox-original-turcia|Pachete:pachete-promo-ozlex-ceai-cafea-detox|For X5:for-x5-doctor-irfan-demir-ceai-cafea-detox|21 Days Coffee:21-days-coffee-cafea-functionala-slabit
+;sadoer=Tot Sadoer:sadoer-professional|Pachete:pachete-promo-sadoer|Rozmarin:sadoer-rozmarin|Batana Oil:sadoer-batana|Avocado:sadoer-avocado
+;odor=Toate odorizantele:odorizante-de-camera|Alya:odorizante-camera-alya|Alya Gourmand:alya-gourmand-scents|Air Energie:odorizante-camera-air-energie|Yumoş:odorizante-camera-yumos|1001 de Nopți:odorizante-1001-de-nopti
+;drokay=Tot Dr. Okay:dr-okay|Ten:dr-okay-ingrijirea-pielii|Păr:dr-okay-ingrijirea-parului|Seturi:dr-okay-seturi
+;general=Toate reducerile:toate-pachetele-promo|Ceai Ozlex:ozlex-detox-slabit-complet|Redist:redist-professional|Magiun:magiun-afrodisiac-toate-produsele|Sadoer:sadoer-professional|Odorizante:odorizante-de-camera|Dr. Okay:dr-okay
+{%- endcapture -%}
+{%- assign needle = ':' | append: collection.handle | append: '|' -%}
+{%- assign chips = '' -%}{%- assign gen = '' -%}
+{%- assign fams = fam_cfg | strip | split: ';' -%}
+{%- for f in fams -%}{%- assign kv = f | strip | split: '=' -%}{%- assign k = kv[0] | strip -%}{%- assign val = kv[1] | strip -%}{%- assign hay = val | append: '|' -%}
+  {%- if k == 'general' -%}{%- assign gen = val -%}{%- elsif chips == '' and hay contains needle -%}{%- assign chips = val -%}{%- endif -%}
+{%- endfor -%}
+{%- if chips == '' -%}{%- assign chips = gen -%}{%- endif -%}
+{%- assign ttl = collection.title | split: ' – ' | first | split: ' - ' | first | split: ' | ' | first | remove: '🔥' | remove: '🎁' | strip -%}
+{%- if collection.handle == 'toate-pachetele-promo' -%}{%- assign ttl = 'Toate reducerile' -%}{%- elsif collection.handle == 'all' -%}{%- assign ttl = 'Toate produsele' -%}{%- endif -%}
+{%- assign mx = 0 -%}
+{%- for p in collection.products limit: 50 -%}{%- if p.compare_at_price > p.price -%}{%- assign d = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round -%}{%- if d > mx -%}{%- assign mx = d -%}{%- endif -%}{%- endif -%}{%- endfor -%}
+{%- assign per = st.per_page | default: 24 -%}
+<section class="blf bfc">
+  <div class="bf-wrap bf-colhead">
+    {%- if st.kicker != blank -%}<div class="bf-k">{{ st.kicker }}</div>{%- endif -%}
+    <h1 class="bf-h">{{ ttl }}</h1>
+    <div class="bf-colhead__row">
+      <div class="bf-colhead__n"><b>{{ collection.products_count }}</b> {% if collection.products_count == 1 %}produs{% else %}produse{% endif %}{%- if mx > 0 -%}<i> · </i><span>reduceri până la <em>−{{ mx }}%</em></span>{%- endif -%}</div>
+      {%- if st.show_sort -%}
+      <label class="bf-sort"><span>Sortează</span>
+        <select aria-label="Sortează produsele">
+          {%- assign cur = collection.sort_by | default: collection.default_sort_by -%}
+          {%- for opt in collection.sort_options -%}
+            {%- assign nm = opt.name -%}
+            {%- case opt.value -%}{%- when 'manual' -%}{%- assign nm = 'Recomandate' -%}{%- when 'best-selling' -%}{%- assign nm = 'Cele mai vândute' -%}{%- when 'title-ascending' -%}{%- assign nm = 'Alfabetic, A–Z' -%}{%- when 'title-descending' -%}{%- assign nm = 'Alfabetic, Z–A' -%}{%- when 'price-ascending' -%}{%- assign nm = 'Preț crescător' -%}{%- when 'price-descending' -%}{%- assign nm = 'Preț descrescător' -%}{%- when 'created-ascending' -%}{%- assign nm = 'Cele mai vechi' -%}{%- when 'created-descending' -%}{%- assign nm = 'Noutăți' -%}{%- endcase -%}
+            <option value="{{ opt.value }}"{% if opt.value == cur %} selected{% endif %}>{{ nm }}</option>
+          {%- endfor -%}
+        </select>
+      </label>
+      {%- endif -%}
+    </div>
+    <nav class="bf-chips" aria-label="Subcategorii">
+      {%- assign rows = chips | split: '|' -%}
+      {%- for r in rows -%}{%- assign lh = r | split: ':' -%}{%- assign c = collections[lh[1]] -%}
+        {%- if c != blank and c.products_count > 0 -%}
+        <a class="bf-chip{% if c.handle == collection.handle %} on{% endif %}" href="{{ c.url }}"{% if c.handle == collection.handle %} aria-current="page"{% endif %}>{{ lh[0] }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+  </div>
+  <div class="bf-wrap">
+    {%- paginate collection.products by per -%}
+      <div class="bf-grid bf-grid--clean">
+        {%- for p in collection.products -%}
+          {%- render 'bio-bf-card', p: p, tag: blank, rich: false -%}
+        {%- else -%}
+          <div class="bf-empty">Momentan nu sunt produse aici. <a href="{{ collections['toate-pachetele-promo'].url }}">Vezi toate reducerile</a></div>
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+      <nav class="bf-pag" aria-label="Paginare">
+        {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" aria-label="Pagina anterioară">‹</a>{%- endif -%}
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- elsif part.title == paginate.current_page -%}<span class="cur">{{ part.title }}</span>{%- else -%}<span>{{ part.title }}</span>{%- endif -%}
+        {%- endfor -%}
+        {%- if paginate.next -%}<a href="{{ paginate.next.url }}" aria-label="Pagina următoare">›</a>{%- endif -%}
+      </nav>
+      {%- endif -%}
+    {%- endpaginate -%}
+    <div class="bf-foot"></div>
+  </div>
+</section>
+<script>(function(){var on=document.querySelector('.bfc .bf-chip.on');if(on&&on.parentNode.scrollWidth>on.parentNode.clientWidth){on.parentNode.scrollLeft=Math.max(0,on.offsetLeft-on.parentNode.offsetLeft-16)}})();</script>
+{% schema %}
+{
+  "name": "BF – Colecție BioLuna",
+  "settings": [
+    {"type":"text","id":"kicker","label":"Text mic","default":"Black Friday"},
+    {"type":"range","id":"per_page","label":"Produse pe pagină","min":12,"max":48,"step":4,"default":24},
+    {"type":"checkbox","id":"show_sort","label":"Arată sortarea","default":true}
+  ],
+  "presets": [{"name":"BF – Colecție BioLuna"}]
+}
+{% endschema %}

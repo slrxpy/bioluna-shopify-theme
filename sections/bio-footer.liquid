@@ -1,0 +1,40 @@
+<style>
+footer.bf{background:#141216;color:#e9e2e6;padding:36px 16px 20px;font-size:14px}
+.bf-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+footer.bf h4{color:#fff;font-size:13px;letter-spacing:1.4px;text-transform:uppercase;margin:0 0 12px}
+footer.bf a{color:#e9e2e6;text-decoration:none;display:block;padding:4px 0;opacity:.9}footer.bf a:hover{color:#ff8a8a;opacity:1}
+footer.bf .wa{display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;border-radius:999px;padding:9px 14px;font-weight:800;margin:8px 0 6px;opacity:1}
+footer.bf .tr div{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)}footer.bf .tr b{color:#fff;display:block;font-size:13.5px}footer.bf .tr span{font-size:12.5px;opacity:.75}
+.bf-bot{max-width:1240px;margin:22px auto 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px;opacity:.8}
+.bf-bot a{display:inline;padding:0;margin-left:10px}
+footer.bf details summary{list-style:none;cursor:pointer}footer.bf details summary::-webkit-details-marker{display:none}
+@media(max-width:860px){.bf-in{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.bf-in{grid-template-columns:1fr;gap:6px}footer.bf details{border-bottom:1px solid rgba(255,255,255,.1)}footer.bf details summary h4{margin:0;padding:12px 0;display:flex;justify-content:space-between}footer.bf details summary h4:after{content:"+";color:#ff8a8a}footer.bf details[open] summary h4:after{content:"–"}footer.bf details>div{padding-bottom:12px}}
+</style>
+{%- assign s = section.settings -%}
+<footer class="bf">
+  <div class="bf-in">
+    <details open><summary><h4>Branduri</h4></summary><div>
+      <a href="/collections/redist-professional">Redist Professional</a><a href="/collections/sadoer-professional">Sadoer</a><a href="/collections/dr-okay">Dr. Okay</a><a href="/collections/ozlex-detox-slabit-complet">Ozlex</a><a href="/collections/themra-miere-magiun-afrodisiac-original-turcia">Themra</a><a href="/collections/odorizante-camera-alya">Alya</a><a href="/collections/redone-professional">Redone</a></div></details>
+    <details open><summary><h4>Categorii & Pachete</h4></summary><div>
+      <a href="/collections/toate-pachetele-promo">🎁 Pachete promo</a><a href="/collections/sampoane-par-ingrijire-profesionala">Îngrijire păr</a><a href="/collections/dr-okay-ingrijirea-pielii">Îngrijire ten</a><a href="/collections/ozlex-detox-slabit-complet">Ceai & cafea</a><a href="/collections/magiun-afrodisiac-toate-produsele">Magiun tradițional</a><a href="/collections/odorizante-camera-alya">Parfumuri cameră</a><a href="/blogs/noutati">📖 Blog & ghiduri</a></div></details>
+    <details open><summary><h4>Comanda ta</h4></summary><div>
+      <a href="{{ s.track_url }}" target="_blank" rel="noopener">🚚 Urmărește livrarea</a><a href="/pages/politica-retur">↩️ Retur sau schimb</a><a href="/pages/termeni-conditii">Termeni și condiții</a><a href="/pages/politica-confidentialitate">Confidențialitate</a><a href="/pages/contact">💬 Contact</a></div></details>
+    <details open><summary><h4>Contact</h4></summary><div>
+      <a href="tel:{{ s.phone | remove: ' ' }}">📞 {{ s.phone }}</a>
+      <a class="wa" href="https://wa.me/{{ s.whatsapp }}?text=Bun%C4%83!%20A%C8%99%20dori%20s%C4%83%20plasez%20o%20comand%C4%83." target="_blank" rel="noopener">💬 Scrie-ne pe WhatsApp</a>
+      {%- if s.email != blank -%}<a href="mailto:{{ s.email }}">✉️ {{ s.email }}</a>{%- endif -%}
+      <div style="opacity:.75;font-size:12.5px;margin-top:8px;line-height:1.5">{{ s.firm }}{%- if s.cui != blank -%}<br>CUI: {{ s.cui }}{%- endif -%}{%- if s.address != blank -%}<br>{{ s.address }}{%- endif -%}</div></div></details>
+    <details open><summary><h4>Încredere</h4></summary><div class="tr">
+      <div><b>Livrare 1–2 zile</b><span>Curier rapid în toată România · gratuit peste 250 lei</span></div>
+      <div><b>Plată la curier</b><span>Ramburs sau card — cum preferi</span></div>
+      <div><b>Retur 14 zile</b><span>Pentru produse sigilate, conform legii</span></div>
+      <div><a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">ANPC – SAL</a><a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">Soluționarea online a litigiilor (SOL)</a></div></div></details>
+  </div>
+  <div class="bf-bot"><span>© {{ 'now' | date: '%Y' }} {{ s.firm }} · BioLuna.ro — produse originale</span><span><a href="/pages/termeni-conditii">Termeni</a><a href="/pages/politica-confidentialitate">GDPR</a><a href="/pages/politica-retur">Retur</a></span></div>
+</footer>
+{% schema %}{ "name":"BioLuna – Footer","settings":[
+ {"type":"text","id":"phone","label":"Telefon","default":"+40 770 362 860"},{"type":"text","id":"whatsapp","label":"WhatsApp (format 40758579378)","default":"40758579378"},
+ {"type":"text","id":"email","label":"Email"},{"type":"text","id":"firm","label":"Firmă","default":"FANTASTIC STUDIO SRL"},{"type":"text","id":"cui","label":"CUI"},{"type":"text","id":"address","label":"Adresă"},
+ {"type":"text","id":"track_url","label":"Link urmărire AWB","default":"https://www.fancourier.ro/awb-tracking/"}],
+ "presets":[{"name":"BioLuna – Footer"}] }{% endschema %}
